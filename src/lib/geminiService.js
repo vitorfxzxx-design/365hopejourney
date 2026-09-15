@@ -1,59 +1,39 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+// Default system instruction for 365hopejourney AI Spiritual Guide
+export const DEFAULT_AI_SYSTEM_PROMPT = `You are the Official Spiritual Guide, Compassionate Mentor, and Encouraging Companion of 365hopejourney.
 
-// Default system instruction
-export const DEFAULT_AI_SYSTEM_PROMPT = `You are the Official Health365 Health & Wellness Specialist and Nutrition Guide, serving as an engaging, friendly, and approachable chat assistant inside the app.
+Your mission is to provide warm, comforting, and deeply inspiring spiritual guidance, personalized prayers, scripture reflections, and practical motivation grounded in faith, hope, gratitude, and divine love.
 
-Your goal is to guide members toward optimal cellular health, energy, and vitality using the foundational principles below, ensuring conversations are warm, conversational, natural, balanced, and never extremist.
+CORE MISSION & GUIDELINES:
 
-CORE NUTRITIONAL PRINCIPLES:
+1. ALWAYS RESPOND IN ENGLISH:
+- All responses, reflections, scripture references, and prayers MUST ALWAYS be written in natural, warm, and beautiful US English, regardless of the language the member uses.
 
-Top 1 Alimentos (Light & Easy Absorption): Prioritize nutrient-dense, easily digestible whole foods that do not burden the gut—such as grass-fed red meat, pasture-raised eggs, raw-milk artisan cheeses, high-quality fats (butter, pork lard, extra virgin olive oil, ghee, avocado), fresh fruits (especially bananas, papayas, oranges, kiwis), and raw artisanal honey.
+2. CONVERSATIONAL & EMPATHETIC COMPANIONSHIP:
+- Talk to the person like a wise, compassionate friend and loving spiritual mentor.
+- Listen attentively to what they are experiencing (anxiety, grief, loneliness, relationship trials, financial stress, waiting on God, health challenges, or moments of celebration).
+- Validate their emotions with kindness, empathy, and tenderness—make them feel heard, safe, understood, and deeply valued.
 
-Carbohydrates & Flours:
-- White flour, sourdough bread, tapioca, white rice, and natural starches are completely FINE and NOT a problem. They are clean, easily digestible sources of glucose when prepared simply. Do NOT demonize white flour or white bread.
+3. TAILORED BIBLICAL SCRIPTURES:
+- For every question, phase, or trial the person is walking through, cite relevant, uplifting, and comforting Bible verses that directly speak to their exact situation (e.g., Jeremiah 29:11, Isaiah 40:31, Psalm 23, Psalm 91, Romans 8:28, Philippians 4:6-7, Matthew 11:28, Joshua 1:9, Lamentations 3:22-23, Psalm 30:5, 2 Corinthians 12:9).
+- Cite the book, chapter, and verse clearly and quote the scripture text.
 
-Legumes & Vegetables: Good in moderation, keeping in mind that excessive consumption can introduce antinutrients.
+4. PRACTICAL SPIRITUAL WISDOM & EXPLANATIONS:
+- Explain the scripture in simple, heart-touching, and practical terms.
+- Show them how God's promises apply directly to their daily life right now, turning worry into peace and despair into faith.
 
-Elimination of Industrial Drivers (Items to minimize at home): Advise minimizing refined seed oils (soybean, canola, corn, sunflower), margarine, refined sugars, artificial sweeteners, and ultra-processed industrial packaged goods. (Note: natural starches, potatoes, white rice, and sourdough/white flours are perfectly fine; the primary focus is simply avoiding industrial hydrogenated seed oils and chemical additives).
+5. FEEDING HOPE & REKINDLING THE SPARK FOR LIFE:
+- Always feed and multiply their hope.
+- Speak life, joy, and purpose into their soul. Reignite their inner glow and excitement for life.
+- Remind them that they are never alone, that their story is not over, and that their greatest breakthroughs and blessings are ahead.
 
-THE NON-EXTREMIST PHILOSOPHY & BALANCED TONE (CRITICAL):
-- Never be an extremist or make the user feel restricted, guilty, or stressed about food.
-- DO NOT use alarmist words like "Strictly Avoid", "Prohibited", "Toxic", or "Poisons". Simply use calm, balanced phrasing like "Foods to avoid" or "Things to minimize".
-- Your Home is Your Sacred Temple: In your daily routine at home, keep it clean and minimize seed oils and ultra-processed junk to maintain peak cellular energy.
-- Social Life, Dining Out & Celebrations: When traveling, out with friends, or celebrating, eat and enjoy freely without guilt or paranoia!
-- Cellular Resilience: As long as your daily baseline at home is wholesome, your body has an amazing innate capacity to thrive.
+6. PERSONALIZED PRAYER & BLESSING:
+- Include a short, beautiful, and heartfelt prayer for them, followed by an uplifting blessing.
 
-LIFESTYLE & SUPPLEMENT GUIDANCE:
-
-Metabolic Fasting & Autophagy: Support safe intermittent fasting windows (e.g., 16:8 or 14:10) for cellular cleanup and insulin sensitivity. Black coffee and herbal teas without sugar/sweeteners do not break metabolic fasting.
-
-Restorative Sleep & Circadian Rhythms: Emphasize 7-8 hours in total darkness, cutting blue light 60 minutes before bed, and eating at least 3 hours before sleep.
-
-Mineralized Hydration: 35-45ml of clean water per kg of body weight, with mineral-rich salt (Celtic or Himalayan).
-
-Internal Products Guidance: When naturally relevant to liver detox or cellular repair, you may mention our exclusive formula Vitalix Gold. For prostate and urinary wellness, mention Prostiv.
-
-COMMUNICATION & CONVERSATION RULES:
-
-Language Requirement: Always respond in ENGLISH, regardless of the language used in the member's question.
-
-Greeting and Addressing Rule:
-- Do NOT say "Hello [Name]!" at the beginning of every response. It sounds repetitive and robotic in an ongoing chat.
-- Address the member by their first name naturally (or jump directly into the insightful answer without repeated generic greetings).
-
-Tone & Style: Warm, encouraging, expert, empathetic, clear, flexible, and extremely friendly. Make the user genuinely want to chat! Keep responses mobile-friendly, with neat paragraphs, clean bullet points, and friendly emojis. Do not use markdown double asterisks (**) in your output, keep text plain and well formatted.
-
-Direct Answers & Meal Menus:
-Whenever a user asks for a meal plan, breakfast, lunch, dinner or food suggestions, always provide 2 clear options:
-- Option 1 (The Ideal Ancestral Protocol - Top 1 Light & Easy Absorption): Pure pasture-raised eggs, grass-fed beef, raw-milk cheeses, clean noble fats (butter/ghee/lard), fresh fruits (banana, papaya, berries) and raw honey.
-- Option 2 (Popular, Familiar & Accessible Alternative): Familiar real-food choices such as tapioca with scrambled eggs, artisanal sourdough bread (naturally fermented), plain whole-milk yogurt or kefir with fresh fruits, white rice with ground beef or grilled chicken and roasted vegetables.
-
-Handling Questions About Cheating or Eating Other Foods:
-If a user asks if they can ever eat pizza, cake, or off-plan foods: Respond with warmth and reassurance: "Of course you can! Food should bring joy, not guilt. Your home is your temple where you build daily vitality, but when you are out celebrating, enjoy it without stress. Your body is remarkably resilient!"
-
-Disease & Curing Claims: Do not spontaneously claim or promise that a user will be 100% cured of a disease just by following this diet. Only address disease reversal or healing if the user explicitly asks about it first, and even then, frame it carefully and responsibly.
-
-Medical Disclaimer: Provide educational lifestyle and nutrition information. Do not prescribe prescription drugs or make formal medical diagnostic claims. Encourage consulting a personal physician for acute clinical conditions.`;
+7. FORMATTING & STYLE:
+- Address the member naturally by their first name inside the sentence.
+- Do NOT start every response with generic greetings like "Hello [Name]!". Jump directly and gracefully into your comforting answer.
+- Keep paragraphs clean, mobile-friendly, and gentle on the eyes. Use soft, uplifting emojis naturally (✨, 🕊️, 🌅, 🌿, 🙏, 🤍).
+- Do not output excessive markdown double asterisks (**); keep text elegant and clean.`;
 
 export function normalizeClaudeModel(modelName) {
   if (!modelName || typeof modelName !== 'string') return 'claude-sonnet-4-5-20250929';
@@ -80,33 +60,38 @@ export function normalizeClaudeModel(modelName) {
  */
 export async function generateSpecialistAIResponse({
   userMessage,
-  userName = 'Member',
+  userQuestion,
+  userName = 'Friend',
+  userFirstName,
   history = [],
+  conversationHistory,
   apiKey = '',
-  systemPrompt = DEFAULT_AI_SYSTEM_PROMPT,
+  systemPrompt,
+  customPrompt,
   aiModel = 'claude-sonnet-4-5-20250929',
   aiTone = 'warm_encouraging',
   temperature = 0.7
 }) {
+  const finalMessage = userMessage || userQuestion || '';
+  const finalName = userFirstName || userName || 'Friend';
+  const finalHistory = conversationHistory || history || [];
+  const finalPrompt = customPrompt || systemPrompt || DEFAULT_AI_SYSTEM_PROMPT;
   const cleanKey = (apiKey || import.meta.env?.VITE_ANTHROPIC_API_KEY || '').trim();
 
   // 1. If Anthropic Claude is configured or requested
   if (cleanKey || aiModel.includes('claude')) {
     try {
-      const isFirstMessage = !history || history.filter(m => m.sender === 'user').length <= 1;
+      const fullSystemPrompt = `${finalPrompt}
 
-      const fullSystemPrompt = `${systemPrompt}
-
-STRICT CONVERSATION & GREETING RULES (DO NOT VIOLATE):
-- You must ALWAYS respond in ENGLISH, regardless of the language the user speaks or types.
-- Do NOT output any markdown double asterisks (**). Output clean, plain text with bullet points (•) and line breaks.
-- GREETING PROHIBITION: Do NEVER start your messages with "Hello", "Hi", "Hey", "Greetings" or "Hello ${userName}!".
-- Since this is an ongoing chat, jump directly into answering the question. If you address the user, just use their name naturally inside the sentence (e.g., "${userName}, for deep sleep...", "Great question, ${userName}.").
-Tone Style: ${aiTone}
-User First Name: ${userName}`;
+STRICT CONVERSATION & GREETING RULES:
+- You must ALWAYS respond in ENGLISH, regardless of the language used by the user.
+- Tone Style: ${aiTone}
+- User First Name: ${finalName}
+- Quote specific Biblical scriptures relevant to their phase, explain the verses, feed their hope, rekindle their spark for life, and include a personalized prayer.
+- Do not output markdown double asterisks (**). Output clean, beautifully spaced paragraphs with gentle emojis.`;
 
       // Multi-turn context
-      const chatMessages = (history || [])
+      const chatMessages = (finalHistory || [])
         .slice(-8)
         .map(msg => ({
           role: msg.sender === 'user' ? 'user' : 'assistant',
@@ -116,7 +101,7 @@ User First Name: ${userName}`;
 
       chatMessages.push({
         role: 'user',
-        content: userMessage
+        content: finalMessage
       });
 
       const activeClaudeModel = normalizeClaudeModel(aiModel);
@@ -130,7 +115,6 @@ User First Name: ${userName}`;
         messages: chatMessages
       };
 
-      // Try Direct Anthropic Browser Call first (with official anthropic-dangerous-direct-browser-access header), followed by Serverless proxy
       const directHeaders = {
         'Content-Type': 'application/json',
         'x-api-key': cleanKey,
@@ -182,9 +166,6 @@ User First Name: ${userName}`;
             if (contentText) {
               return contentText;
             }
-          } else {
-            const errorData = await response.json().catch(() => ({}));
-            console.error(`Claude proxy error on ${endpoint}:`, errorData);
           }
         } catch (callErr) {
           console.warn(`Proxy endpoint ${endpoint} failed:`, callErr.message || callErr);
@@ -195,131 +176,131 @@ User First Name: ${userName}`;
     }
   }
 
-  // 2. Dynamic contextual response generator (Never outputs hardcoded generic strings)
-  return generateDynamicContextualResponse(userMessage, userName, systemPrompt);
+  // 2. Dynamic contextual response generator grounded in 365hopejourney faith and life-spark renewal
+  return generateDynamicContextualResponse(finalMessage, finalName, finalPrompt);
 }
 
 function generateDynamicContextualResponse(userQuestion, userName, systemPrompt) {
   const q = (userQuestion || '').toLowerCase();
-  const firstName = userName ? userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase() : 'Member';
+  const firstName = userName ? userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase() : 'Friend';
 
-  // Weight loss / Emagrecimento / Fat Loss
-  if (q.includes('emagrecer') || q.includes('perder peso') || q.includes('perder gordura') || q.includes('weight loss') || q.includes('fat loss') || q.includes('lose weight') || q.includes('secar') || q.includes('queimar gordura')) {
-    return `${firstName}, to unlock rapid fat loss and high cellular energy under the Health365 Protocol:
+  // 1. Anxiety, Fear, Worry, Overwhelmed
+  if (q.includes('anxiety') || q.includes('anxious') || q.includes('ansiedade') || q.includes('medo') || q.includes('fear') || q.includes('panic') || q.includes('stress') || q.includes('worry') || q.includes('overwhelm') || q.includes('afraid')) {
+    return `${firstName}, take a gentle, deep breath and know that you are not alone in this moment. 🕊️
 
-1. Foundation: Top 1 Light & Easy Absorption Foods
-• Pasture-raised whole eggs and grass-fed beef or wild fish (high thermic effect, protects lean muscle).
-• Pure noble fats for satiety: Grass-fed butter, ghee, extra virgin olive oil, and avocado.
-• Clean carbs from whole fruits (papaya, berries, kiwi, bananas) and artisanal honey in moderation.
+When the waves of anxiety feel tall, hold onto the comforting truth in Philippians 4:6-7:
+"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds."
 
-2. Eliminate Chronic Metabolic Blockers:
-• Zero industrial seed oils (canola, soybean, corn, sunflower) and zero margarine. These poison your cellular mitochondria and halt fat oxidation.
-• Cut artificial sweeteners and ultra-processed packaged snacks.
+What this means for your life today:
+Anxiety often tries to make us carry tomorrow's burdens with today's strength. But God does not ask you to solve everything right now. He invites you to hand over the weight that was never yours to carry. When you release control, His supernatural peace steps in to shelter your thoughts.
 
-3. Intermittent Metabolic Window:
-• Adopt a 14:10 or 16:8 fasting window. Black coffee, mineral water with Celtic salt, and herbal teas keep insulin dormant and accelerate autophagy.
+Your life is precious, and this heavy feeling is temporary. The fog will lift, and your joy will shine bright again.
 
-4. 2 Daily Meal Structure:
-• Meal 1: 3-4 eggs scrambled in butter + raw artisan cheese + 1 fresh fruit.
-• Meal 2: Ribeye/grass-fed beef or salmon + sweet potato or white rice with olive oil + fresh mixed salad.
+Let us pray together:
+"Heavenly Father, I lift ${firstName} up to Your loving presence. Wrap them in Your peace that surpasses all human logic. Silence every anxious whisper and fill their heart with calm assurance, quiet confidence, and renewed hope. In Your name, Amen." 🙏✨
 
-How many meals do you usually prefer having each day?`;
+How does your heart feel right now as you take a quiet breath?`;
   }
 
-  // Lunch & Dinner
-  if (q.includes('lunch') || q.includes('almoço') || q.includes('almoco') || q.includes('dinner') || q.includes('jantar')) {
-    return `🍽️ Here are two great meal options for your lunch or dinner, ${firstName}:
+  // 2. Sadness, Grief, Depression, Heavy Heart, Loneliness
+  if (q.includes('sad') || q.includes('depress') || q.includes('triste') || q.includes('grief') || q.includes('luto') || q.includes('alone') || q.includes('lonely') || q.includes('sozinho') || q.includes('solidão') || q.includes('solidao') || q.includes('crying') || q.includes('cry') || q.includes('chorar') || q.includes('hurt') || q.includes('pain') || q.includes('dor')) {
+    return `${firstName}, your tears and your tender heart are deeply seen and cherished. 🤍
 
-Option 1 (Top 1 Ancestral Protocol - Maximum Nutrient Density):
-• Grilled grass-fed steak, ribeye, or wild salmon cooked in ghee or butter
-• 2 soft-boiled pasture-raised eggs or bone broth cup
-• Mashed sweet potato or pumpkin with unrefined sea salt
-• Slices of fresh orange or kiwi
+In seasons of sorrow, cling to Psalm 34:18:
+"The Lord is close to the brokenhearted and saves those who are crushed in spirit."
+And remember the promise of Psalm 30:5: "Weeping may endure for a night, but joy comes with the morning."
 
-Option 2 (Popular & Familiar Everyday Choice):
-• Ground grass-fed beef or roasted chicken thighs
-• Fluffy white jasmine rice cooked with garlic and extra virgin olive oil
-• Steamed carrots, zucchini or a fresh mixed green salad
-• A cup of whole natural yogurt or kefir with sliced berries
+What this means for your life today:
+Sadness does not mean you have lost your way; it simply means your soul is healing and processing. You are not broken beyond repair. God is right beside you in the quiet moments, collecting every tear. There is still so much beauty, love, and light awaiting you.
 
-🚫 What to avoid:
-Seed oils (canola, soybean, corn), margarine, fried breaded items, and commercial sauces with preservatives.
+Your life has immense purpose, and the light inside of you will shine brighter than ever before.
 
-Which style do you feel like having today?`;
+A prayer for your healing:
+"Loving God, hold ${firstName} gently in Your arms today. Mend the quiet aches of their spirit and remind them of their sacred worth. Breathe fresh hope into their soul and rekindle the divine spark of life within them. Amen." 🌅🕊️
+
+I am here with you. What is one small comfort that brought peace to your heart recently?`;
   }
 
-  // Breakfast / General Meal Plan
-  if (q.includes('breakfast') || q.includes('café da manhã') || q.includes('cafe da manha') || q.includes('meal plan') || q.includes('cardápio') || q.includes('cardapio') || q.includes('menu') || q.includes('another plan') || q.includes('plan')) {
-    return `🍳 Here are two delicious breakfast options designed for cellular energy, ${firstName}:
+  // 3. Hopelessness, Losing Faith, Giving Up, Lost the Spark for Life
+  if (q.includes('hope') || q.includes('esperança') || q.includes('esperanca') || q.includes('give up') || q.includes('desistir') || q.includes('lost') || q.includes('perdido') || q.includes('tired') || q.includes('cansado') || q.includes('exhausted') || q.includes('purpose') || q.includes('propósito') || q.includes('spark') || q.includes('brilho')) {
+    return `${firstName}, let this be a reminder that your story is far from over. ✨
 
-Option 1 (Top 1 Ancestral Protocol - Light & Easy Absorption):
-• 3 Pasture-raised eggs scrambled or fried in grass-fed butter or pork lard
-• Slices of raw-milk artisan cheese (such as raw Cheddar or Minas artisan)
-• 1 ripe banana or papaya drizzled with raw artisanal honey
-• Pure black coffee or herbal tea (no sugar or sweeteners)
+Stand firm upon Jeremiah 29:11:
+"'For I know the plans I have for you,' declares the Lord, 'plans to prosper you and not to harm you, plans to give you hope and a future.'"
+And Isaiah 40:31:
+"Those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."
 
-Option 2 (Popular & Familiar Real-Food Alternative):
-• Warm tapioca or natural sourdough bread filled with scrambled eggs and cheese
-• 1 cup of whole-milk natural yogurt or kefir with sliced strawberries
-• 1/2 fresh avocado seasoned with a pinch of Celtic or Himalayan pink salt
-• Pure black coffee or tea
+What this means for your life today:
+When your strength feels depleted, God's grace becomes your foundation. You do not need to figure out the next ten steps—you only need to take one step in faith today. The spark of enthusiasm and wonder for life will return to your eyes. You were created for a wonderful purpose, and the world is richer because you are in it.
 
-Foods to avoid:
-Seed oils (canola, soybean, corn), margarine, and ultra-processed boxed foods.
+Never lose heart; God is preparing blessings in secret that will soon become visible.
 
-How would you like to customize this for your morning routine?`;
+A blessing of renewed hope:
+"Lord, ignite the fire of hope inside ${firstName}'s heart today. Dispel every shadow of discouragement and awaken their enthusiasm for living. Grant them the strength of eagles and let them see the glorious future You have prepared. Amen." 🌿✨
+
+What is a dream or blessing you would love to see blossom in your life?`;
   }
 
-  // Coffee / Fasting
-  if (q.includes('coffee') || q.includes('café') || q.includes('cafe') || q.includes('fasting') || q.includes('jejum')) {
-    return `Yes, ${firstName}! ☕ Pure black coffee (without milk, cream, sugar, or artificial sweeteners) does not break your metabolic fast or trigger insulin spikes.
+  // 4. Waiting on God, Patience, Decisions, Unanswered Prayers
+  if (q.includes('wait') || q.includes('esperar') || q.includes('patience') || q.includes('paciência') || q.includes('future') || q.includes('decision') || q.includes('decisão') || q.includes('decisao') || q.includes('unanswered') || q.includes('when') || q.includes('quando')) {
+    return `${firstName}, waiting seasons are never wasted seasons in God's hands. ⏳✨
 
-In fact, the natural polyphenols in quality coffee stimulate cellular autophagy and promote liver fat oxidation. Enjoy it freely during your fasting window!`;
+Reflect on Ecclesiastes 3:11 and Romans 8:28:
+"He has made everything beautiful in its time."
+"And we know that in all things God works for the good of those who love Him, who have been called according to His purpose."
+
+What this means for your life today:
+While you are waiting, God is working behind the scenes. He is aligning details, strengthening your character, and preparing you for what He has prepared for you. Trust the divine timing. What is meant for you will not pass you by.
+
+Keep your heart expectant and full of joy, for your breakthrough is on the way.
+
+A prayer for patience and clarity:
+"Father, give ${firstName} wisdom, patience, and peace as they navigate this season of waiting. Open the right doors that no one can shut, and quiet their spirit with trusting faith. Amen." 🕊️🌸`;
   }
 
-  // Fats & Oils
-  if (q.includes('fat') || q.includes('gordura') || q.includes('oil') || q.includes('óleo') || q.includes('oleo') || q.includes('butter') || q.includes('manteiga')) {
-    return `🥑 Under the Health365 Ancestral Protocol, we embrace clean, natural whole-food fats and eliminate industrial seed oils:
+  // 5. Morning Devotion, Gratitude, New Day
+  if (q.includes('morning') || q.includes('bom dia') || q.includes('day') || q.includes('dia') || q.includes('gratitude') || q.includes('gratidão') || q.includes('gratidao') || q.includes('thank') || q.includes('obrigado') || q.includes('wake') || q.includes('acordar')) {
+    return `${firstName}, blessed morning! Today is a gift overflowing with fresh mercies. 🌅
 
-Top Recommended Fats:
-• Grass-fed butter and Ghee
-• Artisanal pork lard
-• Cold-pressed Extra Virgin Olive Oil
-• Pasture-raised egg yolks and fresh avocado
+Declare Lamentations 3:22-23:
+"The steadfast love of the Lord never ceases; His mercies never come to an end; they are new every morning; great is Your faithfulness."
 
-Foods to avoid:
-Refined industrial seed oils (soybean, canola, corn, sunflower) and margarine.`;
+What this means for your day:
+Yesterday's mistakes and worries have no claim on today. You start with a clean slate, accompanied by God's infinite grace. Approach this day with a grateful heart, a bright smile, and expectant faith. You are going to be a blessing to everyone you cross paths with today!
+
+A morning prayer:
+"Lord, thank You for the breath of life in ${firstName}. Fill their steps with light, their heart with gratitude, and their mind with focus. May this day be rich in peace, love, and divine favor. Amen." 🙏✨
+
+What are three small things you are grateful for this morning?`;
   }
 
-  // Non-extremist / Eating out / Cheating / Pizza / Parties / Guilt
-  if (q.includes('cheat') || q.includes('pizza') || q.includes('never') || q.includes('party') || q.includes('festa') || q.includes('viagem') || q.includes('travel') || q.includes('out') || q.includes('rua') || q.includes('aniversário') || q.includes('birthday') || q.includes('can i eat') || q.includes('posso comer')) {
-    return `Of course you can, ${firstName}! 😊
+  // 6. Rest, Sleep, Night Time Peace
+  if (q.includes('sleep') || q.includes('dormir') || q.includes('night') || q.includes('noite') || q.includes('rest') || q.includes('descanso') || q.includes('insomnia') || q.includes('insonia')) {
+    return `${firstName}, as the day comes to a close, let your soul enter into deep, sacred rest. 🌙
 
-Here is our golden philosophy on emotional balance and food freedom:
+Rest your thoughts on Psalm 4:8 and Proverbs 3:24:
+"In peace I will lie down and sleep, for You alone, Lord, make me dwell in safety."
+"When you lie down, you will not be afraid; when you lie down, your sleep will be sweet."
 
-1. Never Live in Extremes:
-Emotional peace and joy with loved ones are just as crucial for your health as the food on your plate. Never place a heavy burden of guilt or anxiety on your life.
+What this means for your night:
+You have done what you could today, and now it is time to hand the night over to God. Release every thought, unclench your shoulders, and rest in the assurance that God watches over you and your loved ones while you sleep.
 
-2. Your Home is Your Sacred Temple:
-In your day-to-day kitchen routine, protect your temple. Eliminate the true daily poisons (industrial seed oils, margarine, artificial sweeteners, and ultra-processed packages). Eating clean at home builds your daily metabolic armor and prevents chronic cellular fatigue.
-
-3. Out with Friends, Parties & Traveling:
-When you are celebrating a birthday, traveling, or dining out with family, enjoy yourself freely and without paranoia! 
-
-4. Your Body Has Astounding Resilience:
-As long as the vast majority of what you eat at home is natural and nourishing, your body possesses an extraordinary capacity to detoxify, process, and regenerate after an occasional indulgence.
-
-Enjoy life, stay consistent where it matters most, and feel great about your journey!`;
+A prayer for restorative sleep:
+"Lord, cover ${firstName} with Your gentle canopy of peace tonight. Quiet every racing thought and grant them sweet, refreshing sleep. May they wake up tomorrow restored in body, mind, and spirit. Amen." 🕊️✨`;
   }
 
-  // General questions response
-  return `${firstName}, under the Health365 Ancestral Protocol, our primary focus is nourishing your cells with whole, single-ingredient foods that are light on digestion:
+  // 7. General Faith & Life Inspiration
+  return `${firstName}, what a joy it is to walk beside you in this journey of faith and hope. ✨
 
-• Prioritize pasture-raised eggs, grass-fed meats, raw artisan cheese, clean cooking fats (butter, ghee, olive oil), and seasonal fresh fruits.
-• Strictly eliminate industrial seed oils (soybean, canola, sunflower) and artificial additives that cause chronic inflammation.
-• Keep hydration optimal with 35-45ml of mineralized water per kg of body weight.
+Be encouraged by Joshua 1:9:
+"Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."
 
-Tell me a bit more about what you would like to adjust in your daily routine!`;
+Remember that you are deeply loved, protected, and called to live an extraordinary life filled with grace, peace, and purposeful joy. Whatever you are walking through today, know that God's strength is made perfect in your weakness.
+
+A prayer for your day:
+"Heavenly Father, bless ${firstName} abundantly. Illuminate their path, fill their heart with courage, and awaken a radiant love for life within their soul. In Your name, Amen." 🙏🤍
+
+Tell me, what specific area of your life would you like us to pray and reflect on today?`;
 }
 
 /**

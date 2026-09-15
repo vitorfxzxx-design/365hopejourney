@@ -23,7 +23,8 @@ export default function AdminSpecialistsView({ onBack }) {
     addCredits,
     removeCredits,
     appSettings,
-    setAppSettings
+    setAppSettings,
+    updateAppSettings
   } = useEbooks();
 
   const [activeTab, setActiveTab] = useState('training'); // 'training' | 'credits'
@@ -34,13 +35,30 @@ export default function AdminSpecialistsView({ onBack }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
+  const defaultSpiritualPrompt = `You are the Official Spiritual Guide, Compassionate Mentor, and Encouraging Companion of 365hopejourney.
+
+Your mission is to provide warm, comforting, and deeply inspiring spiritual guidance, personalized prayers, scripture reflections, and practical motivation grounded in faith, hope, gratitude, and divine love.
+
+1. ALWAYS RESPOND IN ENGLISH: All your answers, reflections, scripture references, and prayers must ALWAYS be in US English.
+2. CONVERSATIONAL & EMPATHETIC: Speak like a caring friend and spiritual guide. Validate what the person is feeling with tenderness and understanding.
+3. TAILORED BIBLICAL SCRIPTURES: For every situation or trial they share, quote relevant, comforting Bible verses tailored to their exact phase (e.g. Jeremiah 29:11, Isaiah 40:31, Psalm 23, Psalm 91, Philippians 4:6-7, Romans 8:28, Matthew 11:28, Joshua 1:9, Lamentations 3:22-23).
+4. EXPLAIN THE SCRIPTURE: Explain what the verse means in simple, heart-touching terms and how it applies to their life right now.
+5. FEED HOPE & REKINDLE THEIR SPARK FOR LIFE: Speak life, joy, and purpose into their heart. Remind them their story is not over and their best days are ahead.
+6. PRAYER & BLESSING: Conclude with a short, heartfelt personalized prayer and a warm blessing.`;
+
   // AI Training Form State
-  const [aiForm, setAiForm] = useState({
-    geminiApiKey: appSettings?.geminiApiKey || '',
-    aiSystemPrompt: appSettings?.aiSystemPrompt || '',
-    aiModel: appSettings?.aiModel || 'gemini-1.5-flash',
-    aiTone: appSettings?.aiTone || 'warm_encouraging',
-    aiTemperature: typeof appSettings?.aiTemperature === 'number' ? appSettings.aiTemperature : 0.7
+  const [aiForm, setAiForm] = useState(() => {
+    let prompt = appSettings?.aiSystemPrompt || '';
+    if (!prompt || prompt.includes('Você é o Conselheiro') || prompt.includes('Health365')) {
+      prompt = defaultSpiritualPrompt;
+    }
+    return {
+      geminiApiKey: appSettings?.geminiApiKey || appSettings?.claudeApiKey || '',
+      aiSystemPrompt: prompt,
+      aiModel: appSettings?.aiModel || 'claude-sonnet-4-5-20250929',
+      aiTone: appSettings?.aiTone || 'warm_encouraging',
+      aiTemperature: typeof appSettings?.aiTemperature === 'number' ? appSettings.aiTemperature : 0.7
+    };
   });
   const [aiSaveSuccess, setAiSaveSuccess] = useState(false);
 
@@ -193,13 +211,18 @@ export default function AdminSpecialistsView({ onBack }) {
     const updatedSettings = {
       ...appSettings,
       geminiApiKey: aiForm.geminiApiKey.trim(),
+      claudeApiKey: aiForm.geminiApiKey.trim(),
       aiSystemPrompt: aiForm.aiSystemPrompt.trim(),
       aiModel: aiForm.aiModel,
       aiTone: aiForm.aiTone,
       aiTemperature: Number(aiForm.aiTemperature) || 0.7
     };
-    setAppSettings(updatedSettings);
-    localStorage.setItem('health365_settings', JSON.stringify(updatedSettings));
+    if (updateAppSettings) {
+      updateAppSettings(updatedSettings);
+    } else {
+      setAppSettings(updatedSettings);
+    }
+    localStorage.setItem('hopejourney_settings', JSON.stringify(updatedSettings));
     setAiSaveSuccess(true);
     setTimeout(() => setAiSaveSuccess(false), 3500);
   };
@@ -230,7 +253,7 @@ export default function AdminSpecialistsView({ onBack }) {
             </button>
             <div className="flex items-center gap-2">
               <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                Specialists & Health365 Credits
+                AI Spiritual Guide & Hope Credits
               </h1>
               <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 border border-amber-200/60">
                 <Zap size={11} className="fill-amber-500 text-amber-500" /> Token Economy
@@ -259,10 +282,10 @@ export default function AdminSpecialistsView({ onBack }) {
             </div>
             <div>
               <h3 className="font-bold text-xs text-slate-900">
-                Specialists Member Tab & Credit Deductions
+                AI Spiritual Guide Tab & Credit Deductions
               </h3>
               <p className="text-[11px] text-slate-400 mt-0.5">
-                Each AI Specialist consultation message costs 1 Health365 Credit per interaction.
+                Each AI Spiritual Guide consultation message costs 1 Hope Credit per interaction.
               </p>
             </div>
           </div>
@@ -333,10 +356,10 @@ export default function AdminSpecialistsView({ onBack }) {
                     </div>
                     <div>
                       <h3 className="font-extrabold text-slate-900 text-sm">
-                        AI Specialist Prompt & Knowledge Base
+                        AI Spiritual Guide Prompt & Guidelines
                       </h3>
                       <p className="text-[11px] text-slate-400">
-                        Define the personality, doctrine, medical disclaimers, and specific answers for the 24/7 Health365 Specialist
+                        Define the personality, scripture reflections, hope-feeding principles, and guidelines for the 24/7 365hopejourney Spiritual Guide
                       </p>
                     </div>
                   </div>

@@ -130,51 +130,88 @@ export default function SpecialistsView() {
 
   const quickPrompts = [
     '🕊️ A prayer for peace and anxious thoughts',
-    '📖 Comforting scripture verse for today',
-    '🌅 Morning devotion and gratitude practice',
-    '💫 How to forgive and release past pain'
+    '📖 Bible verse & motivation for my current struggle',
+    '🌅 Rekindle my hope & spark for living today',
+    '⏳ Guidance while waiting for a breakthrough'
   ];
 
   const generateLocalResponse = (userQuestion) => {
     const q = (userQuestion || '').toLowerCase();
 
-    if (q.includes('prayer') || q.includes('pray') || q.includes('oracao')) {
-      return `Dear ${userFirstName}, let us bring this before the divine presence:
+    if (q.includes('anxiety') || q.includes('anxious') || q.includes('fear') || q.includes('panic') || q.includes('stress') || q.includes('worry') || q.includes('ansiedade') || q.includes('medo')) {
+      return `${userFirstName}, take a quiet, gentle breath and let your shoulders drop. You are safe and deeply held in God's love. 🕊️
 
-"Loving Creator, we come before You with grateful and humble hearts. We ask for Your profound peace to fill every corner of our minds and homes today. When the road ahead feels uncertain, remind us of Your everlasting guidance. May Your grace heal every hidden wound and renew our strength like the morning light. Amen." 🙏✨
-
-May this bring serenity to your spirit today.`;
-    }
-
-    if (q.includes('anxious') || q.includes('anxiety') || q.includes('fear') || q.includes('stress') || q.includes('worry')) {
-      return `Peace be with you, ${userFirstName}. 🕊️
-
-When anxiety knocks on your door, remember Philippians 4:6-7:
+In this moment, let the promise of Philippians 4:6-7 anchor your soul:
 "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds."
 
-Take three slow, deep breaths right now. Release the weight of what you cannot change today, and rest in the assurance that you are deeply loved and guided.`;
+What this means for your heart:
+Anxiety often tries to make us fight tomorrow's battles today. But God is walking with you step by step. When you surrender what you cannot control, His peace creates a fortress around your thoughts. Your life is valuable, and this storm will pass.
+
+A prayer for your peace:
+"Loving Father, pour Your calming presence over ${userFirstName}. Silence every fearful thought and fill their heart with deep serenity and unshakable faith. In Your name, Amen." 🙏✨
+
+How does your spirit feel right now as you pause and reflect?`;
     }
 
-    if (q.includes('sleep') || q.includes('night') || q.includes('insomnia') || q.includes('bed')) {
-      return `Good evening, ${userFirstName}. 🌙
+    if (q.includes('sad') || q.includes('grief') || q.includes('depress') || q.includes('heavy') || q.includes('cry') || q.includes('hurt') || q.includes('pain') || q.includes('alone') || q.includes('lonely') || q.includes('triste') || q.includes('dor')) {
+      return `${userFirstName}, your tender heart and your tears are precious before God. 🤍
 
-As you prepare to rest tonight, declare Psalm 4:8 over your sleep:
-"In peace I will lie down and sleep, for You alone, Lord, make me dwell in safety."
+Remember Psalm 34:18 and Psalm 30:5:
+"The Lord is close to the brokenhearted and saves those who are crushed in spirit."
+"Weeping may endure for a night, but joy comes with the morning."
 
-Place your hand on your heart, release the activities and worries of the day, and let your body and soul experience restorative, blessed sleep.`;
+What this means for you:
+This heavy season is a passage, not your final destination. God is gently mending the broken pieces of your spirit. The spark in your eyes and the joy in your heart will return, brighter and stronger than ever before.
+
+A prayer of comfort:
+"Lord, hold ${userFirstName} closely today. Heal the silent hurts of their soul and breathe fresh life and radiant hope into their spirit. Amen." 🌅🕊️
+
+What is one comforting thought you can hold onto today?`;
     }
 
-    if (q.includes('forgive') || q.includes('hurt') || q.includes('past') || q.includes('anger')) {
-      return `Healing begins with grace, ${userFirstName}. 🌿
+    if (q.includes('hope') || q.includes('spark') || q.includes('give up') || q.includes('lost') || q.includes('tired') || q.includes('exhausted') || q.includes('purpose') || q.includes('esperança') || q.includes('desistir') || q.includes('brilho')) {
+      return `${userFirstName}, let this truth reignite the fire within you: your story is not over. ✨
 
-Forgiveness is not excusing what happened or saying the pain did not matter. It is a sacred act of releasing the emotional chains that tie you to the past so that your heart can be free to receive joy today.
+Stand on Jeremiah 29:11:
+"'For I know the plans I have for you,' declares the Lord, 'plans to prosper you and not to harm you, plans to give you hope and a future.'"
+And Isaiah 40:31:
+"Those who hope in the Lord will renew their strength. They will soar on wings like eagles."
 
-May divine love fill every place where pain once resided.`;
+What this means for your journey:
+Every trial you have survived has prepared you for the blessings ahead. The spark that made you love life is still inside you—it is just waiting to be rekindled. You have a divine calling, and your future is filled with purpose.
+
+A prayer for renewed strength:
+"Father, ignite a renewed passion for life in ${userFirstName}. Dispel every shadow of doubt and show them the beautiful future You have in store. Amen." 🌿✨
+
+What is one blessing you are dreaming of seeing come to life?`;
     }
 
-    return `Hello ${userFirstName}! ✨ Regarding your reflection on "${userQuestion}":
+    if (q.includes('wait') || q.includes('patience') || q.includes('future') || q.includes('decision') || q.includes('esperar')) {
+      return `${userFirstName}, God is never late, and your season of waiting is building your testimony. ⏳✨
 
-In your journey with 365hopejourney, remember that every new day is an invitation to walk in faith, extend kindness, and nurture inner peace. What part of your life would you like to dedicate in prayer or reflection today?`;
+Reflect on Ecclesiastes 3:11 and Romans 8:28:
+"He has made everything beautiful in its time."
+"All things work together for good to those who love God."
+
+What this means for you:
+While you wait, God is preparing both the blessing and you. Trust His perfect timing. What is truly meant for you will never pass you by.
+
+A prayer for patience:
+"Lord, grant ${userFirstName} clear guidance, restful patience, and unwavering trust in Your divine plan. Amen." 🕊️🌸`;
+    }
+
+    // General Spiritual Guidance & Hope Encouragement
+    return `${userFirstName}, it is such a blessing to connect with your heart today. ✨
+
+Be encouraged by Joshua 1:9:
+"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."
+
+You are deeply loved, protected, and called to live with radiant faith, joy, and peace. Whatever is on your mind regarding "${userQuestion}", know that God's grace is more than enough to lift you up today.
+
+A prayer for your day:
+"Heavenly Father, bless ${userFirstName} with peace, clarity, and an overflowing enthusiasm for life. Guide their steps and fill their day with light. Amen." 🙏🤍
+
+Tell me, how can I best pray for and support your journey today?`;
   };
 
   const handleSendMessage = async (textToSend) => {
