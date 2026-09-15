@@ -10,6 +10,7 @@ export default function EbookModal({ isOpen, onClose, onSave, initialData }) {
     category: 'Content', // 'Content' | 'Supplement'
     type: 'Main', // 'Main' | 'Upsell' | 'Bonus'
     releaseType: 'Manual', // 'Immediate' | 'Via Integration' | 'Manual' | 'Days After Purchase'
+    daysAfterPurchase: 7,
     salesPageUrl: '',
     subtitle: '',
     description: '',
@@ -25,6 +26,7 @@ export default function EbookModal({ isOpen, onClose, onSave, initialData }) {
         category: initialData.category === 'Suplemento' ? 'Supplement' : (initialData.category === 'Conteúdo' ? 'Content' : (initialData.category || 'Content')),
         type: initialData.type === 'Principal' ? 'Main' : (initialData.type === 'Bônus' ? 'Bonus' : (initialData.type || 'Main')),
         releaseType: initialData.releaseType || initialData.release_mode || 'Manual',
+        daysAfterPurchase: initialData.daysAfterPurchase !== undefined ? initialData.daysAfterPurchase : (initialData.releaseDays || 7),
         salesPageUrl: initialData.salesPageUrl || '',
         subtitle: initialData.subtitle || '',
         description: initialData.description || '',
@@ -38,6 +40,7 @@ export default function EbookModal({ isOpen, onClose, onSave, initialData }) {
         category: 'Content',
         type: 'Main',
         releaseType: 'Manual',
+        daysAfterPurchase: 7,
         salesPageUrl: '',
         subtitle: '',
         description: '',
@@ -239,6 +242,34 @@ export default function EbookModal({ isOpen, onClose, onSave, initialData }) {
               </select>
             </div>
           </div>
+
+          {/* Conditional Days After Purchase Input */}
+          {(formData.releaseType === 'Days After Purchase' || formData.releaseType === 'Dias após a compra') && (
+            <div className="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-4 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-xs font-bold text-amber-900">
+                  Days After Purchase to Unlock *
+                </label>
+                <span className="text-[11px] font-extrabold text-amber-700 bg-amber-100/90 border border-amber-300 px-2 py-0.5 rounded-md">
+                  {formData.daysAfterPurchase || 7} {Number(formData.daysAfterPurchase) === 1 ? 'day' : 'days'}
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <input
+                  type="number"
+                  min="1"
+                  max="365"
+                  required
+                  value={formData.daysAfterPurchase}
+                  onChange={(e) => setFormData({ ...formData, daysAfterPurchase: Math.max(1, parseInt(e.target.value, 10) || 1) })}
+                  className="w-24 text-xs font-bold text-slate-800 bg-white border border-amber-300 rounded-xl px-3 py-2 text-center focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 focus:outline-hidden"
+                />
+                <p className="text-[11px] text-amber-800/90 leading-tight">
+                  The content will remain locked for each user until <strong>{formData.daysAfterPurchase || 7} days</strong> have passed since their registration date.
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Sales Page URL */}
           <div>

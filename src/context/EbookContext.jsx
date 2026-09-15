@@ -25,6 +25,7 @@ export const serializeEbookForFirestore = (eb, orderIndex) => {
     cover: coverUrl,
     category: eb.category || 'Content',
     releaseType: eb.releaseType || eb.release_mode || 'Immediate',
+    daysAfterPurchase: eb.daysAfterPurchase !== undefined ? Number(eb.daysAfterPurchase) : (eb.releaseDays !== undefined ? Number(eb.releaseDays) : 7),
     orderIndex: calculatedOrder,
     subtitle: eb.subtitle || '',
     salesPageUrl: eb.salesPageUrl || '',
@@ -50,6 +51,7 @@ export const deserializeEbookFromFirestore = (remote) => {
     cover: coverUrl,
     category: remote.category || 'Content',
     releaseType: remote.releaseType || remote.release_mode || 'Immediate',
+    daysAfterPurchase: remote.daysAfterPurchase !== undefined ? Number(remote.daysAfterPurchase) : (meta?.daysAfterPurchase !== undefined ? Number(meta.daysAfterPurchase) : (remote.releaseDays !== undefined ? Number(remote.releaseDays) : 7)),
     orderIndex: remote.orderIndex !== undefined ? remote.orderIndex : (meta?.orderIndex || 0),
     subtitle: remote.subtitle || meta?.subtitle || '',
     salesPageUrl: remote.salesPageUrl || meta?.salesPageUrl || '',
@@ -584,10 +586,13 @@ export function EbookProvider({ children }) {
     if (!cleanEmail) return { success: false, message: 'Please enter a valid email address.' };
 
     const member = members.find(m => (m.email || '').toLowerCase() === cleanEmail);
+    const memberDate = member?.date || new Date().toISOString();
     const userObj = {
       role: 'member',
       email: cleanEmail,
       name: member?.name || cleanEmail.split('@')[0],
+      date: memberDate,
+      registeredAt: member?.registeredAt || memberDate,
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'
     };
 
@@ -600,6 +605,7 @@ export function EbookProvider({ children }) {
         email: cleanEmail,
         name: userObj.name,
         status: 'Active',
+        date: memberDate,
         lastLogin: new Date().toISOString()
       }, { merge: true }).catch(() => {});
     }
@@ -646,6 +652,48 @@ export function EbookProvider({ children }) {
     } catch (e) {
       return { success: false, error: e.message };
     }
+  };
+
+  // Check if an ebook is unlocked for the given user (e.g. Days After Purchase)
+  const checkEbookAccess = (ebook, user = currentUser) => {
+    if (!ebook) return { isLocked: false };
+    if (!user || user.role === 'admin') return { isLocked: false, isAvailable: true };
+
+    const mode = ebook.releaseType || ebook.release_mode || 'Immediate';
+    if (mode === 'Days After Purchase' || mode === 'Dias após a compra') {
+      const requiredDays = Number(ebook.daysAfterPurchase !== undefined ? ebook.daysAfterPurchase : (ebook.releaseDays || 7));
+      
+      // Find member registration date
+      const member = members.find(m => (m.email || '').toLowerCase() === (user.email || '').toLowerCase());
+      const rawDate = user.registeredAt || user.date || member?.date || user.createdAt;
+      
+      let userCreatedTime = Date.now();
+      if (rawDate) {
+        const parsed = new Date(rawDate).getTime();
+        if (!isNaN(parsed)) {
+          userCreatedTime = parsed;
+        }
+      }
+
+      const daysPassed = Math.floor((Date.now() - userCreatedTime) / (1000 * 60 * 60 * 24));
+      const remainingDays = Math.max(1, requiredDays - daysPassed);
+
+      if (daysPassed < requiredDays) {
+        return {
+          isLocked: true,
+          requiredDays,
+          daysPassed,
+          remainingDays,
+          unlockDate: new Date(userCreatedTime + requiredDays * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+          })
+        };
+      }
+    }
+
+    return { isLocked: false, isAvailable: true };
   };
 
   // Ebook Navigation & Selection
@@ -978,6 +1026,7 @@ export function EbookProvider({ children }) {
         addChapter,
         updateChapter,
         deleteChapter,
+        checkEbookAccess,
         audios,
         addAudio,
         updateAudio,

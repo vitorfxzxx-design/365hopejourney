@@ -338,7 +338,9 @@ export default function AdminProductsView({ onBack }) {
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 mt-0.5">
-                Release: {product.releaseType || 'Immediate'}
+                Release: {product.releaseType === 'Days After Purchase' || product.releaseType === 'Dias após a compra'
+                  ? `${product.daysAfterPurchase || 7} Days After Purchase`
+                  : (product.releaseType || 'Immediate')}
               </p>
             </div>
           </div>
