@@ -3,26 +3,55 @@ export function parsePostDateToTimestamp(dateStr) {
   if (!dateStr || typeof dateStr !== 'string') return 0;
   const str = dateStr.trim();
 
-  if (/just now|agora|recém/i.test(str)) {
+  // "Just now", "Agora", "Recém"
+  if (/^(just now|agora|recém|moments? ago)$/i.test(str)) {
     return Date.now();
   }
 
-  // Relative hours/minutes ago
-  const hoursAgoMatch = str.match(/(\d+)\s*(?:hours?|horas?|hrs?|h)\s*(?:ago|atrás)?/i);
-  if (hoursAgoMatch) {
-    return Date.now() - parseInt(hoursAgoMatch[1], 10) * 3600000;
-  }
-  const minsAgoMatch = str.match(/(\d+)\s*(?:mins?|minutes?|minutos?|m)\s*(?:ago|atrás)?/i);
-  if (minsAgoMatch) {
-    return Date.now() - parseInt(minsAgoMatch[1], 10) * 60000;
-  }
-  const daysAgoMatch = str.match(/(\d+)\s*(?:days?|dias?|d)\s*(?:ago|atrás)?/i);
-  if (daysAgoMatch) {
-    return Date.now() - parseInt(daysAgoMatch[1], 10) * 86400000;
+  // Relative seconds: "30 seconds ago", "45s ago"
+  const secMatch = str.match(/^(\d+)\s*(?:seconds?|secs?|segundos?|s)\s*(?:ago|atrás)?$/i);
+  if (secMatch) {
+    return Date.now() - parseInt(secMatch[1], 10) * 1000;
   }
 
-  // Check Yesterday at hh:mm AM/PM or Yesterday at HH:mm
-  const yesterdayMatch = str.match(/yesterday|ontem\s*(?:at|às|as)?\s*(\d{1,2}):(\d{1,2})(?::\d{2})?(?:\s*(AM|PM))?/i);
+  // Relative minutes: "10 mins ago", "5 minutes ago", "15m ago"
+  const minMatch = str.match(/^(\d+)\s*(?:mins?|minutes?|minutos?|min)\s*(?:ago|atrás)?$/i);
+  if (minMatch) {
+    return Date.now() - parseInt(minMatch[1], 10) * 60000;
+  }
+
+  // Relative hours: "1 hour ago", "4 hours ago", "2h ago"
+  const hourMatch = str.match(/^(\d+)\s*(?:hours?|horas?|hrs?|hr|h)\s*(?:ago|atrás)?$/i);
+  if (hourMatch) {
+    return Date.now() - parseInt(hourMatch[1], 10) * 3600000;
+  }
+
+  // Relative days: "2 days ago", "15 days ago", "3d ago"
+  const dayMatch = str.match(/^(\d+)\s*(?:days?|dias?|d)\s*(?:ago|atrás)?$/i);
+  if (dayMatch) {
+    return Date.now() - parseInt(dayMatch[1], 10) * 86400000;
+  }
+
+  // Relative weeks: "1 week ago", "2 weeks ago", "3 weeks ago", "4w ago"
+  const weekMatch = str.match(/^(\d+)\s*(?:weeks?|semanas?|sem|wks?|w)\s*(?:ago|atrás)?$/i);
+  if (weekMatch) {
+    return Date.now() - parseInt(weekMatch[1], 10) * 7 * 86400000;
+  }
+
+  // Relative months: "1 month ago", "2 months ago", "3 months ago", "4 months ago"
+  const monthMatch = str.match(/^(\d+)\s*(?:months?|meses?|mês|mo)\s*(?:ago|atrás)?$/i);
+  if (monthMatch) {
+    return Date.now() - parseInt(monthMatch[1], 10) * 30 * 86400000;
+  }
+
+  // Relative years: "1 year ago", "2 years ago"
+  const yearMatch = str.match(/^(\d+)\s*(?:years?|anos?|yr|y)\s*(?:ago|atrás)?$/i);
+  if (yearMatch) {
+    return Date.now() - parseInt(yearMatch[1], 10) * 365 * 86400000;
+  }
+
+  // Check Yesterday at hh:mm AM/PM or just Yesterday / Ontem
+  const yesterdayMatch = str.match(/^(?:yesterday|ontem)(?:\s*(?:at|às|as)?\s*(\d{1,2}):(\d{1,2})(?::\d{2})?(?:\s*(AM|PM))?)?$/i);
   if (yesterdayMatch) {
     const now = new Date();
     const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
@@ -58,7 +87,7 @@ export function parsePostDateToTimestamp(dateStr) {
     return d.getTime();
   }
 
-  // Standard Date parse
+  // Standard Date parse fallback
   const parsed = Date.parse(str);
   if (!isNaN(parsed)) {
     return parsed;
@@ -76,8 +105,15 @@ export function sortPostsByDateDesc(postList) {
       return timeB - timeA;
     }
     // Secondary fallback: _updatedAt or timestamp or id
-    const updA = a?._updatedAt || 0;
-    const updB = b?._updatedAt || 0;
-    return updB - updA;
+    const updA = a?._updatedAt || a?.timestamp || 0;
+    const updB = b?._updatedAt || b?.timestamp || 0;
+    if (updB !== updA) {
+      return updB - updA;
+    }
+    // Numeric part of id as fallback
+    const idA = parseInt((a?.id || '').replace(/\D/g, ''), 10) || 0;
+    const idB = parseInt((b?.id || '').replace(/\D/g, ''), 10) || 0;
+    return idA - idB; // lower initial id was posted earlier if order is sequential
   });
 }
+

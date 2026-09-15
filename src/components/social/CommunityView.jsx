@@ -15,7 +15,7 @@ export default function CommunityView() {
   // Dynamic user avatar linked directly with Profile photo
   const [userAvatar, setUserAvatar] = useState(() => {
     try {
-      const saved = localStorage.getItem('health365_user_profile');
+      const saved = localStorage.getItem('hopejourney_user_profile') || localStorage.getItem('health365_user_profile');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.avatar) return parsed.avatar;
@@ -26,7 +26,7 @@ export default function CommunityView() {
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('health365_user_profile');
+      const saved = localStorage.getItem('hopejourney_user_profile') || localStorage.getItem('health365_user_profile');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.avatar) {
