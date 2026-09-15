@@ -214,7 +214,7 @@ function MainAppContent() {
                       : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
-                  <span>Daily Feed</span>
+                  <span>Feed</span>
                 </button>
               </div>
 
