@@ -86,11 +86,11 @@ export default function AdminDashboard({ onBack }) {
         {/* Admin Hub Header */}
         <div className="p-5 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">{appSettings.iconEmoji || '🍏'}</span>
+            <span className="text-3xl">{appSettings.iconEmoji || '✨'}</span>
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="font-extrabold text-slate-900 text-lg tracking-tight">
-                  {appSettings.name || 'Health365'}
+                  {appSettings.name || '365hopejourney'}
                 </h1>
                 <span className="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -98,7 +98,7 @@ export default function AdminDashboard({ onBack }) {
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-medium">
-                {appSettings.slug || '/health365'}
+                {appSettings.slug || '/365hopejourney'}
               </p>
             </div>
           </div>

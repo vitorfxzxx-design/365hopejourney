@@ -12,18 +12,18 @@ export default function MobileHeader() {
   return (
     <header className="sticky top-0 z-30 bg-white border-b border-slate-100 px-4 py-3 flex items-center justify-between shadow-xs">
       <div className="flex items-center gap-2">
-        <span className="text-2xl drop-shadow-xs">{appSettings.iconEmoji || '🍏'}</span>
+        <span className="text-2xl drop-shadow-xs">{appSettings.iconEmoji || '✨'}</span>
         <h1 className="font-bold text-slate-800 text-lg tracking-tight">
-          {appSettings.name || 'Health365'}
+          {appSettings.name || '365hopejourney'}
         </h1>
       </div>
 
       <div className="flex items-center gap-2">
-        {/* Health365 Credits Pill */}
+        {/* Credits Pill */}
         <button
           onClick={openRechargeModal}
           className="flex items-center gap-1.5 bg-gradient-to-r from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 border border-amber-200/80 text-amber-800 px-2.5 py-1.5 rounded-full text-xs font-bold transition-all shadow-xs active:scale-95"
-          title="Recharge Health365 Credits"
+          title="Recharge Credits"
         >
           <div className="w-4 h-4 rounded-full bg-amber-400/30 flex items-center justify-center text-amber-600">
             <Zap size={11} className="fill-amber-500 text-amber-500" />

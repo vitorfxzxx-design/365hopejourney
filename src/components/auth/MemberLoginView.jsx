@@ -34,13 +34,13 @@ export default function MemberLoginView() {
         {/* Top Brand Banner */}
         <div className="bg-gradient-to-b from-brand-50 to-white px-6 pt-8 pb-6 text-center border-b border-slate-100">
           <div className="w-16 h-16 mx-auto rounded-3xl bg-white shadow-md border border-brand-100 flex items-center justify-center text-3xl mb-3">
-            {appSettings.iconEmoji || '🍏'}
+            {appSettings.iconEmoji || '✨'}
           </div>
           <h1 className="text-xl font-extrabold text-slate-800 tracking-tight">
-            {appSettings.name || 'Health365'}
+            {appSettings.name || '365hopejourney'}
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Exclusive eBook, Nutrition & Protocol Member Area
+            Plataforma Exclusiva de Espiritualidade & Desenvolvimento Interior
           </p>
 
           <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full border border-emerald-200/60">

@@ -319,8 +319,8 @@ export function EbookProvider({ children }) {
   // App Settings
   const [appSettings, setAppSettings] = useState(() => {
     const defaultSettings = {
-      name: '365HopeJourney',
-      slug: '/hopejourney',
+      name: '365hopejourney',
+      slug: '/365hopejourney',
       status: 'Active',
       iconEmoji: '✨',
       adminEmail: 'vitorfxzxx@gmail.com',
@@ -1600,7 +1600,7 @@ Medical Disclaimer: Provide educational lifestyle and nutrition information. Do 
       const adminObj = {
         role: 'admin',
         email: appSettings.adminEmail,
-        name: '365HopeJourney Admin',
+        name: '365hopejourney Admin',
         avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80'
       };
       setCurrentUser(adminObj);

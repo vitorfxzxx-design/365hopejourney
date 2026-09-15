@@ -154,7 +154,7 @@ function MainAppContent() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] uppercase font-black tracking-wider text-emerald-400">Health365 Push</span>
+                  <span className="text-[10px] uppercase font-black tracking-wider text-emerald-400">365hopejourney Push</span>
                   <span className="text-[10px] text-slate-400">• Just now</span>
                 </div>
                 <h4 className="text-xs font-black text-white truncate mt-0.5">{activePushNotification.title}</h4>
@@ -296,7 +296,7 @@ class ErrorBoundary extends React.Component {
               ⚠️
             </div>
             <div>
-              <h3 className="text-base font-extrabold text-slate-800">Health365 Recovery</h3>
+              <h3 className="text-base font-extrabold text-slate-800">365hopejourney Recovery</h3>
               <p className="text-xs text-slate-500 mt-1">
                 A visual update occurred. Click below to refresh smoothly.
               </p>
