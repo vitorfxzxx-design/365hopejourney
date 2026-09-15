@@ -8,7 +8,7 @@ export default function AdminNotificationsView({ onBack }) {
 
   const [notifications, setNotifications] = useState(() => {
     try {
-      const saved = localStorage.getItem('health365_notifications');
+      const saved = localStorage.getItem('hopejourney_notifications');
       return saved ? JSON.parse(saved) : [];
     } catch (e) {
       return [];
@@ -23,13 +23,13 @@ export default function AdminNotificationsView({ onBack }) {
     }
     const updated = [newNotif, ...notifications];
     setNotifications(updated);
-    localStorage.setItem('health365_notifications', JSON.stringify(updated));
+    localStorage.setItem('hopejourney_notifications', JSON.stringify(updated));
   };
 
   const handleDeleteNotification = (id) => {
     const updated = notifications.filter(n => n.id !== id);
     setNotifications(updated);
-    localStorage.setItem('health365_notifications', JSON.stringify(updated));
+    localStorage.setItem('hopejourney_notifications', JSON.stringify(updated));
   };
 
   const [resendingId, setResendingId] = useState(null);
@@ -62,7 +62,7 @@ export default function AdminNotificationsView({ onBack }) {
               Back to Hub
             </button>
             <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-              Notifications - Health365
+              Notifications - 365hopejourney
             </h1>
             <p className="text-xs text-slate-500 mt-0.5">
               Send push notifications to your users

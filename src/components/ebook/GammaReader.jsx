@@ -129,32 +129,32 @@ export default function GammaReader({ ebook, chapter, onBack, onNext, onPrev, ha
             {/* Simulated Gamma Card 2: Content Slide */}
             <div className="bg-gradient-to-b from-emerald-50/90 to-teal-50/90 text-slate-900 rounded-3xl p-6 shadow-xl border border-emerald-200/50">
               <h3 className="font-bold text-xl text-emerald-950 font-serif mb-3">
-                What You Believe Is Wrong
+                Walking in Divine Peace & Strength
               </h3>
 
               <div className="space-y-4 text-xs text-slate-700 leading-relaxed">
                 <div>
-                  <h4 className="font-bold text-emerald-900 text-sm mb-2">The Lies We Are Told</h4>
+                  <h4 className="font-bold text-emerald-900 text-sm mb-2">Pillars of Daily Renewal</h4>
                   <ul className="space-y-1.5 pl-2">
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1.5 shrink-0" />
-                      <span><strong>Pain is normal after 40:</strong> Aging does not require painful physical decline.</span>
+                      <span><strong>Peace over Anxiety:</strong> Cast all your worries upon God, for He cares for you deeply.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1.5 shrink-0" />
-                      <span><strong>Genetics dictate 90% of health:</strong> Epigenetics and nutrition control gene expression.</span>
+                      <span><strong>Decrees of Protection:</strong> Speak words of life, grace, and divine favor over your household every morning.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1.5 shrink-0" />
-                      <span><strong>Medication is the only solution:</strong> Medications often mask symptoms while underlying root causes remain.</span>
+                      <span><strong>Steadfast Faith:</strong> Even in moments of waiting, strength and joy are renewed day by day.</span>
                     </li>
                   </ul>
                 </div>
 
                 <div className="bg-white/80 backdrop-blur-xs rounded-2xl p-4 border border-emerald-200/60 mt-4">
-                  <h4 className="font-bold text-emerald-950 text-sm mb-1">The Ancestral Truth</h4>
+                  <h4 className="font-bold text-emerald-950 text-sm mb-1">Daily Reflection & Prayer</h4>
                   <p className="text-slate-700 text-xs">
-                    Your body possesses powerful natural self-healing mechanisms when fueled with authentic nutrient density and freed from modern industrial seed oils.
+                    "The Lord is my light and my salvation; whom shall I fear? The Lord is the stronghold of my life." Rest your heart in this truth today.
                   </p>
                 </div>
               </div>

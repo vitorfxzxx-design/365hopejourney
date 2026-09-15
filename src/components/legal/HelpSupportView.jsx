@@ -3,7 +3,7 @@ import { Mail, HelpCircle, ArrowLeft, CheckCircle2, Copy, BookOpen, Camera, Head
 
 export default function HelpSupportView({ onBack }) {
   const [copied, setCopied] = useState(false);
-  const supportEmail = 'corefysystems@gmail.com';
+  const supportEmail = 'support@365hopejourney.com';
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(supportEmail);
@@ -14,28 +14,28 @@ export default function HelpSupportView({ onBack }) {
   const faqs = [
     {
       icon: BookOpen,
-      q: 'How do I access my health guides and eBooks?',
-      a: 'Once logged into your Health365 member account, all unlocked guides and protocols are available on the Home tab under eBooks. Tap any guide to read chapters with our clean reader mode.'
-    },
-    {
-      icon: Camera,
-      q: 'How does NutriPhoto meal tracking work?',
-      a: 'Go to the NutriPhoto tab, snap or upload a clear photo of your meal. Our AI analyzes the ingredients and estimates calories, protein, carbs, and fats to log into your daily nutrition journal.'
+      q: 'How do I access my devotionals and spiritual guides?',
+      a: 'Once logged into your 365hopejourney member account, all unlocked guides and devotional books are available on the Home tab. Tap any book to read chapters with our distraction-free reader mode.'
     },
     {
       icon: Headphones,
-      q: 'How do audio sessions work?',
-      a: 'Navigate to the Audios tab to listen to guided relaxation, focus, and wellness audios. You can play, pause, and seek through tracks anytime.'
+      q: 'How do prayer and meditation audio sessions work?',
+      a: 'Navigate to the Audios tab to listen to guided prayers, peaceful declarations, and spiritual reflections. You can play, pause, and seek through tracks anytime.'
     },
     {
       icon: MessageSquare,
-      q: 'How do I ask questions to Health365 Specialists?',
-      a: 'Open the Specialists tab to consult with our lifestyle and nutrition AI coach. You can ask questions about diets, fasting windows, and meal planning.'
+      q: 'How do I ask questions to the AI Spiritual Guide?',
+      a: 'Open the AI Guide tab to consult with our faith-based companion. You can ask for biblical references, personalized prayers, comforting verses, and morning reflections.'
+    },
+    {
+      icon: MessageSquare,
+      q: 'How do I share prayers and testimonies in the Community?',
+      a: 'Visit the Community tab to post prayer requests, share testimonies of gratitude, and like posts from fellow believers in our sanctuary.'
     },
     {
       icon: Shield,
       q: 'How can I update my profile or delete my account?',
-      a: 'Go to the Profile tab to update your display name and photo. To request account deletion or data export, contact our support team at corefysystems@gmail.com.'
+      a: 'Go to the Profile tab to update your display name and photo. To request account deletion or data export, you can do so in Settings or by contacting support@365hopejourney.com.'
     }
   ];
 
@@ -47,11 +47,11 @@ export default function HelpSupportView({ onBack }) {
         <div className="flex items-center justify-between border-b border-slate-100 pb-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black text-xl shadow-md shadow-emerald-600/20 shrink-0">
-              🍏
+              ✨
             </div>
             <div>
               <h1 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-1.5">
-                Health365
+                365hopejourney
                 <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full uppercase">
                   Support Center
                 </span>
@@ -84,7 +84,7 @@ export default function HelpSupportView({ onBack }) {
           </div>
 
           <p className="text-xs text-emerald-50/90 leading-relaxed">
-            For support inquiries, account assistance, billing questions, or feedback, please contact us at:
+            For support inquiries, account assistance, access questions, or feedback, please contact us at:
           </p>
 
           <div className="bg-white/15 backdrop-blur-md rounded-xl p-3 flex items-center justify-between gap-2 border border-white/20">
@@ -113,7 +113,7 @@ export default function HelpSupportView({ onBack }) {
           </div>
 
           <a
-            href={`mailto:${supportEmail}?subject=Health365%20Support%20Request`}
+            href={`mailto:${supportEmail}?subject=365hopejourney%20Support%20Request`}
             className="block text-center w-full py-2.5 rounded-xl bg-white text-emerald-800 font-extrabold text-xs shadow-md hover:bg-emerald-50 transition-all cursor-pointer active:scale-98"
           >
             ✉️ Send Email to Support
@@ -153,10 +153,10 @@ export default function HelpSupportView({ onBack }) {
         {/* Footer Disclaimer */}
         <div className="pt-4 border-t border-slate-100 text-center space-y-1.5">
           <p className="text-[11px] text-slate-400 font-medium">
-            Health365 App • Version 1.0.0
+            365hopejourney App • Version 2.0.0
           </p>
           <p className="text-[10px] text-slate-400/80 leading-relaxed max-w-sm mx-auto">
-            Health365 is designed for general wellness, habit coaching, and lifestyle tracking purposes. For medical concerns, always consult a licensed healthcare practitioner.
+            365hopejourney is dedicated to faith encouragement, daily devotionals, and spiritual growth.
           </p>
         </div>
 

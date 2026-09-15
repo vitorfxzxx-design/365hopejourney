@@ -70,7 +70,7 @@ export default function NotificationModal({ isOpen, onClose, onSave }) {
               required
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              placeholder="e.g. New Ancestral Diet chapter released!"
+              placeholder="e.g. Day 14 Devotional is now available!"
               className="w-full text-xs text-slate-800 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-hidden"
             />
           </div>
@@ -84,7 +84,7 @@ export default function NotificationModal({ isOpen, onClose, onSave }) {
               required
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="e.g. Check your app now for new anti-inflammatory recipes."
+              placeholder="e.g. Start your day with peaceful prayer and renew your faith."
               className="w-full text-xs text-slate-800 border border-slate-200 rounded-2xl p-3.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-hidden resize-none"
             />
           </div>

@@ -1,27 +1,13 @@
 import React, { useState } from 'react';
 import {
-  X,
-  Sparkles,
-  Zap,
-  Check,
-  BookOpen,
-  MessageCircle,
-  PhoneCall,
-  ShieldCheck,
-  Utensils,
-  Gift,
-  Calendar,
-  Crown,
-  Lock,
-  ArrowRight,
-  CheckCircle2
+  X, Zap, Sparkles, Check, Lock, Gift, Calendar, Crown, BookOpen, MessageCircle,
+  ShieldCheck, ArrowRight, CheckCircle2
 } from 'lucide-react';
 import { useEbooks } from '../../context/EbookContext';
 
 export default function RechargeCreditsModal({ isOpen, onClose }) {
   const { credits, addCredits } = useEbooks();
-
-  const [selectedPlan, setSelectedPlan] = useState('100'); // '30' | '100' | '200'
+  const [selectedPlan, setSelectedPlan] = useState('100');
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
   const [successAmount, setSuccessAmount] = useState(0);
 
@@ -29,54 +15,60 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
 
   const plans = [
     {
-      id: '30',
-      amount: 30,
-      perCredit: '$0.33 / credit',
+      id: '50',
+      amount: 50,
       price: '$9.90',
+      priceNum: 9.90,
+      perCredit: '$0.20 / credit',
       tag: null,
       saveTag: null
     },
     {
       id: '100',
       amount: 100,
-      perCredit: '$0.20 / credit',
-      price: '$19.99',
+      price: '$14.90',
+      priceNum: 14.90,
+      perCredit: '$0.15 / credit',
       tag: 'MOST POPULAR',
-      saveTag: null
+      saveTag: 'Save 25%'
     },
     {
-      id: '200',
-      amount: 200,
-      perCredit: '$0.15 / credit',
-      price: '$29.99',
+      id: '250',
+      amount: 250,
+      price: '$29.90',
+      priceNum: 29.90,
+      perCredit: '$0.12 / credit',
       tag: 'BEST VALUE',
-      saveTag: 'Save 25%'
+      saveTag: 'Save 40%'
     }
   ];
 
   const handlePurchase = () => {
-    const chosen = plans.find((p) => p.id === selectedPlan);
-    if (!chosen) return;
+    const plan = plans.find((p) => p.id === selectedPlan);
+    if (!plan) return;
 
-    const priceNum = parseFloat(chosen.price.replace('$', '')) || 0;
-    addCredits(chosen.amount, undefined, priceNum);
-    setSuccessAmount(chosen.amount);
+    // Simulate instant credit addition
+    addCredits(
+      plan.amount,
+      undefined,
+      plan.priceNum,
+      `${plan.amount} Hope Credits Pack ($${plan.priceNum.toFixed(2)})`,
+      'In-App Purchase'
+    );
+    setSuccessAmount(plan.amount);
     setPurchaseSuccess(true);
 
     setTimeout(() => {
       setPurchaseSuccess(false);
       onClose();
-    }, 2000);
+    }, 1800);
   };
 
-
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200">
       <div
-        className="w-full max-w-md bg-[#091811] text-white rounded-t-3xl sm:rounded-3xl border border-emerald-500/20 shadow-2xl max-h-[94vh] overflow-y-auto relative animate-in slide-in-from-bottom-8 sm:zoom-in-95 duration-200"
-        style={{
-          background: 'linear-gradient(180deg, #0F281C 0%, #081710 40%, #040D09 100%)'
-        }}
+        className="relative w-full max-w-lg max-h-[92vh] sm:max-h-[85vh] overflow-y-auto bg-gradient-to-b from-[#0A1A12] via-[#0D2419] to-[#081710] border-t sm:border border-emerald-500/30 rounded-t-3xl sm:rounded-3xl shadow-2xl text-white selection:bg-emerald-500 selection:text-white"
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Top Handle Bar for mobile drag indicator */}
         <div className="w-12 h-1.5 bg-white/20 rounded-full mx-auto mt-3 mb-1 sm:hidden" />
@@ -90,13 +82,13 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
           <div className="flex items-start justify-between gap-3">
             <div className="space-y-1 pr-2">
               <h2 className="text-2xl font-black tracking-tight text-white leading-tight font-serif">
-                Recarregue seus <br />
+                Recharge Your <br />
                 <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 bg-clip-text text-transparent">
-                  Créditos de Esperança ✨
+                  Hope Credits ✨
                 </span>
               </h2>
               <p className="text-xs text-emerald-200/70 leading-relaxed pt-1">
-                Use seus créditos para consultas e reflexões aprofundadas com o Guia Espiritual IA e conteúdos exclusivos.
+                Use your credits to unlock personalized spiritual guidance, deep prayer reflections, and exclusive devotionals.
               </p>
             </div>
 
@@ -104,7 +96,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
             <div className="flex flex-col items-end gap-3 shrink-0">
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
                 title="Close"
               >
                 <X size={17} />
@@ -151,10 +143,10 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
           <div className="mx-6 my-2 bg-emerald-500/20 border border-emerald-500/40 rounded-2xl p-4 text-center space-y-1 animate-in zoom-in-95 duration-150">
             <CheckCircle2 size={28} className="text-emerald-400 mx-auto" />
             <h4 className="text-sm font-black text-emerald-200">
-              +{successAmount} Health365 Credits Added!
+              +{successAmount} Hope Credits Added!
             </h4>
             <p className="text-xs text-emerald-300/80">
-              Your new balance is {credits} credits. Enjoy your consultations!
+              Your new balance is {credits} credits. Enjoy your spiritual journey!
             </p>
           </div>
         )}
@@ -203,7 +195,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
 
                     <div>
                       <h4 className="text-sm font-extrabold text-white">
-                        {plan.amount} Health365 Credits
+                        {plan.amount} Hope Credits
                       </h4>
                       <div className="flex items-center gap-2 mt-0.5">
                         <span className="text-xs text-emerald-200/70 font-medium">
@@ -227,7 +219,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
           {/* Continue CTA Button */}
           <button
             onClick={handlePurchase}
-            className="w-full mt-2 py-4 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-600 hover:via-teal-600 hover:to-emerald-700 text-white font-black text-sm shadow-xl shadow-emerald-600/35 flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.98] transition-all"
+            className="w-full mt-2 py-4 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-600 hover:via-teal-600 hover:to-emerald-700 text-white font-black text-sm shadow-xl shadow-emerald-600/35 flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.98] transition-all cursor-pointer"
           >
             <Sparkles size={16} className="fill-white" />
             <span>Continue</span>
@@ -245,7 +237,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
               <span className="w-6 h-[1px] bg-emerald-500/40" />
             </div>
             <p className="text-[11px] text-emerald-200/60 max-w-xs mx-auto">
-              Credits unlock personalized guidance and direct access to Health365 Specialists.
+              Credits unlock personalized spiritual guidance and direct access to the AI Mentor.
             </p>
           </div>
 
@@ -258,13 +250,13 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
               </div>
               <div>
                 <h5 className="text-xs font-bold text-white leading-tight">
-                  Readings, Insights & Reports
+                  Spiritual Devotionals & Guides
                 </h5>
                 <span className="inline-block mt-1 bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 text-[9px] font-extrabold px-2 py-0.5 rounded-md">
                   1-3 Credits
                 </span>
                 <p className="text-[10px] text-emerald-200/60 mt-1 leading-snug">
-                  Unlock personalized meal plans, autophagy score & detox reports.
+                  Unlock in-depth daily reflections, prayer guides & scriptures.
                 </p>
               </div>
             </div>
@@ -276,13 +268,13 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
               </div>
               <div>
                 <h5 className="text-xs font-bold text-white leading-tight">
-                  Chat with AI Specialist
+                  Chat with Spiritual AI
                 </h5>
                 <span className="inline-block mt-1 bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 text-[9px] font-extrabold px-2 py-0.5 rounded-md">
                   1 Credit / msg
                 </span>
                 <p className="text-[10px] text-emerald-200/60 mt-1 leading-snug">
-                  Get immediate answers to health & fasting questions in private chat.
+                  Receive personalized prayers and faith advice in private consultation.
                 </p>
               </div>
             </div>
@@ -290,17 +282,17 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
             {/* Feature 3 */}
             <div className="bg-[#0F261B] border border-emerald-500/20 rounded-2xl p-3.5 space-y-2">
               <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center">
-                <Utensils size={16} />
+                <Sparkles size={16} />
               </div>
               <div>
                 <h5 className="text-xs font-bold text-white leading-tight">
-                  NutriPhoto Meal Scanner
+                  Custom Prayer Decrees
                 </h5>
                 <span className="inline-block mt-1 bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 text-[9px] font-extrabold px-2 py-0.5 rounded-md">
                   1 Credit
                 </span>
                 <p className="text-[10px] text-emerald-200/60 mt-1 leading-snug">
-                  Analyze meal macros, glycemic spikes & inflammatory ingredients.
+                  Tailored protection, healing, and family blessing decrees.
                 </p>
               </div>
             </div>
@@ -312,13 +304,13 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
               </div>
               <div>
                 <h5 className="text-xs font-bold text-white leading-tight">
-                  Personalized Guidance
+                  Peace & Anxiety Relief
                 </h5>
                 <span className="inline-block mt-1 bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 text-[9px] font-extrabold px-2 py-0.5 rounded-md">
-                  3-5 Credits
+                  2 Credits
                 </span>
                 <p className="text-[10px] text-emerald-200/60 mt-1 leading-snug">
-                  Receive tailored bio-individual health protocols and routine schedules.
+                  Guided soul meditations for calming the mind and deep night sleep.
                 </p>
               </div>
             </div>
@@ -331,10 +323,10 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
                 <Gift size={13} />
               </div>
               <h6 className="text-[10px] font-bold text-white leading-tight">
-                30 Credits Every Renewal
+                Bonus Credits
               </h6>
               <p className="text-[9px] text-emerald-200/60 leading-tight">
-                Auto-added on each subscription renewal.
+                Extra credits added on special milestones.
               </p>
             </div>
 
@@ -343,10 +335,10 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
                 <Calendar size={13} />
               </div>
               <h6 className="text-[10px] font-bold text-white leading-tight">
-                Instant Delivery
+                Instant Access
               </h6>
               <p className="text-[9px] text-emerald-200/60 leading-tight">
-                Tokens available immediately in your account.
+                Credits immediately unlocked in your account.
               </p>
             </div>
 
@@ -355,10 +347,10 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
                 <Crown size={13} />
               </div>
               <h6 className="text-[10px] font-bold text-white leading-tight">
-                Full Access All Features
+                Full Sanctuary
               </h6>
               <p className="text-[9px] text-emerald-200/60 leading-tight">
-                Credits + full access to all Health365 protocols.
+                Access all 365hopejourney devotionals.
               </p>
             </div>
           </div>

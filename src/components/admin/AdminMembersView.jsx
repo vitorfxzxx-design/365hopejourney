@@ -51,7 +51,7 @@ export default function AdminMembersView({ onBack }) {
   };
 
   const handleDeleteMember = async (memberId) => {
-    if (window.confirm('Tem certeza de que deseja remover este membro?')) {
+    if (window.confirm('Are you sure you want to remove this member?')) {
       if (deleteMember) {
         deleteMember(memberId);
       }

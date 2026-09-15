@@ -19,24 +19,24 @@ export default function SpecialistsView() {
       if (saved) return JSON.parse(saved);
     } catch (e) {}
     return {
-      name: currentUser?.name || 'Membro',
+      name: currentUser?.name || 'Member',
       avatar: currentUser?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'
     };
   })();
 
-  const userEmail = currentUser?.email || 'membro@gmail.com';
-  const rawFirstName = memberProfile.name && memberProfile.name.toLowerCase() !== 'member' && memberProfile.name.toLowerCase() !== 'membro'
+  const userEmail = currentUser?.email || 'member@gmail.com';
+  const rawFirstName = memberProfile.name && memberProfile.name.toLowerCase() !== 'member'
     ? memberProfile.name.split(/\s+/)[0]
-    : (currentUser?.name && currentUser.name.toLowerCase() !== 'member' ? currentUser.name.split(/\s+/)[0] : 'Irmão(ã)');
-  const userFirstName = rawFirstName ? rawFirstName.charAt(0).toUpperCase() + rawFirstName.slice(1).toLowerCase() : 'Irmão(ã)';
+    : (currentUser?.name && currentUser.name.toLowerCase() !== 'member' ? currentUser.name.split(/\s+/)[0] : 'Friend');
+  const userFirstName = rawFirstName ? rawFirstName.charAt(0).toUpperCase() + rawFirstName.slice(1).toLowerCase() : 'Friend';
   const userAvatar = memberProfile.avatar || currentUser?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80';
   const aiDoctorAvatar = 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=200&q=80';
 
   const defaultWelcomeMsg = {
     id: 'msg-welcome',
     sender: 'ai',
-    text: `Olá ${userFirstName}! ✨ Sou o seu Guia Espiritual no 365hopejourney. Como posso acolher suas orações, dúvidas ou reflexões no dia de hoje?`,
-    time: 'Agora'
+    text: `Hello ${userFirstName}! ✨ I am your 365hopejourney Spiritual Guide. How may I support your heart, your prayers, and your reflections today?`,
+    time: 'Just now'
   };
 
   const [messages, setMessages] = useState(() => {
@@ -49,37 +49,38 @@ export default function SpecialistsView() {
     }
   });
 
-  // Load chat history from Supabase database for this user
+  // Load chat history from Firestore for this user
   useEffect(() => {
     let isMounted = true;
     const cleanEmail = (userEmail || '').trim().toLowerCase();
 
     const fetchDBChatHistory = async () => {
       try {
-        if (!cleanEmail) return;
-        const { data, error } = await supabase
-          .from('specialist_questions')
-          .select('*')
-          .ilike('author_email', cleanEmail)
-          .order('created_at', { ascending: true });
+        if (!cleanEmail || !db) return;
+        const q = query(
+          collection(db, 'specialist_questions'),
+          where('author_email', '==', cleanEmail),
+          orderBy('created_at', 'asc')
+        );
+        const snap = await getDocs(q);
 
-        if (!error && data && data.length > 0 && isMounted) {
-          // Rebuild message history from Supabase records
+        if (!snap.empty && isMounted) {
           const loadedMessages = [defaultWelcomeMsg];
-          data.forEach(item => {
+          snap.docs.forEach(docSnap => {
+            const item = docSnap.data();
             if (item.text) {
-              const timeStr = item.date || (item.created_at ? new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '');
+              const timeStr = item.date || 'Earlier';
               loadedMessages.push({
-                id: `db-user-${item.id}`,
+                id: `db-user-${docSnap.id}`,
                 sender: 'user',
                 text: item.text,
                 time: timeStr
               });
             }
             if (item.answer) {
-              const timeStr = item.date || (item.created_at ? new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '');
+              const timeStr = item.date || 'Earlier';
               loadedMessages.push({
-                id: `db-ai-${item.id}`,
+                id: `db-ai-${docSnap.id}`,
                 sender: 'ai',
                 text: item.answer,
                 time: timeStr
@@ -87,35 +88,17 @@ export default function SpecialistsView() {
             }
           });
           setMessages(loadedMessages);
-          localStorage.setItem(`health365_ai_specialist_chat_${cleanEmail}`, JSON.stringify(loadedMessages));
+          localStorage.setItem(`hopejourney_ai_chat_${cleanEmail}`, JSON.stringify(loadedMessages));
         }
       } catch (err) {
-        console.warn('Could not sync chat from Supabase, using local state:', err);
+        console.warn('Could not sync chat from Firestore, using local state:', err);
       }
     };
 
     fetchDBChatHistory();
 
-    // Subscribe to realtime updates for this user
-    let channel;
-    try {
-      channel = supabase
-        .channel(`specialist_chat_${cleanEmail.replace(/[^a-zA-Z0-9]/g, '_')}`)
-        .on('postgres_changes', {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'specialist_questions'
-        }, (payload) => {
-          if (payload?.new && (payload.new.author_email || '').toLowerCase() === cleanEmail) {
-            fetchDBChatHistory();
-          }
-        })
-        .subscribe();
-    } catch (e) {}
-
     return () => {
       isMounted = false;
-      if (channel) supabase.removeChannel(channel);
     };
   }, [userEmail]);
 
@@ -125,169 +108,93 @@ export default function SpecialistsView() {
       setMessages(prev => [
         {
           ...prev[0],
-          text: `Hello ${userFirstName}! 👋 I am your Health365 Specialist. How can I guide your diet, autophagy, hydration, or sleep protocol today?`
+          text: `Hello ${userFirstName}! ✨ I am your 365hopejourney Spiritual Guide. How may I support your heart, your prayers, and your reflections today?`
         },
         ...prev.slice(1)
       ]);
     }
   }, [userFirstName]);
 
-  // Persist locally
+  // Auto scroll to bottom
   useEffect(() => {
-    const storageKey = `health365_ai_specialist_chat_${userEmail}`;
-    localStorage.setItem(storageKey, JSON.stringify(messages));
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isTyping, userEmail]);
+  }, [messages, isTyping]);
+
+  // Save to localStorage
+  useEffect(() => {
+    try {
+      const storageKey = `hopejourney_ai_chat_${userEmail}`;
+      localStorage.setItem(storageKey, JSON.stringify(messages));
+    } catch (e) {}
+  }, [messages, userEmail]);
 
   const quickPrompts = [
-    '☕ Can I drink coffee during intermittent fasting?',
-    '🥑 What are the top anti-inflammatory fats to consume?',
-    '💤 What is the recommended deep sleep autophagy window?',
-    '🥩 Best protein sources for muscle retention while detoxing?'
+    '🕊️ A prayer for peace and anxious thoughts',
+    '📖 Comforting scripture verse for today',
+    '🌅 Morning devotion and gratitude practice',
+    '💫 How to forgive and release past pain'
   ];
 
-  const generateAIResponse = (userQuestion) => {
+  const generateLocalResponse = (userQuestion) => {
     const q = (userQuestion || '').toLowerCase();
 
-    // Lunch & Dinner
-    if (q.includes('lunch') || q.includes('almoço') || q.includes('almoco') || q.includes('dinner') || q.includes('jantar')) {
-      return `Hello ${userFirstName}! 🍽️ Here are two great meal options for your lunch or dinner:
+    if (q.includes('prayer') || q.includes('pray') || q.includes('oracao')) {
+      return `Dear ${userFirstName}, let us bring this before the divine presence:
 
-Option 1 (Top 1 Ancestral Protocol - Maximum Nutrient Density):
-• Grilled grass-fed steak, ribeye, or wild salmon cooked in ghee or butter
-• 2 soft-boiled pasture-raised eggs or bone broth cup
-• Mashed sweet potato or pumpkin with unrefined sea salt
-• Slices of fresh orange or kiwi
+"Loving Creator, we come before You with grateful and humble hearts. We ask for Your profound peace to fill every corner of our minds and homes today. When the road ahead feels uncertain, remind us of Your everlasting guidance. May Your grace heal every hidden wound and renew our strength like the morning light. Amen." 🙏✨
 
-Option 2 (Popular & Familiar Everyday Choice):
-• Ground grass-fed beef or roasted chicken thighs
-• Fluffy white jasmine rice cooked with garlic and extra virgin olive oil
-• Steamed carrots, zucchini or a fresh mixed green salad
-• A cup of whole natural yogurt or kefir with sliced berries
-
-🚫 What to avoid:
-Seed oils (canola, soybean, corn), margarine, fried breaded items, and commercial sauces with preservatives.
-
-Which style do you feel like having today?`;
+May this bring serenity to your spirit today.`;
     }
 
-    // Breakfast & General Meal Plan
-    if (q.includes('breakfast') || q.includes('café da manhã') || q.includes('cafe da manha') || q.includes('meal plan') || q.includes('cardápio') || q.includes('cardapio') || q.includes('menu') || q.includes('another plan') || q.includes('plan')) {
-      return `Hello ${userFirstName}! 🍳 Here are two delicious breakfast options designed for cellular energy:
+    if (q.includes('anxious') || q.includes('anxiety') || q.includes('fear') || q.includes('stress') || q.includes('worry')) {
+      return `Peace be with you, ${userFirstName}. 🕊️
 
-Option 1 (Top 1 Ancestral Protocol - Light & Easy Absorption):
-• 3 Pasture-raised eggs scrambled or fried in grass-fed butter or pork lard
-• Slices of raw-milk artisan cheese (such as raw Cheddar or Minas artisan)
-• 1 ripe banana or papaya drizzled with raw artisanal honey
-• Pure black coffee or herbal tea (no sugar or sweeteners)
+When anxiety knocks on your door, remember Philippians 4:6-7:
+"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds."
 
-Option 2 (Popular & Familiar Real-Food Alternative):
-• Warm tapioca or natural sourdough bread filled with scrambled eggs and cheese
-• 1 cup of whole-milk natural yogurt or kefir with sliced strawberries
-• 1/2 fresh avocado seasoned with a pinch of Celtic or Himalayan pink salt
-• Pure black coffee or tea
-
-🚫 Foods to Strictly Avoid:
-Refined white bread, instant oatmeal with sugar, margarine, seed oils, and supermarket boxed juices.
-
-How would you like to customize this for your morning routine?`;
+Take three slow, deep breaths right now. Release the weight of what you cannot change today, and rest in the assurance that you are deeply loved and guided.`;
     }
 
-    if (q.includes('coffee') || q.includes('cafe') || q.includes('fasting') || q.includes('jejum')) {
-      return `Yes, ${userFirstName}! ☕ Pure black coffee (without milk, cream, sugar, or artificial sweeteners) does not break your metabolic fast or trigger insulin spikes.
+    if (q.includes('sleep') || q.includes('night') || q.includes('insomnia') || q.includes('bed')) {
+      return `Good evening, ${userFirstName}. 🌙
 
-In fact, the natural polyphenols stimulate cellular autophagy and promote liver fat oxidation. Feel free to enjoy it during your fasting window!`;
+As you prepare to rest tonight, declare Psalm 4:8 over your sleep:
+"In peace I will lie down and sleep, for You alone, Lord, make me dwell in safety."
+
+Place your hand on your heart, release the activities and worries of the day, and let your body and soul experience restorative, blessed sleep.`;
     }
 
-    if (q.includes('fat') || q.includes('gordura') || q.includes('oil') || q.includes('oleo') || q.includes('butter') || q.includes('manteiga')) {
-      return `Hello ${userFirstName}! 🥑 Under the Health365 Ancestral Protocol, we embrace clean, natural whole-food fats and eliminate toxic industrial oils:
+    if (q.includes('forgive') || q.includes('hurt') || q.includes('past') || q.includes('anger')) {
+      return `Healing begins with grace, ${userFirstName}. 🌿
 
-Top Recommended Fats:
-• Grass-fed butter and Ghee
-• Artisanal pork lard
-• Cold-pressed Extra Virgin Olive Oil
-• Pasture-raised egg yolks and fresh avocado
+Forgiveness is not excusing what happened or saying the pain did not matter. It is a sacred act of releasing the emotional chains that tie you to the past so that your heart can be free to receive joy today.
 
-Prohibited Poisons:
-Refined seed oils (soybean, canola, corn, sunflower) and margarine, as they trigger severe cellular inflammation.`;
+May divine love fill every place where pain once resided.`;
     }
 
-    // Non-extremist / Eating out / Cheating / Pizza / Parties / Guilt
-    if (q.includes('cheat') || q.includes('pizza') || q.includes('never') || q.includes('party') || q.includes('festa') || q.includes('viagem') || q.includes('travel') || q.includes('out') || q.includes('rua') || q.includes('aniversário') || q.includes('birthday') || q.includes('can i eat') || q.includes('posso comer')) {
-      return `Of course you can, ${userFirstName}! 😊
+    return `Hello ${userFirstName}! ✨ Regarding your reflection on "${userQuestion}":
 
-Here is our golden philosophy on emotional balance and food freedom:
-
-1. Never Live in Extremes:
-Emotional peace and joy with loved ones are just as crucial for your health as the food on your plate. Never place a heavy burden of guilt or anxiety on your life.
-
-2. Your Home is Your Sacred Temple:
-In your day-to-day kitchen routine, protect your temple. Eliminate the true daily poisons (industrial seed oils, margarine, artificial sweeteners, and ultra-processed packages). Eating clean at home builds your daily metabolic armor and prevents chronic cellular fatigue.
-
-3. Out with Friends, Parties & Traveling:
-When you are celebrating a birthday, traveling, or dining out with family, enjoy yourself freely and without paranoia! 
-
-4. Your Body Has Astounding Resilience:
-As long as the vast majority of what you eat at home is natural and nourishing, your body possesses an extraordinary capacity to detoxify, process, and regenerate after an occasional indulgence.
-
-Enjoy life, stay consistent where it matters most, and feel great about your journey!`;
-    }
-
-    if (q.includes('sleep') || q.includes('sono') || q.includes('insomnia') || q.includes('autophagy') || q.includes('autofagia')) {
-      return `Hello ${userFirstName}! 💤 Deep restorative sleep in total darkness is when 80% of cellular repair and autophagy occurs.
-
-Golden Protocol for Deep Rest:
-1. Finish your last meal at least 3 hours before going to bed.
-2. Turn off blue light screens 60 minutes before sleeping.
-3. Keep your room completely dark, cool, and quiet.`;
-    }
-
-    if (q.includes('protein') || q.includes('proteina') || q.includes('meat') || q.includes('carne') || q.includes('muscle')) {
-      return `Hello ${userFirstName}! 💪 Focus on bioavailable ancestral proteins: Wild-caught fish (salmon, sardines, mackerel), grass-fed beef, pastured poultry, and whole eggs.
-
-Aim for roughly 1.6g to 2.2g of protein per kg of ideal body weight distributed across your eating window.`;
-    }
-
-    if (q.includes('bone broth') || q.includes('caldo') || q.includes('gut') || q.includes('intestino')) {
-      return `Bone broth is one of our foundational superfoods, ${userFirstName}! 🥣
-
-It is loaded with bioavailable glycine, proline, and collagen to soothe and seal the gut lining. Drink 200ml to 300ml warm on an empty stomach in the morning or 30 minutes before breaking your fast.`;
-    }
-
-    if (q.includes('water') || q.includes('agua') || q.includes('hydration') || q.includes('hidratação')) {
-      return `Proper hydration requires essential minerals, ${userFirstName}! 💧
-
-Drink 35ml to 45ml of clean water per kg of body weight daily. Adding a pinch of unrefined Celtic or Himalayan pink salt replenishes electrolytes and optimizes cellular hydration.`;
-    }
-
-    return `Hello ${userFirstName}! 🌿 Regarding your question about "${userQuestion}":
-
-Under the Health365 Protocol, we focus on single-ingredient foods from nature, prioritizing our Top 1 Light & Easy Absorption foods (grass-fed meat, pasture-raised eggs, raw cheeses, clean fats, fresh fruits, and raw honey) while strictly eliminating industrial seed oils and processed goods.
-
-How can I tailor this specifically to your personal daily wellness routine?`;
+In your journey with 365hopejourney, remember that every new day is an invitation to walk in faith, extend kindness, and nurture inner peace. What part of your life would you like to dedicate in prayer or reflection today?`;
   };
 
   const handleSendMessage = async (textToSend) => {
     const text = (textToSend || inputMessage).trim();
     if (!text || isTyping) return;
 
-    // Check Health365 Credits balance
+    // Check Credits balance
     if ((credits ?? 0) <= 0) {
       openRechargeModal();
       return;
     }
 
-    const deducted = useCredit(1, userEmail);
-    if (!deducted) {
-      openRechargeModal();
-      return;
-    }
+    // Deduct 1 credit
+    useCredit(1, userEmail, 'Spiritual Guide Question', 'Prayer & Reflection Consultation');
 
     const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const userMsg = {
       id: 'msg-user-' + Date.now(),
       sender: 'user',
-      text,
+      text: text,
       time: currentTime
     };
 
@@ -295,59 +202,48 @@ How can I tailor this specifically to your personal daily wellness routine?`;
     setInputMessage('');
     setIsTyping(true);
 
-    // Realistic human-like response delay: variable 4 to 8 seconds
-    const humanDelayMs = Math.floor(Math.random() * (8000 - 4000 + 1)) + 4000;
+    const humanDelayMs = 1200 + Math.floor(Math.random() * 800);
 
     setTimeout(async () => {
-      let aiReply = '';
+      let aiResponseText = '';
       try {
         let currentSettings = appSettings;
         try {
-          const saved = localStorage.getItem('health365_settings');
-          if (saved) currentSettings = { ...currentSettings, ...JSON.parse(saved) };
-        } catch (e) {}
-
-        let loggedMealsSummary = '';
-        try {
-          const userMealsSaved = localStorage.getItem(`health365_meals_${userEmail}`) || localStorage.getItem('health365_meals');
-          if (userMealsSaved) {
-            const parsedMeals = JSON.parse(userMealsSaved);
-            if (Array.isArray(parsedMeals) && parsedMeals.length > 0) {
-              const recentMeals = parsedMeals.slice(0, 5);
-              loggedMealsSummary = `\n\nNUTRIPHOTO LOGGED MEALS BY THIS MEMBER:\n` +
-                recentMeals.map(m => `- ${m.name} (${m.calories} kcal, ${m.protein}g protein, ${m.carbs}g carbs, ${m.fats}g fats)`).join('\n') +
-                `\n(Use this real-time food log when giving personalized nutritional feedback).`;
-            }
+          const saved = localStorage.getItem('hopejourney_settings');
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed && typeof parsed === 'object') currentSettings = parsed;
           }
         } catch (e) {}
 
-        const finalSystemPrompt = (currentSettings?.aiSystemPrompt || '') + loggedMealsSummary;
+        const activeApiKey = (currentSettings?.claudeApiKey || currentSettings?.geminiApiKey || import.meta.env?.VITE_ANTHROPIC_API_KEY || '').trim();
 
-        aiReply = await generateSpecialistAIResponse({
-          userMessage: text,
-          userName: userFirstName,
-          history: messages,
-          apiKey: currentSettings?.geminiApiKey || currentSettings?.claudeApiKey || '',
-          systemPrompt: finalSystemPrompt,
-          aiModel: currentSettings?.aiModel || 'claude-3-7-sonnet-20250219',
-          aiTone: currentSettings?.aiTone || 'warm_encouraging',
-          temperature: typeof currentSettings?.aiTemperature === 'number' ? currentSettings.aiTemperature : 0.7
-        });
+        if (activeApiKey) {
+          const historyForAI = messages.slice(1).map(m => ({
+            sender: m.sender,
+            text: m.text
+          }));
+
+          aiResponseText = await generateSpecialistAIResponse({
+            userQuestion: text,
+            userFirstName: userFirstName,
+            conversationHistory: historyForAI,
+            apiKey: activeApiKey,
+            customPrompt: currentSettings?.aiSystemPrompt || '',
+            aiModel: currentSettings?.aiModel || 'claude-sonnet-4-5-20250929',
+            aiTone: currentSettings?.aiTone || 'warm_encouraging',
+            temperature: typeof currentSettings?.aiTemperature === 'number' ? currentSettings.aiTemperature : 0.7
+          });
+        }
       } catch (err) {
-        console.error('Error generating AI response:', err);
-        aiReply = generateAIResponse(text);
+        console.warn('AI API response notice, using local knowledge base:', err);
       }
 
-      if (!aiReply) {
-        aiReply = generateAIResponse(text);
+      if (!aiResponseText || typeof aiResponseText !== 'string' || aiResponseText.trim().length === 0) {
+        aiResponseText = generateLocalResponse(text);
       }
 
-      // Clean any raw markdown asterisks and repetitive greetings like "Hello [Name]!"
-      let cleanReply = typeof aiReply === 'string' 
-        ? aiReply.replace(/\*\*(.*?)\*\*/g, '$1').replace(/\*/g, '').trim()
-        : aiReply;
-
-      // Remove robotic starting greetings (Hello Health365!, Hello Camila!, etc.) if present
+      let cleanReply = aiResponseText.trim();
       cleanReply = cleanReply
         .replace(/^(?:Hello|Hi|Hey|Greetings|Olá)\s+[^!.,:\n]+[!.,:]?\s*/i, '')
         .trim();
@@ -361,21 +257,23 @@ How can I tailor this specifically to your personal daily wellness routine?`;
       setMessages((prev) => [...prev, aiMsg]);
       setIsTyping(false);
 
-      // Save consultation to Supabase database for the user
+      // Save consultation to Firestore
       try {
-        await supabase.from('specialist_questions').insert([
-          {
-            id: 'q-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7),
+        if (db) {
+          const qId = 'q-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7);
+          await setDoc(doc(db, 'specialist_questions', qId), {
+            id: qId,
             author_email: (userEmail || '').trim().toLowerCase(),
             author_name: memberProfile.name || userFirstName,
             text: text,
             date: currentTime,
             status: 'answered_by_ai',
-            answer: cleanReply
-          }
-        ]);
+            answer: cleanReply,
+            created_at: new Date().toISOString()
+          });
+        }
       } catch (err) {
-        console.error('Error saving conversation to Supabase:', err);
+        console.warn('Error saving question to Firestore:', err);
       }
     }, humanDelayMs);
   };
@@ -389,7 +287,7 @@ How can I tailor this specifically to your personal daily wellness routine?`;
             <div className="w-10 h-10 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-xl shadow-xs overflow-hidden">
               <img
                 src={aiDoctorAvatar}
-                alt="Health365 AI Specialist"
+                alt="365hopejourney Spiritual Guide"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -398,14 +296,14 @@ How can I tailor this specifically to your personal daily wellness routine?`;
           <div>
             <div className="flex items-center gap-1.5">
               <h2 className="text-sm font-extrabold text-slate-800 tracking-tight">
-                Health365 Specialist
+                Spiritual Guide
               </h2>
               <span className="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-1.5 py-0.2 rounded-md flex items-center gap-0.5">
                 <Sparkles size={10} /> 24/7 AI
               </span>
             </div>
             <p className="text-[11px] text-slate-400 font-medium">
-              Assistant
+              Sanctuary AI Mentor
             </p>
           </div>
         </div>
@@ -422,7 +320,7 @@ How can I tailor this specifically to your personal daily wellness routine?`;
               <button
                 key={idx}
                 onClick={() => handleSendMessage(prompt)}
-                className="text-left text-[11px] bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 border border-slate-200/80 hover:border-emerald-300 py-1.5 px-2.5 rounded-xl font-medium transition-all shadow-xs"
+                className="text-left text-[11px] bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 border border-slate-200/80 hover:border-emerald-300 py-1.5 px-2.5 rounded-xl font-medium transition-all shadow-xs cursor-pointer"
               >
                 {prompt}
               </button>
@@ -444,7 +342,7 @@ How can I tailor this specifically to your personal daily wellness routine?`;
                 <div className="w-8 h-8 rounded-full overflow-hidden border border-emerald-300 shadow-xs shrink-0 bg-emerald-100">
                   <img
                     src={aiDoctorAvatar}
-                    alt="AI Doctor"
+                    alt="Spiritual Guide"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -488,7 +386,7 @@ How can I tailor this specifically to your personal daily wellness routine?`;
             <div className="w-8 h-8 rounded-full overflow-hidden border border-emerald-300 shadow-xs shrink-0 bg-emerald-100">
               <img
                 src={aiDoctorAvatar}
-                alt="AI Doctor"
+                alt="Spiritual Guide"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -503,7 +401,7 @@ How can I tailor this specifically to your personal daily wellness routine?`;
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Bottom Docked Section: Credits & Input Bar (no dead space) */}
+      {/* Bottom Docked Section: Credits & Input Bar */}
       <div className="shrink-0 pt-2">
         {/* Credits Notice Bar */}
         <div className="flex items-center justify-between text-[11px] text-slate-500 mb-1.5 px-1">
@@ -512,13 +410,13 @@ How can I tailor this specifically to your personal daily wellness routine?`;
             className="flex items-center gap-1.5 font-semibold text-amber-800 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 px-2.5 py-1 rounded-full shadow-2xs cursor-pointer hover:border-amber-300 transition-colors"
           >
             <Zap size={12} className="fill-amber-500 text-amber-500" />
-            <span>Health365 Credits: <strong className="text-amber-900">{credits ?? 20}</strong></span>
+            <span>Credits: <strong className="text-amber-900">{credits ?? 20}</strong></span>
             <span className="text-[10px] text-amber-600 font-normal">(-1/msg)</span>
           </div>
           <button
             type="button"
             onClick={openRechargeModal}
-            className="text-[11px] text-emerald-700 hover:text-emerald-900 font-bold bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1 shadow-2xs active:scale-95"
+            className="text-[11px] text-emerald-700 hover:text-emerald-900 font-bold bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1 shadow-2xs active:scale-95 cursor-pointer"
           >
             <Plus size={12} /> Add Credits
           </button>
@@ -530,7 +428,7 @@ How can I tailor this specifically to your personal daily wellness routine?`;
             e.preventDefault();
             handleSendMessage();
           }}
-          className="bg-white rounded-3xl border border-slate-200 p-1.5 flex items-center gap-2 shadow-sm"
+          className="bg-white rounded-3xl border border-slate-200 p-1.5 flex items-center gap-2 shadow-xs"
         >
           <input
             type="text"
@@ -538,7 +436,7 @@ How can I tailor this specifically to your personal daily wellness routine?`;
             onChange={(e) => setInputMessage(e.target.value)}
             placeholder={
               (credits ?? 0) > 0
-                ? 'Ask anything about protocols, diet or fasting...'
+                ? 'Ask for prayers, reflections, or spiritual guidance...'
                 : 'Out of credits! Click Add Credits to recharge...'
             }
             className="flex-1 text-xs text-slate-800 placeholder-slate-400 px-3.5 py-2 bg-transparent focus:outline-hidden"
@@ -548,7 +446,7 @@ How can I tailor this specifically to your personal daily wellness routine?`;
             disabled={!inputMessage.trim() || isTyping}
             className={`p-2.5 rounded-2xl flex items-center justify-center transition-all ${
               inputMessage.trim() && !isTyping
-                ? 'bg-brand-500 hover:bg-brand-600 text-white shadow-xs active:scale-95'
+                ? 'bg-brand-500 hover:bg-brand-600 text-white shadow-xs active:scale-95 cursor-pointer'
                 : 'bg-slate-100 text-slate-400 cursor-not-allowed'
             }`}
           >
@@ -556,14 +454,12 @@ How can I tailor this specifically to your personal daily wellness routine?`;
           </button>
         </form>
 
-        {/* Medical & AI Disclaimer required by Apple / Google */}
+        {/* Spiritual AI Disclaimer */}
         <p className="text-[10px] text-slate-400 text-center leading-tight pt-1 px-2">
           <AlertCircle size={10} className="inline-block mr-1 text-slate-400 -mt-0.5" />
-          Health365 AI is for informational & educational purposes only, and does not replace professional medical advice.
+          365hopejourney AI is designed for spiritual comfort, reflection, and inspiration.
         </p>
       </div>
     </div>
   );
 }
-
-

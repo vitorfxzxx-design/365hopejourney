@@ -67,18 +67,18 @@ export const serializeFeedForFirestore = (item) => ({
   summary: item.summary || item.subtitle || '',
   content: item.content || '',
   image: item.image || '',
-  category: item.category || 'Reflexões',
-  author: item.author || '365hopejourney',
+  category: item.category || 'Reflections',
+  author: item.author || '365hopejourney Team',
   read_time: item.read_time || '2 min',
-  date: item.date || 'Hoje',
+  date: item.date || 'Today',
   status: item.status || 'Active'
 });
 
 export const serializeCommunityPostForFirestore = (p) => ({
   id: p.id,
-  author: p.author || 'Membro',
+  author: p.author || 'Member',
   avatar: p.avatar !== undefined ? p.avatar : '',
-  date: p.date || 'Agora mesmo',
+  date: p.date || 'Just now',
   text: p.text || '',
   image: p.image || null,
   likes: typeof p.likes === 'number' ? p.likes : parseInt(p.likes || 0, 10),
@@ -132,8 +132,8 @@ export function EbookProvider({ children }) {
     try {
       const saved = localStorage.getItem('hopejourney_members');
       return saved ? JSON.parse(saved) : [
-        { id: 'm-1', email: 'vitorfxzxx@gmail.com', name: 'Vitor (Admin)', status: 'Active', date: '01/09/2026', products: ['all'] },
-        { id: 'm-2', email: 'membro@gmail.com', name: 'Membro Esperança', status: 'Active', date: '07/09/2026', products: ['all'] }
+        { id: 'm-1', email: 'vitorfxzxx@gmail.com', name: 'Vitor (Admin)', status: 'Active', date: '09/01/2026', products: ['all'] },
+        { id: 'm-2', email: 'member@gmail.com', name: 'Grace Taylor', status: 'Active', date: '09/07/2026', products: ['all'] }
       ];
     } catch (e) {
       return [];
@@ -231,14 +231,14 @@ export function EbookProvider({ children }) {
       perfectpayWebhookUrl: '',
       geminiApiKey: import.meta.env.VITE_ANTHROPIC_API_KEY || import.meta.env.VITE_GEMINI_API_KEY || '',
       claudeApiKey: import.meta.env.VITE_ANTHROPIC_API_KEY || '',
-      aiSystemPrompt: `Você é o Conselheiro e Guia Espiritual do 365hopejourney.
-Sua missão é acolher, orientar, trazer paz, orações e reflexões baseadas em princípios de amor, esperança, gratidão, fé e sabedoria interior.
-Seja sempre acolhedor, gentil, compreensivo e encorajador.`,
+      aiSystemPrompt: `You are the Official Spiritual Guide and Compassionate Mentor of 365hopejourney.
+Your mission is to provide warm, comforting, and inspiring spiritual guidance, personalized prayers, scripture reflections, and calming mindfulness practices grounded in faith, hope, gratitude, and divine love.
+Always be empathetic, gentle, uplifting, and supportive.`,
       aiModel: 'claude-sonnet-4-5-20250929',
       aiTone: 'warm_encouraging',
       aiTemperature: 0.7,
       audioTabActive: true,
-      audioSectionTitle: 'Áudios & Meditações',
+      audioSectionTitle: 'Audios & Meditations',
       defaultAudioCover: ''
     };
     try {
@@ -263,7 +263,7 @@ Seja sempre acolhedor, gentil, compreensivo e encorajador.`,
       message: notif.message,
       targetUrl: notif.targetUrl || '',
       sendTo: notif.sendTo || 'all',
-      sentAt: notif.sentAt || ('Hoje às ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })),
+      sentAt: notif.sentAt || ('Today at ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })),
       timestamp: Date.now()
     };
     setActivePushNotification(fullNotif);
@@ -323,7 +323,7 @@ Seja sempre acolhedor, gentil, compreensivo e encorajador.`,
   const credits = getUserCredits(currentUserEmail);
   const creditHistory = getUserCreditTransactions(currentUserEmail);
 
-  const useCredit = (amount = 1, userEmail = currentUserEmail, title = 'Pergunta ao Guia Espiritual', subtitle = 'Sessão de Reflexão') => {
+  const useCredit = (amount = 1, userEmail = currentUserEmail, title = 'Spiritual Guide Question', subtitle = 'Reflection & Prayer Session') => {
     const email = (userEmail || currentUserEmail).toLowerCase();
     const currentBal = getUserCredits(email);
     if (currentBal >= amount) {
@@ -481,7 +481,7 @@ Seja sempre acolhedor, gentil, compreensivo e encorajador.`,
   // Auth Functions
   const loginAsMember = (email) => {
     const cleanEmail = (email || '').trim().toLowerCase();
-    if (!cleanEmail) return { success: false, message: 'Digite um e-mail válido.' };
+    if (!cleanEmail) return { success: false, message: 'Please enter a valid email address.' };
 
     const member = members.find(m => (m.email || '').toLowerCase() === cleanEmail);
     const userObj = {
@@ -522,7 +522,7 @@ Seja sempre acolhedor, gentil, compreensivo e encorajador.`,
       setCurrentTab('admin');
       return { success: true };
     }
-    return { success: false, message: 'Credenciais de administrador inválidas.' };
+    return { success: false, message: 'Invalid administrator credentials.' };
   };
 
   const logout = () => {
@@ -686,7 +686,7 @@ Seja sempre acolhedor, gentil, compreensivo e encorajador.`,
   // CRUD Feed
   const addFeedItem = async (itemData) => {
     const newId = 'feed-' + Date.now();
-    const newItem = { id: newId, ...itemData, date: 'Hoje', status: 'Active' };
+    const newItem = { id: newId, ...itemData, date: 'Today', status: 'Active' };
     setFeedItems(prev => [newItem, ...prev]);
     if (db) {
       await setDoc(doc(db, 'feed', newId), serializeFeedForFirestore(newItem));
@@ -712,9 +712,9 @@ Seja sempre acolhedor, gentil, compreensivo e encorajador.`,
     const newId = 'post-' + Date.now();
     const newPost = {
       id: newId,
-      author: currentUser?.name || 'Membro',
+      author: currentUser?.name || 'Member',
       avatar: currentUser?.avatar || '',
-      date: 'Agora mesmo',
+      date: 'Just now',
       likes: 0,
       comments: 0,
       status: 'approved',
@@ -778,7 +778,7 @@ Seja sempre acolhedor, gentil, compreensivo e encorajador.`,
     const cleanEmail = (memberData.email || '').trim().toLowerCase();
     const newMember = {
       id: 'm-' + Date.now(),
-      date: new Date().toLocaleDateString('pt-BR'),
+      date: new Date().toLocaleDateString('en-US'),
       status: 'Active',
       products: ['all'],
       ...memberData,

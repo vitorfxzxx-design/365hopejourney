@@ -186,7 +186,7 @@ function MainAppContent() {
           {currentTab === 'home' && (
             <div className="p-4 pb-32">
               <h2 className="text-xl font-bold text-slate-800 tracking-tight mb-3 px-1">
-                My Products
+                My Sanctuary & Library
               </h2>
 
               {/* Sub-tab Switcher: Contents (pre-selected) | Feed */}
@@ -200,7 +200,7 @@ function MainAppContent() {
                       : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
-                  <span>Contents</span>
+                  <span>Library</span>
                   <span className="text-[10px] text-slate-400 font-semibold">
                     ({ebooks.filter(eb => eb.isActive !== false).length})
                   </span>
@@ -214,14 +214,14 @@ function MainAppContent() {
                       : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
-                  <span>Feed</span>
+                  <span>Daily Feed</span>
                 </button>
               </div>
 
               {homeSubTab === 'contents' ? (
                 <div className="bg-slate-50/70 border border-slate-200/80 rounded-3xl p-4 shadow-xs">
                   <div className="flex items-center justify-between mb-3 px-1">
-                    <span className="font-bold text-slate-700 text-sm">Contents</span>
+                    <span className="font-bold text-slate-700 text-sm">Guides & Ebooks</span>
                     <span className="text-xs font-bold text-slate-400">{ebooks.filter(eb => eb.isActive !== false).length}</span>
                   </div>
 
@@ -239,12 +239,12 @@ function MainAppContent() {
                 <FeedView isEmbedded={true} />
               )}
 
-              {/* Medical & Legal Disclaimer Banner */}
+              {/* Spiritual & Educational Disclaimer Banner */}
               <div className="mt-5 p-3.5 bg-slate-100/80 border border-slate-200/80 rounded-2xl flex items-start gap-2.5 text-slate-500">
                 <ShieldAlert size={15} className="text-slate-400 shrink-0 mt-0.5" />
                 <p className="text-[10.5px] leading-relaxed font-normal text-slate-500">
-                  <strong className="font-bold text-slate-700 block mb-0.5">Medical & Educational Disclaimer</strong>
-                  The contents, protocols, and materials provided in this app are for informational and educational purposes only and do not constitute or replace professional medical advice, diagnosis, or treatment. Always consult a qualified physician or healthcare provider regarding any health condition or dietary changes.
+                  <strong className="font-bold text-slate-700 block mb-0.5">Spiritual & Educational Disclaimer</strong>
+                  The contents, devotionals, guides, and prayers provided in 365hopejourney are for spiritual inspiration, personal reflection, and educational purposes. For clinical or mental health concerns, always consult a licensed professional.
                 </p>
               </div>
             </div>

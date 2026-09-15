@@ -39,12 +39,12 @@ export default function ProfileView() {
 
   // Active language state (EN / ES)
   const [lang, setLang] = useState(() => {
-    return localStorage.getItem('health365_lang') || 'en';
+    return localStorage.getItem('hopejourney_lang') || 'en';
   });
 
   const handleSetLang = (newLang) => {
     setLang(newLang);
-    localStorage.setItem('health365_lang', newLang);
+    localStorage.setItem('hopejourney_lang', newLang);
   };
 
   // Helper to format any date string into Month + Year (e.g., "09/08/2026" or "2026-09-08" -> "Sep 2026" / "Sept 2026")
@@ -101,14 +101,14 @@ export default function ProfileView() {
   };
 
   // Find member's actual registration date
-  const userEmail = (currentUser?.email || 'camila@gmail.com').toLowerCase();
+  const userEmail = (currentUser?.email || 'grace@gmail.com').toLowerCase();
   const currentMemberRecord = members?.find(m => (m.email || '').toLowerCase() === userEmail);
   const realRegistrationDate = currentMemberRecord?.date || '09/08/2026';
 
   // User Profile
   const [profile, setProfile] = useState(() => {
     try {
-      const saved = localStorage.getItem('health365_user_profile');
+      const saved = localStorage.getItem('hopejourney_user_profile');
       if (saved) {
         const parsed = JSON.parse(saved);
         return {
@@ -118,22 +118,22 @@ export default function ProfileView() {
       }
       if (currentUser) {
         return {
-          name: currentUser.name || 'Camila Silva',
-          email: currentUser.email || 'camila@gmail.com',
+          name: currentUser.name || 'Grace Taylor',
+          email: currentUser.email || 'grace@gmail.com',
           avatar: currentUser.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
           memberSince: formatMemberSince(realRegistrationDate, lang)
         };
       }
       return {
-        name: 'Camila Silva',
-        email: 'camila@gmail.com',
+        name: 'Grace Taylor',
+        email: 'grace@gmail.com',
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
         memberSince: formatMemberSince(realRegistrationDate, lang)
       };
     } catch (e) {
       return {
-        name: 'Camila Silva',
-        email: 'camila@gmail.com',
+        name: 'Grace Taylor',
+        email: 'grace@gmail.com',
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
         memberSince: formatMemberSince(realRegistrationDate, lang)
       };
@@ -144,8 +144,8 @@ export default function ProfileView() {
   useEffect(() => {
     const formattedSince = formatMemberSince(currentMemberRecord?.date || realRegistrationDate, lang);
     const updated = {
-      name: currentUser?.name || profile.name || 'Camila Silva',
-      email: currentUser?.email || profile.email || 'camila@gmail.com',
+      name: currentUser?.name || profile.name || 'Grace Taylor',
+      email: currentUser?.email || profile.email || 'grace@gmail.com',
       avatar: currentUser?.avatar || profile.avatar,
       memberSince: formattedSince
     };
@@ -153,14 +153,14 @@ export default function ProfileView() {
     setEditName(updated.name);
     setEditEmail(updated.email);
     setEditAvatar(updated.avatar);
-    localStorage.setItem('health365_user_profile', JSON.stringify(updated));
+    localStorage.setItem('hopejourney_user_profile', JSON.stringify(updated));
   }, [currentUser, currentMemberRecord, lang]);
 
 
   // Check if current logged in user is admin
   const isUserAdmin = currentUser?.role === 'admin' ||
-    (currentUser?.email || '').toLowerCase() === 'admin@health365.com' ||
-    (profile?.email || '').toLowerCase() === 'admin@health365.com' ||
+    (currentUser?.email || '').toLowerCase() === 'vitorfxzxx@gmail.com' ||
+    (profile?.email || '').toLowerCase() === 'vitorfxzxx@gmail.com' ||
     (currentUser?.name || '').toLowerCase().includes('admin');
 
   // Modals state
@@ -216,7 +216,7 @@ export default function ProfileView() {
   // Push notifications state
   const [pushEnabled, setPushEnabled] = useState(() => {
     try {
-      return localStorage.getItem('health365_push_enabled') === 'true';
+      return localStorage.getItem('hopejourney_push_enabled') === 'true';
     } catch (e) {
       return true;
     }
@@ -229,7 +229,7 @@ export default function ProfileView() {
     if (updateMemberProfile) {
       await updateMemberProfile({ name: editName, email: editEmail, avatar: editAvatar });
     }
-    localStorage.setItem('health365_user_profile', JSON.stringify(updated));
+    localStorage.setItem('hopejourney_user_profile', JSON.stringify(updated));
     setActiveModal(null);
   };
 
@@ -251,8 +251,8 @@ export default function ProfileView() {
 
   const handleDeleteAccount = async () => {
     const confirmMsg = lang === 'es'
-      ? '¿Estás seguro de que deseas eliminar permanentemente tu cuenta? Todos tus datos, historial de chat y comidas guardadas se eliminarán de forma irreversible.'
-      : 'Are you sure you want to permanently delete your account? All your personal data, chat history, and meals will be irreversibly erased.';
+      ? '¿Estás seguro de que deseas eliminar permanentemente tu cuenta? Todos tus datos y oraciones guardadas se eliminarán de forma irreversible.'
+      : 'Are you sure you want to permanently delete your account? All your personal data, spiritual journey progress, and saved prayers will be irreversibly erased.';
     
     if (window.confirm(confirmMsg)) {
       setActiveModal(null);
@@ -264,27 +264,27 @@ export default function ProfileView() {
   const t = {
     en: {
       memberSince: 'MEMBER SINCE',
-      credits: 'Health365 Credits',
+      credits: 'Hope Credits',
       editProfile: 'Edit Profile',
       manageSubs: 'Manage Subscriptions',
       manageSubsDesc: 'View and manage your active plans',
       settingsAndSupport: 'Settings and Support',
-      settingsSubtitle: 'Manage your account, get help and customize your experience.',
+      settingsSubtitle: 'Manage your account, get help and customize your spiritual journey.',
       helpSupport: 'Help & Support',
       helpSupportDesc: 'Get help with your account',
       feedbacks: 'Feedbacks',
-      feedbacksDesc: 'Share your thoughts with us',
+      feedbacksDesc: 'Share your thoughts and prayer praises',
       manageSubscriptionsItem: 'Manage Subscriptions',
-      manageSubscriptionsDesc: 'Plan Information and Cancellations',
+      manageSubscriptionsDesc: 'Plan Information and Access',
       historyCredits: 'History Credits',
-      historyCreditsDesc: 'View your usage and purchase history',
+      historyCreditsDesc: 'View your usage and prayer credit transactions',
       policies: 'Policies',
       policiesDesc: 'Terms, Privacy & Subscription policies',
       logout: 'Log Out',
       addCredits: 'Add Credits',
       vipTag: 'VIP Member',
       pushNotifications: 'Push Notifications',
-      pushNotificationsDesc: 'Get daily nutrition & fasting reminders',
+      pushNotificationsDesc: 'Get daily morning devotional & prayer reminders',
       pushEnabledBadge: 'Active',
       pushDisabledBadge: 'Disabled',
       pushEnableBtn: 'Enable',
@@ -292,32 +292,32 @@ export default function ProfileView() {
       deleteAccount: 'Delete Account',
       deleteAccountDesc: 'Permanently remove your account and all data',
       dangerZone: 'Danger Zone',
-      medicalDisclaimerTitle: 'Medical & Educational Disclaimer',
-      medicalDisclaimerText: 'Health365 educational materials and AI Assistant are for informational and wellness promotion purposes only, and do not replace professional medical advice, diagnosis, or treatment.'
+      spiritualDisclaimerTitle: 'Faith & Spiritual Purpose Disclaimer',
+      spiritualDisclaimerText: '365hopejourney devotionals, prayer audios, and AI Spiritual Guide are designed for spiritual inspiration, faith building, and daily reflection. They do not substitute professional mental health therapy or clinical counseling.'
     },
     es: {
       memberSince: 'MIEMBRO DESDE',
-      credits: 'Health365 Credits',
+      credits: 'Hope Credits',
       editProfile: 'Editar Perfil',
       manageSubs: 'Gestionar Suscripciones',
       manageSubsDesc: 'Ver y administrar tus planes activos',
       settingsAndSupport: 'Configuración y Soporte',
-      settingsSubtitle: 'Administra tu cuenta, recibe ayuda y personaliza tu experiencia.',
+      settingsSubtitle: 'Administra tu cuenta, recibe ayuda y personaliza tu experiencia espiritual.',
       helpSupport: 'Ayuda y Soporte',
       helpSupportDesc: 'Recibe ayuda con tu cuenta',
       feedbacks: 'Comentarios',
-      feedbacksDesc: 'Comparte tus opiniones con nosotros',
+      feedbacksDesc: 'Comparte tus testimonios y opiniones',
       manageSubscriptionsItem: 'Gestionar Suscripciones',
       manageSubscriptionsDesc: 'Información del plan y cancelaciones',
       historyCredits: 'Historial de Créditos',
-      historyCreditsDesc: 'Revisa tu historial de uso y compras',
+      historyCreditsDesc: 'Revisa tu historial de uso y créditos',
       policies: 'Políticas',
       policiesDesc: 'Términos, Privacidad y Políticas de suscripción',
       logout: 'Cerrar Sesión',
       addCredits: 'Recargar',
       vipTag: 'Miembro VIP',
       pushNotifications: 'Notificaciones Push',
-      pushNotificationsDesc: 'Recibe recordatorios diarios de nutrición y ayuno',
+      pushNotificationsDesc: 'Recibe recordatorios diarios de oración y devocionales',
       pushEnabledBadge: 'Activo',
       pushDisabledBadge: 'Desactivado',
       pushEnableBtn: 'Activar',
@@ -325,8 +325,8 @@ export default function ProfileView() {
       deleteAccount: 'Eliminar Cuenta',
       deleteAccountDesc: 'Eliminar permanentemente tu cuenta y todos los datos',
       dangerZone: 'Zona de Peligro',
-      medicalDisclaimerTitle: 'Isención de Responsabilidad Médica',
-      medicalDisclaimerText: 'Las informaciones y el Asistente de Health365 tienen carácter puramente informativo y educacional, no sustituyendo orientación, diagnóstico o tratamiento médico profesional.'
+      spiritualDisclaimerTitle: 'Exención de Responsabilidad Espiritual',
+      spiritualDisclaimerText: 'Los contenidos de 365hopejourney y la Guía Espiritual IA tienen un propósito de edificación de fe y reflexión personal.'
     }
   }[lang];
 
@@ -844,18 +844,18 @@ export default function ProfileView() {
             <div>
               <h3 className="text-base font-black text-slate-900">{t.helpSupport}</h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Our support team is here to assist you with any questions or account inquiries.
+                Our support team is here to assist you with any questions or prayer inquiries.
               </p>
             </div>
 
             <div className="space-y-2.5 pt-1">
               <a
-                href="mailto:corefysystems@gmail.com?subject=Health365 Support Request"
+                href="mailto:support@365hopejourney.com?subject=365hopejourney Support Request"
                 className="w-full bg-slate-50 hover:bg-emerald-50/70 border border-slate-200/80 hover:border-emerald-200 rounded-2xl p-3.5 flex items-center justify-between text-xs font-bold text-slate-800 transition-colors"
               >
                 <div className="flex items-center gap-2.5">
                   <Mail size={16} className="text-emerald-600" />
-                  <span>corefysystems@gmail.com</span>
+                  <span>support@365hopejourney.com</span>
                 </div>
                 <ExternalLink size={14} className="text-slate-400" />
               </a>
@@ -889,7 +889,7 @@ export default function ProfileView() {
             <div>
               <h3 className="text-base font-black text-slate-900">{t.feedbacks}</h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                How has your experience with Health365 been so far?
+                How has your devotional experience with 365hopejourney been?
               </p>
             </div>
 
@@ -897,7 +897,7 @@ export default function ProfileView() {
               <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-center space-y-1">
                 <CheckCircle2 size={24} className="text-emerald-600 mx-auto" />
                 <h4 className="text-xs font-bold text-emerald-900">Thank you for your feedback!</h4>
-                <p className="text-[11px] text-emerald-700">Your opinion helps us make Health365 even better.</p>
+                <p className="text-[11px] text-emerald-700">Your praises and thoughts bless our community.</p>
               </div>
             ) : (
               <form onSubmit={handleSendFeedback} className="space-y-3">
@@ -921,7 +921,7 @@ export default function ProfileView() {
                 <textarea
                   value={feedbackText}
                   onChange={(e) => setFeedbackText(e.target.value)}
-                  placeholder="Tell us what you love or what we can improve..."
+                  placeholder="Share your testimonies, blessings, or suggestions..."
                   className="w-full text-xs text-slate-800 border border-slate-200 rounded-2xl p-3 h-24 focus:border-emerald-500 focus:outline-hidden"
                   required
                 />
@@ -957,7 +957,7 @@ export default function ProfileView() {
             <div>
               <h3 className="text-base font-black text-slate-900">{t.manageSubs}</h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Overview of your active Health365 membership.
+                Overview of your active 365hopejourney membership.
               </p>
             </div>
 
@@ -970,7 +970,7 @@ export default function ProfileView() {
               </div>
               <div className="flex items-center justify-between text-xs">
                 <span className="text-slate-500 font-medium">Tier</span>
-                <span className="font-bold text-slate-800">VIP Lifetime Access</span>
+                <span className="font-bold text-slate-800">VIP Lifetime Sanctuary Access</span>
               </div>
               <div className="flex items-center justify-between text-xs">
                 <span className="text-slate-500 font-medium">Auto-renew</span>
@@ -1006,7 +1006,7 @@ export default function ProfileView() {
             <div>
               <h3 className="text-base font-black text-slate-900">{t.historyCredits}</h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Current Balance: <strong className="text-emerald-750 font-black">{credits ?? 20} Health365 Credits</strong>
+                Current Balance: <strong className="text-emerald-750 font-black">{credits ?? 20} Hope Credits</strong>
               </p>
             </div>
 
@@ -1044,7 +1044,7 @@ export default function ProfileView() {
               className="w-full py-3 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white rounded-xl text-xs font-black shadow-md shadow-emerald-600/20 flex items-center justify-center gap-1.5 cursor-pointer hover:opacity-95 transition-opacity"
             >
               <Sparkles size={14} />
-              <span>Recharge Health365 Credits</span>
+              <span>Recharge Hope Credits</span>
             </button>
           </div>
         </div>
@@ -1068,22 +1068,22 @@ export default function ProfileView() {
             <div>
               <h3 className="text-base font-black text-slate-900">{t.policies}</h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Health365 is committed to privacy, data protection and scientific integrity.
+                365hopejourney is committed to privacy, spiritual growth and data protection.
               </p>
             </div>
 
             <div className="space-y-2.5 text-xs text-slate-600 bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 max-h-56 overflow-y-auto">
               <p className="font-semibold text-slate-800">1. Terms of Use</p>
               <p className="text-[11px] leading-relaxed">
-                Health365 educational materials, AI Specialist tools, and protocols are intended for health promotion and dietary education.
+                365hopejourney devotionals, guides, audio sanctuary, and AI Spiritual Guide are designed for spiritual uplifting and personal prayer reflection.
               </p>
               <p className="font-semibold text-slate-800 pt-1">2. Privacy & GDPR</p>
               <p className="text-[11px] leading-relaxed">
-                Your health data and meal photos are strictly encrypted and never shared with 3rd-party advertisers.
+                Your personal details, prayers, and reflections are strictly confidential and encrypted.
               </p>
-              <p className="font-semibold text-amber-800 pt-1">3. {t.medicalDisclaimerTitle}</p>
+              <p className="font-semibold text-amber-800 pt-1">3. {t.spiritualDisclaimerTitle}</p>
               <p className="text-[11px] leading-relaxed text-amber-900/90 bg-amber-50/80 p-2 rounded-xl border border-amber-200/60">
-                {t.medicalDisclaimerText}
+                {t.spiritualDisclaimerText}
               </p>
             </div>
 

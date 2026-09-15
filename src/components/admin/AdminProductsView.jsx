@@ -545,7 +545,7 @@ export default function AdminProductsView({ onBack }) {
               Back to Hub
             </button>
             <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-              Products - Health365
+              Products - 365hopejourney
             </h1>
             <p className="text-xs text-slate-500 mt-0.5">
               Manage all products, modules and chapters

@@ -40,7 +40,7 @@ export default function MemberLoginView() {
             {appSettings.name || '365hopejourney'}
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Plataforma Exclusiva de Espiritualidade & Desenvolvimento Interior
+            Exclusive Sanctuary of Hope & Spiritual Growth
           </p>
 
           <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full border border-emerald-200/60">

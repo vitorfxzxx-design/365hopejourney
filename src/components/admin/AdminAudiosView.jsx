@@ -12,7 +12,7 @@ export default function AdminAudiosView({ onBack }) {
 
   const [audioTabActive, setAudioTabActive] = useState(() => {
     try {
-      const local = localStorage.getItem('health365_audio_tab_active');
+      const local = localStorage.getItem('hopejourney_audio_tab_active');
       if (local !== null) return local === 'true';
       return appSettings?.audioTabActive !== undefined ? appSettings.audioTabActive : true;
     } catch (e) {
@@ -22,7 +22,7 @@ export default function AdminAudiosView({ onBack }) {
 
   const [defaultCover, setDefaultCover] = useState(() => {
     try {
-      const local = localStorage.getItem('health365_default_audio_cover');
+      const local = localStorage.getItem('hopejourney_default_audio_cover');
       if (local && !local.startsWith('data:image/svg+xml')) return local;
       const remote = appSettings?.defaultAudioCover;
       if (remote && !remote.startsWith('data:image/svg+xml')) return remote;
@@ -34,7 +34,7 @@ export default function AdminAudiosView({ onBack }) {
 
   const [sectionTitle, setSectionTitle] = useState(() => {
     try {
-      return localStorage.getItem('health365_audio_section_title') || '';
+      return localStorage.getItem('hopejourney_audio_section_title') || '';
     } catch (e) {
       return '';
     }

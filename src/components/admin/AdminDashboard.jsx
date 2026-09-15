@@ -63,14 +63,14 @@ export default function AdminDashboard({ onBack }) {
   }
 
   const gridButtons = [
-    { id: 'products', label: 'Produtos', icon: Package },
+    { id: 'products', label: 'Products', icon: Package },
     { id: 'feed', label: 'Feed', icon: Newspaper },
-    { id: 'community', label: 'Comunidade', icon: Users },
-    { id: 'notifications', label: 'Notificações', icon: Bell },
-    { id: 'integrations', label: 'Integrações', icon: Zap },
-    { id: 'members', label: 'Membros', icon: UserCheck },
-    { id: 'specialists', label: 'Guia Espiritual', icon: HelpCircle },
-    { id: 'audios', label: 'Áudios & Meditações', icon: Headphones },
+    { id: 'community', label: 'Community', icon: Users },
+    { id: 'notifications', label: 'Notifications', icon: Bell },
+    { id: 'integrations', label: 'Integrations', icon: Zap },
+    { id: 'members', label: 'Members', icon: UserCheck },
+    { id: 'specialists', label: 'Spiritual Guide', icon: HelpCircle },
+    { id: 'audios', label: 'Audios & Meditations', icon: Headphones },
   ];
 
 

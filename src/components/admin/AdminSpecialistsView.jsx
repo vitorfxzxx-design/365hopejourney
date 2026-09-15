@@ -588,7 +588,7 @@ export default function AdminSpecialistsView({ onBack }) {
                 </div>
                 <div>
                   <h3 className="text-sm font-extrabold text-slate-900">
-                    {creditAction === 'remove' ? 'Remove Health365 Credits' : 'Add Health365 Credits'}
+                    {creditAction === 'remove' ? 'Remove Hope Credits' : 'Add Hope Credits'}
                   </h3>
                   <p className="text-[11px] text-slate-400">{editingCreditsMember.name}</p>
                 </div>
