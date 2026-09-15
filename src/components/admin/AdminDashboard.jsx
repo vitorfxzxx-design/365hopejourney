@@ -14,7 +14,6 @@ import AdminNotificationsView from './AdminNotificationsView';
 import AdminMembersView from './AdminMembersView';
 import AdminSpecialistsView from './AdminSpecialistsView';
 import AdminAudiosView from './AdminAudiosView';
-import AdminNutriPhotoView from './AdminNutriPhotoView';
 
 export default function AdminDashboard({ onBack }) {
   const {
@@ -63,21 +62,15 @@ export default function AdminDashboard({ onBack }) {
     return <AdminAudiosView onBack={() => setAdminSubSection('dashboard')} />;
   }
 
-  // 8. NutriPhoto (NutriFoto)
-  if (adminSubSection === 'nutriphoto' || adminSubSection === 'nutrifoto') {
-    return <AdminNutriPhotoView onBack={() => setAdminSubSection('dashboard')} />;
-  }
-
   const gridButtons = [
-    { id: 'products', label: 'Products', icon: Package },
+    { id: 'products', label: 'Produtos', icon: Package },
     { id: 'feed', label: 'Feed', icon: Newspaper },
-    { id: 'community', label: 'Community', icon: Users },
-    { id: 'notifications', label: 'Notifications', icon: Bell },
-    { id: 'integrations', label: 'Integrations', icon: Zap },
-    { id: 'members', label: 'Members', icon: UserCheck },
-    { id: 'specialists', label: 'Specialists', icon: HelpCircle },
-    { id: 'audios', label: 'Audios', icon: Headphones },
-    { id: 'nutriphoto', label: 'NutriFoto', icon: Camera },
+    { id: 'community', label: 'Comunidade', icon: Users },
+    { id: 'notifications', label: 'Notificações', icon: Bell },
+    { id: 'integrations', label: 'Integrações', icon: Zap },
+    { id: 'members', label: 'Membros', icon: UserCheck },
+    { id: 'specialists', label: 'Guia Espiritual', icon: HelpCircle },
+    { id: 'audios', label: 'Áudios & Meditações', icon: Headphones },
   ];
 
 

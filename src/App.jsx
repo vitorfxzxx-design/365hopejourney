@@ -8,7 +8,6 @@ import GammaReader from './components/ebook/GammaReader';
 import FeedView from './components/social/FeedView';
 import CommunityView from './components/social/CommunityView';
 import ProfileView from './components/profile/ProfileView';
-import NutriPhotoView from './components/nutriphoto/NutriPhotoView';
 import SpecialistsView from './components/specialists/SpecialistsView';
 import AudiosView from './components/audio/AudiosView';
 import AdminDashboard from './components/admin/AdminDashboard';
@@ -254,7 +253,6 @@ function MainAppContent() {
           {currentTab === 'audios' && <AudiosView />}
           {currentTab === 'feed' && <FeedView />}
           {currentTab === 'community' && <CommunityView />}
-          {currentTab === 'nutriphoto' && <NutriPhotoView />}
           {currentTab === 'specialists' && <SpecialistsView />}
           {currentTab === 'profile' && <ProfileView />}
         </main>

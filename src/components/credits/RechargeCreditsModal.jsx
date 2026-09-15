@@ -90,14 +90,13 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
           <div className="flex items-start justify-between gap-3">
             <div className="space-y-1 pr-2">
               <h2 className="text-2xl font-black tracking-tight text-white leading-tight font-serif">
-                Recharge Your <br />
+                Recarregue seus <br />
                 <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 bg-clip-text text-transparent">
-                  Health365 Credits ✨
+                  Créditos de Esperança ✨
                 </span>
               </h2>
               <p className="text-xs text-emerald-200/70 leading-relaxed pt-1">
-                Use Health365 Credits to unlock personalized protocols, AI Specialist consultations,
-                NutriPhoto scans and health deep-dive reports.
+                Use seus créditos para consultas e reflexões aprofundadas com o Guia Espiritual IA e conteúdos exclusivos.
               </p>
             </div>
 

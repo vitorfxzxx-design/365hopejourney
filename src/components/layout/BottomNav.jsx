@@ -16,12 +16,11 @@ export default function BottomNav() {
     : (savedActive !== null ? savedActive === 'true' : true);
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: Home },
-    { id: 'community', label: 'Community', icon: Users },
-    { id: 'specialists', label: 'Specialists', icon: HelpCircle },
-    ...(audioTabActive ? [{ id: 'audios', label: 'Audios', icon: Headphones }] : []),
-    { id: 'nutriphoto', label: 'NutriPhoto', icon: Utensils },
-    { id: 'profile', label: 'Profile', icon: User },
+    { id: 'home', label: 'Início', icon: Home },
+    { id: 'community', label: 'Comunidade', icon: Users },
+    { id: 'specialists', label: 'Guia IA', icon: HelpCircle },
+    ...(audioTabActive ? [{ id: 'audios', label: 'Áudios', icon: Headphones }] : []),
+    { id: 'profile', label: 'Perfil', icon: User },
   ];
 
   const handleTabClick = (tabId) => {
