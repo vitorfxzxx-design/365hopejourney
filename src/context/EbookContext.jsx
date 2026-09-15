@@ -12,6 +12,7 @@ import {
   updateDoc
 } from 'firebase/firestore';
 import { deleteAudioFromStorage } from '../utils/audioStorage';
+import { sanitizeEbookObject } from '../utils/translationUtils';
 
 export const serializeEbookForFirestore = (eb, orderIndex) => {
   const chaptersList = Array.isArray(eb.chapters) ? eb.chapters : (eb.chapters?.items || []);
@@ -43,7 +44,7 @@ export const deserializeEbookFromFirestore = (remote) => {
   const meta = (isWrapped && remote.chapters.meta) ? remote.chapters.meta : {};
   const coverUrl = remote.coverImage || remote.cover || meta?.coverImage || '';
 
-  return {
+  const rawEb = {
     id: remote.id,
     title: remote.title || '',
     description: remote.description || '',
@@ -60,6 +61,8 @@ export const deserializeEbookFromFirestore = (remote) => {
     isActive: remote.isActive !== undefined ? remote.isActive : true,
     chapters: Array.isArray(chapters) ? chapters : []
   };
+
+  return sanitizeEbookObject(rawEb);
 };
 
 export const serializeFeedForFirestore = (item) => ({

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, ChevronRight, Lock, Plus, ExternalLink, Sparkles } from 'lucide-react';
 import { useEbooks } from '../../context/EbookContext';
+import { translateResidualText } from '../../utils/translationUtils';
 
 export default function ChapterList({ ebook, onBack, onSelectChapter, onAddChapter }) {
   const chapters = ebook?.chapters || [];
@@ -26,7 +27,7 @@ export default function ChapterList({ ebook, onBack, onSelectChapter, onAddChapt
         )}
 
         <h1 className="font-bold text-slate-800 text-[15px] truncate flex-1">
-          {ebook.title}
+          {translateResidualText(ebook.title)}
         </h1>
       </div>
 
@@ -35,7 +36,7 @@ export default function ChapterList({ ebook, onBack, onSelectChapter, onAddChapt
         {ebook.description && (
           <div className="mb-4 bg-emerald-50/70 border border-emerald-100 rounded-2xl p-3.5 text-xs text-emerald-900 flex items-start gap-2.5">
             <Sparkles size={16} className="text-brand-500 shrink-0 mt-0.5" />
-            <p className="leading-relaxed">{ebook.description}</p>
+            <p className="leading-relaxed">{translateResidualText(ebook.description)}</p>
           </div>
         )}
 
@@ -93,7 +94,7 @@ export default function ChapterList({ ebook, onBack, onSelectChapter, onAddChapt
                   {/* Title & Info */}
                   <div className="flex-1 min-w-0">
                     <h3 className={`font-bold text-[13px] leading-snug line-clamp-2 ${isLocked ? 'text-slate-500' : 'text-slate-800'}`}>
-                      {chapter.title}
+                      {translateResidualText(chapter.title)}
                     </h3>
                     {isLocked ? (
                       <p className="text-[11px] text-slate-400 mt-0.5 font-medium">
@@ -101,7 +102,7 @@ export default function ChapterList({ ebook, onBack, onSelectChapter, onAddChapt
                       </p>
                     ) : chapter.subtitle ? (
                       <p className="text-[11px] text-slate-400 mt-0.5 truncate font-normal">
-                        {chapter.subtitle}
+                        {translateResidualText(chapter.subtitle)}
                       </p>
                     ) : null}
                   </div>
