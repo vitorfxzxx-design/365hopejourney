@@ -11,9 +11,15 @@ export default function MobileHeader() {
 
   return (
     <header className="sticky top-0 z-30 bg-white border-b border-slate-100 px-4 py-3 flex items-center justify-between shadow-xs">
-      <div className="flex items-center gap-2">
-        <span className="text-2xl drop-shadow-xs">{appSettings.iconEmoji || '✨'}</span>
-        <h1 className="font-bold text-slate-800 text-lg tracking-tight">
+      <div className="flex items-center gap-2.5">
+        <div className="w-8 h-8 rounded-full overflow-hidden shadow-xs border border-amber-300/60 bg-gradient-to-tr from-amber-400 to-amber-200 p-[1px] shrink-0">
+          <img
+            src="/logo.png"
+            alt="365hopejourney"
+            className="w-full h-full object-cover rounded-full"
+          />
+        </div>
+        <h1 className="font-extrabold text-slate-900 text-lg tracking-tight font-serif">
           {appSettings.name || '365hopejourney'}
         </h1>
       </div>

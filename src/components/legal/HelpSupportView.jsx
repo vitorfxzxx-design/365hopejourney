@@ -46,13 +46,17 @@ export default function HelpSupportView({ onBack }) {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black text-xl shadow-md shadow-emerald-600/20 shrink-0">
-              ✨
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-amber-300/80 bg-gradient-to-tr from-amber-400 to-amber-200 p-[1.5px] shadow-sm shrink-0">
+              <img
+                src="/logo.png"
+                alt="365hopejourney"
+                className="w-full h-full object-cover rounded-full"
+              />
             </div>
             <div>
-              <h1 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-1.5">
+              <h1 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-1.5 font-serif">
                 365hopejourney
-                <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full uppercase">
+                <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full uppercase font-sans">
                   Support Center
                 </span>
               </h1>

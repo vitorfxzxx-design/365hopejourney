@@ -551,7 +551,7 @@ export default function AdminAudiosView({ onBack }) {
                 {defaultCover ? (
                   <img src={defaultCover} alt="Default Cover" className="w-full h-full object-cover" />
                 ) : (
-                  <span className="text-2xl select-none">{appSettings?.iconEmoji || '🍏'}</span>
+                  <img src="/logo.png" alt="365 Hope Journey" className="w-10 h-10 rounded-full object-cover shadow-xs" />
                 )}
               </div>
 
@@ -807,9 +807,11 @@ export default function AdminAudiosView({ onBack }) {
                         }}
                       />
                     ) : (
-                      <span className="text-xl drop-shadow-xs select-none">
-                        {appSettings?.iconEmoji || '🍏'}
-                      </span>
+                      <img
+                        src="/logo.png"
+                        alt="365 Hope Journey"
+                        className="w-8 h-8 rounded-full object-cover shadow-xs"
+                      />
                     )}
                     <button
                       type="button"

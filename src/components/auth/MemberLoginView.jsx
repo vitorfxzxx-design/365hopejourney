@@ -33,10 +33,14 @@ export default function MemberLoginView() {
       <div className="w-full max-w-md bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden flex flex-col">
         {/* Top Brand Banner */}
         <div className="bg-gradient-to-b from-brand-50 to-white px-6 pt-8 pb-6 text-center border-b border-slate-100">
-          <div className="w-16 h-16 mx-auto rounded-3xl bg-white shadow-md border border-brand-100 flex items-center justify-center text-3xl mb-3">
-            {appSettings.iconEmoji || '✨'}
+          <div className="w-16 h-16 mx-auto rounded-full overflow-hidden shadow-lg border-2 border-amber-300/80 bg-gradient-to-tr from-amber-400 to-amber-200 p-[2px] mb-3">
+            <img
+              src="/logo.png"
+              alt="365hopejourney"
+              className="w-full h-full object-cover rounded-full"
+            />
           </div>
-          <h1 className="text-xl font-extrabold text-slate-800 tracking-tight">
+          <h1 className="text-xl font-extrabold text-slate-900 tracking-tight font-serif">
             {appSettings.name || '365hopejourney'}
           </h1>
           <p className="text-xs text-slate-500 mt-1">

@@ -229,9 +229,11 @@ export default function AudiosView() {
                         }}
                       />
                     ) : (
-                      <span className="text-2xl drop-shadow-xs select-none">
-                        {appSettings?.iconEmoji || '🍏'}
-                      </span>
+                      <img
+                        src="/logo.png"
+                        alt="365 Hope Journey"
+                        className="w-8 h-8 rounded-full object-cover shadow-xs"
+                      />
                     )}
                   </div>
 
