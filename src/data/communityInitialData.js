@@ -2,10 +2,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-1",
     "author": "Sarah Jenkins",
-    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
     "date": "10 mins ago",
     "text": "Today’s morning devotional and reading of Psalm 91 brought such deep tranquility to my soul. So blessed to be part of this community! 🙏✨",
-    "image": "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 33,
     "comments": 7,
     "status": "approved"
@@ -13,10 +13,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-2",
     "author": "David Miller",
-    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/1.jpg",
     "date": "25 mins ago",
     "text": "Requesting uplifting prayers for my family and peace in our home. Standing strong in faith that healing is already taking place. 🕊️",
-    "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 40,
     "comments": 10,
     "status": "approved"
@@ -24,10 +24,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-3",
     "author": "Emily Watson",
-    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/2.jpg",
     "date": "45 mins ago",
     "text": "Just completed Day 14 of the 365 Days of Hope Journey! My mind is so much calmer and my sleep is truly restful. Endless gratitude. 🌅",
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 47,
     "comments": 13,
     "status": "approved"
@@ -35,10 +35,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-4",
     "author": "Michael Robinson",
-    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
     "date": "1 hour ago",
     "text": "Waking up every morning with the audio prayers has transformed my routine. No more anxiety before starting my work day! Praise God. 🙌",
-    "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 54,
     "comments": 16,
     "status": "approved"
@@ -46,10 +46,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-5",
     "author": "Rachel Adams",
-    "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/3.jpg",
     "date": "2 hours ago",
     "text": "I was going through a heavy season of grief, but the prayers shared by members here lifted my spirit. Thank you all for your love. ❤️",
-    "image": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 61,
     "comments": 19,
     "status": "approved"
@@ -57,10 +57,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-6",
     "author": "Brandon Hayes",
-    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
     "date": "3 hours ago",
     "text": "Day 30 completed! The scriptures on divine protection gave me unwavering courage. I feel God walking right beside me. 📖✨",
-    "image": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 68,
     "comments": 2,
     "status": "approved"
@@ -68,10 +68,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-7",
     "author": "Jennifer Collins",
-    "avatar": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/4.jpg",
     "date": "4 hours ago",
     "text": "Starting my day with peaceful worship and the Hope Daily guide. The peace of God truly surpasses all understanding! 🌿",
-    "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 75,
     "comments": 5,
     "status": "approved"
@@ -79,10 +79,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-8",
     "author": "Christopher Evans",
-    "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/4.jpg",
     "date": "5 hours ago",
     "text": "I used to struggle with insomnia and racing thoughts. Listening to the Peace Over Anxiety audios has given me the best rest in years. 🌙",
-    "image": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 82,
     "comments": 8,
     "status": "approved"
@@ -90,10 +90,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-9",
     "author": "Jessica Taylor",
-    "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/5.jpg",
     "date": "6 hours ago",
     "text": "Can we take a moment to thank God for the small blessings today? This community is a safe haven for my faith. ☀️🙏",
-    "image": "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 89,
     "comments": 11,
     "status": "approved"
@@ -101,10 +101,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-10",
     "author": "Matthew Reed",
-    "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/5.jpg",
     "date": "8 hours ago",
     "text": "Sending love and strength to anyone walking through a quiet storm today. Keep believing, God is making a way for you! 🌈",
-    "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 21,
     "comments": 14,
     "status": "approved"
@@ -112,10 +112,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-11",
     "author": "Amanda Brooks",
-    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/6.jpg",
     "date": "10 hours ago",
     "text": "The daily decrees of health and protection have renewed my mindset. I feel energized and anchored in His grace. 🌸",
-    "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 28,
     "comments": 17,
     "status": "approved"
@@ -123,10 +123,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-12",
     "author": "Joshua Bennett",
-    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/6.jpg",
     "date": "12 hours ago",
     "text": "God answered my prayer this week! My husband got the job after months of waiting. Thank you everyone who prayed with us! 🎉🙌",
-    "image": "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 35,
     "comments": 20,
     "status": "approved"
@@ -134,10 +134,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-13",
     "author": "Ashley Morgan",
-    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/7.jpg",
     "date": "14 hours ago",
     "text": "Reading Chapter 5 of Peace Over Anxiety opened my eyes to how much God wants to carry our burdens. So thankful for this app. 📖",
-    "image": "https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 42,
     "comments": 3,
     "status": "approved"
@@ -145,10 +145,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-14",
     "author": "Daniel Cooper",
-    "avatar": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/7.jpg",
     "date": "Yesterday",
     "text": "Every audio session in the Sanctuary feels like a breath of fresh air. It helps me center my thoughts on what is eternal and good. 🕊️",
-    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 49,
     "comments": 6,
     "status": "approved"
@@ -156,10 +156,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-15",
     "author": "Megan Richardson",
-    "avatar": "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/8.jpg",
     "date": "Yesterday",
     "text": "I love seeing testimonies from people all across the country. We are truly united in faith and hope! Blessings to everyone. 🤝💖",
-    "image": "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 56,
     "comments": 9,
     "status": "approved"
@@ -167,10 +167,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-16",
     "author": "Tyler Campbell",
-    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/8.jpg",
     "date": "2 days ago",
     "text": "My morning routine now begins with 10 minutes of silence and the daily devotional. It changes everything about how my day unfolds. ☕🕯️",
-    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 63,
     "comments": 12,
     "status": "approved"
@@ -178,10 +178,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-17",
     "author": "Lauren Hughes",
-    "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/9.jpg",
     "date": "2 days ago",
     "text": "God turned my worry into worship today. Whenever fear knocks, I open this app and remember His promises! 🛡️",
-    "image": "https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 70,
     "comments": 15,
     "status": "approved"
@@ -189,10 +189,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-18",
     "author": "Justin Foster",
-    "avatar": "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/9.jpg",
     "date": "3 days ago",
     "text": "Holding onto Isaiah 41:10 today: \"Do not fear, for I am with you.\" What a mighty and faithful God we serve! ⛰️",
-    "image": "https://images.unsplash.com/photo-1475921075678-b0218225f8f8?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 77,
     "comments": 18,
     "status": "approved"
@@ -200,10 +200,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-19",
     "author": "Hannah Simmons",
-    "avatar": "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/10.jpg",
     "date": "3 days ago",
     "text": "The guided reflection on forgiveness helped me release bitterness I carried for over five years. My heart feels so light. 🕊️🤍",
-    "image": "https://images.unsplash.com/photo-1508873696983-2df570364d95?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 84,
     "comments": 21,
     "status": "approved"
@@ -211,10 +211,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-20",
     "author": "Jacob Patterson",
-    "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/10.jpg",
     "date": "4 days ago",
     "text": "Thankful for the audio sanctuary! I listen to it during my morning commute and it fills my car with peace instead of traffic stress. 🚗🎧",
-    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 91,
     "comments": 4,
     "status": "approved"
@@ -222,10 +222,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-21",
     "author": "Olivia Ward",
-    "avatar": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/11.jpg",
     "date": "4 days ago",
-    "text": "Sharing a photo from my morning walk with God. His creation reminds me that He takes care of every single detail. 🌲☀️",
-    "image": "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?auto=format&fit=crop&w=600&q=80",
+    "text": "Spending time in prayer with God every morning has completely renewed my peace. His love takes care of every single detail. 🌲☀️",
+    "image": null,
     "likes": 23,
     "comments": 7,
     "status": "approved"
@@ -233,10 +233,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-22",
     "author": "Ryan Mitchell",
-    "avatar": "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/11.jpg",
     "date": "5 days ago",
     "text": "To anyone feeling alone today: you are loved, you are chosen, and your story is not over. Sending prayers your way! 💐",
-    "image": "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 30,
     "comments": 10,
     "status": "approved"
@@ -244,10 +244,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-23",
     "author": "Samantha Powell",
-    "avatar": "https://images.unsplash.com/photo-1534751516642-a171edd26a0d?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/12.jpg",
     "date": "5 days ago",
     "text": "Day 45 of my 365 Hope Journey! I never thought I could be this consistent in my devotional life. This community keeps me motivated. 🔥",
-    "image": "https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 37,
     "comments": 13,
     "status": "approved"
@@ -255,10 +255,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-24",
     "author": "Ethan Coleman",
-    "avatar": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/12.jpg",
     "date": "6 days ago",
     "text": "Waking up early to pray before the kids wake up has become the sweetest part of my day. God is so good! ☕📖",
-    "image": "https://images.unsplash.com/photo-1476820865390-c52aeebb9891?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 44,
     "comments": 16,
     "status": "approved"
@@ -266,10 +266,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-25",
     "author": "Brittany Flores",
-    "avatar": "https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/13.jpg",
     "date": "6 days ago",
     "text": "I felt God’s presence so strongly during tonight’s prayer audio. Tears of joy and relief just flowed. Thank You Lord! 😭🙏",
-    "image": "https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 51,
     "comments": 19,
     "status": "approved"
@@ -277,10 +277,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-26",
     "author": "Andrew Sanders",
-    "avatar": "https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/13.jpg",
     "date": "1 week ago",
     "text": "Our home feels more peaceful and joyful since we started speaking the daily decrees together every morning. 🏡❤️",
-    "image": "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 58,
     "comments": 2,
     "status": "approved"
@@ -288,10 +288,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-27",
     "author": "Victoria Price",
-    "avatar": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/14.jpg",
     "date": "1 week ago",
     "text": "God provides right on time. When I was at my lowest, the daily verse notification popped up and spoke directly to my heart. 💌",
-    "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 65,
     "comments": 5,
     "status": "approved"
@@ -299,10 +299,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-28",
     "author": "Nicholas Murphy",
-    "avatar": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/14.jpg",
     "date": "1 week ago",
     "text": "Praising God for restored health in our family! Faith moves mountains when we stand together in agreement. 🏔️✨",
-    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 72,
     "comments": 8,
     "status": "approved"
@@ -310,10 +310,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-29",
     "author": "Katherine Ross",
-    "avatar": "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/15.jpg",
     "date": "8 days ago",
     "text": "The scripture reflections are so deep yet easy to apply in everyday life. Best spiritual resource I have found! ⭐⭐⭐⭐⭐",
-    "image": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 79,
     "comments": 11,
     "status": "approved"
@@ -321,10 +321,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-30",
     "author": "Alexander Rivera",
-    "avatar": "https://images.unsplash.com/photo-1541823709867-1b206113eafd?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/15.jpg",
     "date": "9 days ago",
     "text": "Surrendering my worries into God’s capable hands. He never fails and His timing is always perfect. ⏳🤲",
-    "image": "https://images.unsplash.com/photo-1476673160081-cf065607f449?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 86,
     "comments": 14,
     "status": "approved"
@@ -332,10 +332,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-31",
     "author": "Megan Peterson",
-    "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/16.jpg",
     "date": "10 days ago",
     "text": "Grateful for this beautiful morning and the promise of new mercies every single day. Great is His faithfulness! 🌅",
-    "image": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 93,
     "comments": 17,
     "status": "approved"
@@ -343,10 +343,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-32",
     "author": "Benjamin Cooper",
-    "avatar": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/16.jpg",
     "date": "11 days ago",
     "text": "Listening to the Psalms audio with my headphones before bed has cured my nighttime anxiety. Peaceful sleep at last. 🛌💤",
-    "image": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 25,
     "comments": 20,
     "status": "approved"
@@ -354,10 +354,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-33",
     "author": "Lauren Gray",
-    "avatar": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/17.jpg",
     "date": "12 days ago",
     "text": "Thank you to everyone who commented with prayers on my last post. God answered and gave us peace through the trial! 🤝❤️",
-    "image": "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 32,
     "comments": 3,
     "status": "approved"
@@ -365,10 +365,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-34",
     "author": "Zachary Ramirez",
-    "avatar": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/17.jpg",
     "date": "2 weeks ago",
     "text": "A reminder for someone today: God’s grace is bigger than your mistakes. Rise up and walk in His forgiveness today. 🕊️",
-    "image": "https://images.unsplash.com/photo-1496614444573-df8f72b99220?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 39,
     "comments": 6,
     "status": "approved"
@@ -376,10 +376,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-35",
     "author": "Stephanie James",
-    "avatar": "https://images.unsplash.com/photo-1562788869-4ed32648eb72?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/18.jpg",
     "date": "2 weeks ago",
     "text": "Taking 15 minutes to journal my blessings today. When you count your blessings, worry fades away! 📝🌻",
-    "image": "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 46,
     "comments": 9,
     "status": "approved"
@@ -387,10 +387,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-36",
     "author": "Austin Watson",
-    "avatar": "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/18.jpg",
     "date": "2 weeks ago",
     "text": "The 365 Days of Hope journey has deepened my walk with God more than anything I have experienced this year. Truly life changing. 🌟",
-    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 53,
     "comments": 12,
     "status": "approved"
@@ -398,10 +398,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-37",
     "author": "Rebecca Brooks",
-    "avatar": "https://images.unsplash.com/photo-1552058544-a2b08422138a?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/19.jpg",
     "date": "15 days ago",
     "text": "Standing on Matthew 6:33 today. Seeking His kingdom first and trusting that everything else will be provided! 🌾",
-    "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 60,
     "comments": 15,
     "status": "approved"
@@ -409,10 +409,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-38",
     "author": "Christian Kelly",
-    "avatar": "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/19.jpg",
     "date": "16 days ago",
     "text": "I love opening the app and seeing everyone encouraging each other. This is what Christian brotherhood and sisterhood looks like. 🫂",
-    "image": "https://images.unsplash.com/photo-1504198453319-5ce911bafc46?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 67,
     "comments": 18,
     "status": "approved"
@@ -420,10 +420,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-39",
     "author": "Alyssa Sanders",
-    "avatar": "https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/20.jpg",
     "date": "18 days ago",
     "text": "Such a beautiful peace in my heart today. No matter what the news says, our hope is anchored in Christ! ⚓",
-    "image": "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 74,
     "comments": 21,
     "status": "approved"
@@ -431,10 +431,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-40",
     "author": "Dylan Price",
-    "avatar": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/20.jpg",
     "date": "3 weeks ago",
     "text": "Praying for all the mothers and fathers balancing work and family today. May God grant you supernatural wisdom and energy. 👨‍👩‍👧‍👦",
-    "image": "https://images.unsplash.com/photo-1504893524552-cb4026ab791e?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 81,
     "comments": 4,
     "status": "approved"
@@ -442,10 +442,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-41",
     "author": "Nicole Bennett",
-    "avatar": "https://images.unsplash.com/photo-1545996124-0501ebae84d0?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/21.jpg",
     "date": "3 weeks ago",
     "text": "The audio on \"Overcoming Fear\" brought me to tears of relief. God has not given us a spirit of fear, but of power and love! 🦁",
-    "image": "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 88,
     "comments": 7,
     "status": "approved"
@@ -453,10 +453,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-42",
     "author": "Tyler Wood",
-    "avatar": "https://images.unsplash.com/photo-1548544149-4835e62ee5b3?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/21.jpg",
     "date": "3 weeks ago",
     "text": "God is restoring what was broken in my life. Trusting the process and holding onto His promises every single day. 🧱✨",
-    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 20,
     "comments": 10,
     "status": "approved"
@@ -464,10 +464,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-43",
     "author": "Danielle Barnes",
-    "avatar": "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/22.jpg",
     "date": "22 days ago",
     "text": "My daily devotional time has become non-negotiable. It grounds my soul before the busy world pulls me in a hundred directions. 🧘‍♀️",
-    "image": "https://images.unsplash.com/photo-1508672019048-805b876b67e2?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 27,
     "comments": 13,
     "status": "approved"
@@ -475,10 +475,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-44",
     "author": "Jordan Ross",
-    "avatar": "https://images.unsplash.com/photo-1541271696-564d6789a78e?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/22.jpg",
     "date": "24 days ago",
     "text": "Grateful for divine protection over my family during our travels this weekend. God’s angels watched over every step. ✈️🛡️",
-    "image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 34,
     "comments": 16,
     "status": "approved"
@@ -486,10 +486,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-45",
     "author": "Amber Henderson",
-    "avatar": "https://images.unsplash.com/photo-1539614474468-61236ba59218?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/23.jpg",
     "date": "25 days ago",
     "text": "Day 60 completed! The transformation in my perspective, gratitude, and joy is undeniable. Glory to God! 🏆",
-    "image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 41,
     "comments": 19,
     "status": "approved"
@@ -497,10 +497,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-46",
     "author": "Logan Coleman",
-    "avatar": "https://images.unsplash.com/photo-1540569014-0097333def8b?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/23.jpg",
     "date": "4 weeks ago",
     "text": "Whenever anxiety tries to creep in, I turn on the prayer audios and let the scriptures wash over my mind. 🌊🙏",
-    "image": "https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 48,
     "comments": 2,
     "status": "approved"
@@ -508,10 +508,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-47",
     "author": "Courtney Jenkins",
-    "avatar": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/24.jpg",
     "date": "4 weeks ago",
     "text": "Rejoicing today for answered prayers in our community! God hears the cry of His people. Never give up praying! 🔔",
-    "image": "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 55,
     "comments": 5,
     "status": "approved"
@@ -519,10 +519,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-48",
     "author": "Gabriel Perry",
-    "avatar": "https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/24.jpg",
     "date": "1 month ago",
     "text": "A quiet moment in His presence is worth more than a thousand hours of striving. Be still and know that He is God. 🌲💧",
-    "image": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 62,
     "comments": 8,
     "status": "approved"
@@ -530,10 +530,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-49",
     "author": "Vanessa Powell",
-    "avatar": "https://images.unsplash.com/photo-1521252659862-eec69951b774?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/25.jpg",
     "date": "1 month ago",
     "text": "The AI Spiritual Guide suggested the exact Psalm I needed when I felt overwhelmed today. What a blessing this technology is for faith! 🤖📖",
-    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 69,
     "comments": 11,
     "status": "approved"
@@ -541,10 +541,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-50",
     "author": "Caleb Sullivan",
-    "avatar": "https://images.unsplash.com/photo-1519058082700-08a0b56da9b4?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/25.jpg",
     "date": "1 month ago",
     "text": "Sending love and blessings to this entire sanctuary. You are all in my daily prayers! Let His light shine bright through you today. 💡",
-    "image": "https://images.unsplash.com/photo-1520962922320-43289858497b?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 76,
     "comments": 14,
     "status": "approved"
@@ -552,10 +552,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-51",
     "author": "Alexis Russell",
-    "avatar": "https://images.unsplash.com/photo-1513956589346-223c52865c5d?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/26.jpg",
     "date": "1 month ago",
     "text": "God’s love is unconditional, unshakable, and everlasting. Rest your weary soul in His hands today. 🤲🤍",
-    "image": "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 83,
     "comments": 17,
     "status": "approved"
@@ -563,10 +563,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-52",
     "author": "Samuel Ortiz",
-    "avatar": "https://images.unsplash.com/photo-1509868918648-5d7c34977823?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/26.jpg",
     "date": "1 month ago",
     "text": "Woke up with a grateful heart! Even in challenging seasons, God always gives us reasons to smile and praise Him. 🌺",
-    "image": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 90,
     "comments": 20,
     "status": "approved"
@@ -574,10 +574,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-53",
     "author": "Kayla Bryant",
-    "avatar": "https://images.unsplash.com/photo-1508672019048-805b876b67e2?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/27.jpg",
     "date": "1 month ago",
     "text": "The devotional on \"Faith in the Waiting\" spoke directly to where I am right now. Patience is hard, but God’s harvest is coming! 🌾⏳",
-    "image": "https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 22,
     "comments": 3,
     "status": "approved"
@@ -585,10 +585,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-54",
     "author": "Nathan Alexander",
-    "avatar": "https://images.unsplash.com/photo-1506863530036-1efeddceb993?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/27.jpg",
     "date": "1 month ago",
     "text": "Such clarity and peace after spending time in prayer this morning. God is clearing the path ahead! 🛤️✨",
-    "image": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 29,
     "comments": 6,
     "status": "approved"
@@ -596,10 +596,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-55",
     "author": "Haley Griffin",
-    "avatar": "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/28.jpg",
     "date": "1 month ago",
     "text": "I bought this app for myself, and now my mom and daughter are both following the 365 Hope Journey with me! Blessed legacy. 👩‍👧‍👧",
-    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 36,
     "comments": 9,
     "status": "approved"
@@ -607,10 +607,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-56",
     "author": "Lucas Hayes",
-    "avatar": "https://images.unsplash.com/photo-1502767089025-6572583495f9?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/28.jpg",
     "date": "2 months ago",
     "text": "Lord, thank You for another day of life, health, and purpose. May my actions bring honor to Your name today. 🌅",
-    "image": "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 43,
     "comments": 12,
     "status": "approved"
@@ -618,10 +618,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-57",
     "author": "Brooke Simmons",
-    "avatar": "https://images.unsplash.com/photo-1500917293891-ef795ce70e52?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/29.jpg",
     "date": "2 months ago",
     "text": "Overcoming worry starts with one prayer at a time. This community has taught me how to lay down my burdens daily. 🎒⬇️",
-    "image": "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 50,
     "comments": 15,
     "status": "approved"
@@ -629,10 +629,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-58",
     "author": "Noah Foster",
-    "avatar": "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/29.jpg",
     "date": "2 months ago",
     "text": "Finding true rest in Jesus today. He restores my soul and leads me beside quiet waters. 🏞️",
-    "image": "https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 57,
     "comments": 18,
     "status": "approved"
@@ -640,10 +640,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-59",
     "author": "Kimberly Butler",
-    "avatar": "https://images.unsplash.com/photo-1496302662116-35cc4f36df92?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/30.jpg",
     "date": "2 months ago",
     "text": "Day 75 milestone! I used to wake up stressed with a knot in my stomach. Now I wake up with songs of thanksgiving. 🎶",
-    "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 64,
     "comments": 21,
     "status": "approved"
@@ -651,10 +651,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-60",
     "author": "Mason Rivera",
-    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/30.jpg",
     "date": "2 months ago",
     "text": "Praying for strength, wisdom, and peace for everyone tackling difficult decisions this week. You are guided by God! 🧭",
-    "image": "https://images.unsplash.com/photo-1542332213-9b5a5a3f3507?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 71,
     "comments": 4,
     "status": "approved"
@@ -662,10 +662,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-61",
     "author": "Faith Howard",
-    "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/31.jpg",
     "date": "2 months ago",
     "text": "The decrees of protection have become our family’s morning shield. We declare them out loud over our children before school. 🛡️👧👦",
-    "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 78,
     "comments": 7,
     "status": "approved"
@@ -673,10 +673,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-62",
     "author": "Liam Ward",
-    "avatar": "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/31.jpg",
     "date": "2 months ago",
     "text": "God did not bring you this far to leave you. Trust His goodness and keep moving forward with your head held high! 👑",
-    "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 85,
     "comments": 10,
     "status": "approved"
@@ -684,10 +684,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-63",
     "author": "Paige Richardson",
-    "avatar": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/32.jpg",
     "date": "2 months ago",
     "text": "Such a beautiful sunset today reminding me of God’s glory and majesty. He paints the sky with love every single evening. 🌇",
-    "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 92,
     "comments": 13,
     "status": "approved"
@@ -695,10 +695,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-64",
     "author": "Elijah Cox",
-    "avatar": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
     "date": "2 months ago",
     "text": "The audio reflections are so calming and scripturally sound. Highly recommended for anyone seeking daily peace. 🎧🕊️",
-    "image": "https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 24,
     "comments": 16,
     "status": "approved"
@@ -706,10 +706,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-65",
     "author": "Chloe Howard",
-    "avatar": "https://images.unsplash.com/photo-1485893086445-ed75865251e0?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/33.jpg",
     "date": "2 months ago",
     "text": "Thankful for the gift of grace. When we are weak, He is strong. Have a blessed and victorious day everyone! 🏆",
-    "image": "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 31,
     "comments": 19,
     "status": "approved"
@@ -717,10 +717,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-66",
     "author": "Isaac Ward",
-    "avatar": "https://images.unsplash.com/photo-1484863137850-59afcfe05386?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/33.jpg",
     "date": "3 months ago",
     "text": "God is healing my heart and restoring my joy day by day. Never underestimate what daily prayer can do! 🩹❤️",
-    "image": "https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 38,
     "comments": 2,
     "status": "approved"
@@ -728,10 +728,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-67",
     "author": "Morgan Hughes",
-    "avatar": "https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/34.jpg",
     "date": "3 months ago",
     "text": "Peace isn’t the absence of trouble; it is the presence of God in the middle of it. Feeling so anchored today! ⚓🌊",
-    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 45,
     "comments": 5,
     "status": "approved"
@@ -739,10 +739,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-68",
     "author": "Luke Diaz",
-    "avatar": "https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/34.jpg",
     "date": "3 months ago",
     "text": "My marriage has been blessed and softened through the principles of patience and love in the Hope devotionals. Forever grateful! 💍",
-    "image": "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 52,
     "comments": 8,
     "status": "approved"
@@ -750,10 +750,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-69",
     "author": "Destiny Ramirez",
-    "avatar": "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/35.jpg",
     "date": "3 months ago",
     "text": "Starting week 12 of the devotional! Consistency in God’s word brings unmatched clarity and spiritual growth. 📚🌱",
-    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 59,
     "comments": 11,
     "status": "approved"
@@ -761,10 +761,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-70",
     "author": "Aaron Watson",
-    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/35.jpg",
     "date": "3 months ago",
     "text": "Praying for divine breakthroughs in finances, health, and relationships for every member reading this today! 💥🙏",
-    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 66,
     "comments": 14,
     "status": "approved"
@@ -772,10 +772,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-71",
     "author": "Sydney Brooks",
-    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/36.jpg",
     "date": "3 months ago",
     "text": "God’s promises never expire. If He spoke it over your life, He is faithful to bring it to pass! 📜✨",
-    "image": "https://images.unsplash.com/photo-1566371486490-560ded23b5e4?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 73,
     "comments": 17,
     "status": "approved"
@@ -783,10 +783,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-72",
     "author": "Christian Morris",
-    "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/36.jpg",
     "date": "3 months ago",
     "text": "The peaceful background melodies during the scripture readings help me focus without any mental distractions. Perfect! 🎼",
-    "image": "https://images.unsplash.com/photo-1571292443391-003a728dc12b?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 80,
     "comments": 20,
     "status": "approved"
@@ -794,10 +794,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-73",
     "author": "Genesis Kelly",
-    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/37.jpg",
     "date": "3 months ago",
     "text": "Every day is a gift from God. Let’s make today count by spreading kindness, encouragement, and love wherever we go! 🎁❤️",
-    "image": "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 87,
     "comments": 3,
     "status": "approved"
@@ -805,10 +805,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-74",
     "author": "Hunter Bailey",
-    "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/men/37.jpg",
     "date": "3 months ago",
     "text": "Look how far God has brought you! Take a deep breath, thank Him for His mercy, and walk forward in confidence. 🚶‍♀️✨",
-    "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 94,
     "comments": 6,
     "status": "approved"
@@ -816,10 +816,10 @@ export const INITIAL_COMMUNITY_POSTS = [
   {
     "id": "post-75",
     "author": "Grace Taylor",
-    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+    "avatar": "https://randomuser.me/api/portraits/women/38.jpg",
     "date": "4 months ago",
     "text": "Celebrating 90 days in the 365hopejourney community! My faith is stronger, my heart is fuller, and my hope is alive. Thank you all! 🎊🎉",
-    "image": "https://images.unsplash.com/photo-1582533561050-b00e5d697b06?auto=format&fit=crop&w=600&q=80",
+    "image": null,
     "likes": 26,
     "comments": 9,
     "status": "approved"

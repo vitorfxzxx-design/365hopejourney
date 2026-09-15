@@ -439,17 +439,13 @@ Always be empathetic, gentle, uplifting, and supportive.`,
     const unsubPosts = onSnapshot(collection(db, 'community_posts'), (snap) => {
       if (!snap.empty) {
         const loaded = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        // If Firestore has fewer than our rich initial set, seed missing ones
-        if (loaded.length < INITIAL_COMMUNITY_POSTS.length) {
-          const loadedIds = new Set(loaded.map(p => p.id));
+        const hasLegacyImages = loaded.some(p => p.image && (p.image.includes('unsplash.com') || p.image.includes('Transformation Proof')));
+        if (loaded.length < INITIAL_COMMUNITY_POSTS.length || hasLegacyImages) {
           INITIAL_COMMUNITY_POSTS.forEach(p => {
-            if (!loadedIds.has(p.id)) {
-              setDoc(doc(db, 'community_posts', p.id), serializeCommunityPostForFirestore(p)).catch(() => {});
-            }
+            setDoc(doc(db, 'community_posts', p.id), serializeCommunityPostForFirestore(p)).catch(() => {});
           });
-          const merged = [...loaded, ...INITIAL_COMMUNITY_POSTS.filter(p => !loadedIds.has(p.id))];
-          setPosts(merged);
-          localStorage.setItem('hopejourney_posts', JSON.stringify(merged));
+          setPosts(INITIAL_COMMUNITY_POSTS);
+          localStorage.setItem('hopejourney_posts', JSON.stringify(INITIAL_COMMUNITY_POSTS));
         } else {
           setPosts(loaded);
           localStorage.setItem('hopejourney_posts', JSON.stringify(loaded));

@@ -219,12 +219,18 @@ export default function AdminCommunityView({ onBack }) {
                         src={post.avatar}
                         alt={post.author}
                         className="w-9 h-9 rounded-full object-cover border border-slate-100 shrink-0"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling && (e.target.nextSibling.style.display = 'flex');
+                        }}
                       />
-                    ) : (
-                      <div className="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
-                        {(post.author || 'M').charAt(0).toUpperCase()}
-                      </div>
-                    )}
+                    ) : null}
+                    <div
+                      className="w-9 h-9 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs items-center justify-center shrink-0 shadow-xs border border-emerald-200/60"
+                      style={{ display: post.avatar ? 'none' : 'flex' }}
+                    >
+                      {(post.author || 'M').charAt(0).toUpperCase()}
+                    </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <h4 className="font-bold text-xs text-slate-900 truncate">

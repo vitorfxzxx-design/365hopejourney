@@ -282,12 +282,18 @@ export default function CommunityView() {
                       src={post.avatar}
                       alt={post.author}
                       className="w-10 h-10 rounded-full object-cover border border-slate-100 shrink-0"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling && (e.target.nextSibling.style.display = 'flex');
+                      }}
                     />
-                  ) : (
-                    <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
-                      {(post.author || 'M').charAt(0).toUpperCase()}
-                    </div>
-                  )}
+                  ) : null}
+                  <div
+                    className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs items-center justify-center shrink-0 shadow-xs border border-emerald-200/60"
+                    style={{ display: post.avatar ? 'none' : 'flex' }}
+                  >
+                    {(post.author || 'M').charAt(0).toUpperCase()}
+                  </div>
                   <div>
                     <h4 className="font-bold text-xs text-slate-800">{post.author}</h4>
                     <p className="text-[10px] text-slate-400 font-medium">{post.date}</p>
