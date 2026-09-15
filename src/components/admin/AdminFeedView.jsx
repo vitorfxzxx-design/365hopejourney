@@ -4,7 +4,7 @@ import { useEbooks } from '../../context/EbookContext';
 import FeedPostModal from './FeedPostModal';
 
 export default function AdminFeedView({ onBack }) {
-  const { feedItems, addFeedPost, updateFeedPost, deleteFeedPost } = useEbooks();
+  const { feedItems, addFeedItem, updateFeedItem, deleteFeedItem } = useEbooks();
 
   const [modalOpen, setModalOpen] = useState(false);
   const [editingPost, setEditingPost] = useState(null);
@@ -21,15 +21,21 @@ export default function AdminFeedView({ onBack }) {
 
   const handleDeletePost = (postId) => {
     if (window.confirm('Are you sure you want to delete this feed post?')) {
-      deleteFeedPost(postId);
+      if (deleteFeedItem) {
+        deleteFeedItem(postId);
+      }
     }
   };
 
   const handleSavePost = (formData) => {
     if (editingPost) {
-      updateFeedPost(editingPost.id, formData);
+      if (updateFeedItem) {
+        updateFeedItem(editingPost.id, formData);
+      }
     } else {
-      addFeedPost(formData);
+      if (addFeedItem) {
+        addFeedItem(formData);
+      }
     }
     setModalOpen(false);
   };
