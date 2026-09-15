@@ -186,11 +186,17 @@ export function EbookProvider({ children }) {
     }
   });
 
-  // Community posts
+  // Community posts (75 unique testimonials)
   const [posts, setPosts] = useState(() => {
     try {
       const saved = localStorage.getItem('hopejourney_posts');
-      return saved ? JSON.parse(saved) : INITIAL_COMMUNITY_POSTS;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length >= INITIAL_COMMUNITY_POSTS.length) {
+          return parsed;
+        }
+      }
+      return INITIAL_COMMUNITY_POSTS;
     } catch (e) {
       return INITIAL_COMMUNITY_POSTS;
     }
@@ -433,12 +439,27 @@ Always be empathetic, gentle, uplifting, and supportive.`,
     const unsubPosts = onSnapshot(collection(db, 'community_posts'), (snap) => {
       if (!snap.empty) {
         const loaded = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        setPosts(loaded);
-        localStorage.setItem('hopejourney_posts', JSON.stringify(loaded));
+        // If Firestore has fewer than our rich initial set, seed missing ones
+        if (loaded.length < INITIAL_COMMUNITY_POSTS.length) {
+          const loadedIds = new Set(loaded.map(p => p.id));
+          INITIAL_COMMUNITY_POSTS.forEach(p => {
+            if (!loadedIds.has(p.id)) {
+              setDoc(doc(db, 'community_posts', p.id), serializeCommunityPostForFirestore(p)).catch(() => {});
+            }
+          });
+          const merged = [...loaded, ...INITIAL_COMMUNITY_POSTS.filter(p => !loadedIds.has(p.id))];
+          setPosts(merged);
+          localStorage.setItem('hopejourney_posts', JSON.stringify(merged));
+        } else {
+          setPosts(loaded);
+          localStorage.setItem('hopejourney_posts', JSON.stringify(loaded));
+        }
       } else {
         INITIAL_COMMUNITY_POSTS.forEach(p => {
           setDoc(doc(db, 'community_posts', p.id), serializeCommunityPostForFirestore(p)).catch(() => {});
         });
+        setPosts(INITIAL_COMMUNITY_POSTS);
+        localStorage.setItem('hopejourney_posts', JSON.stringify(INITIAL_COMMUNITY_POSTS));
       }
     }, (err) => console.warn('Firestore community listener:', err));
 
