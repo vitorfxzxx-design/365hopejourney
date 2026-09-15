@@ -536,16 +536,35 @@ export default function ProfileView() {
         {/* Clear, unmistakable Active/Disabled Action Button */}
         <button
           type="button"
-          onClick={() => {
+          onClick={async () => {
             const nextState = !pushEnabled;
             setPushEnabled(nextState);
-            localStorage.setItem('health365_push_enabled', nextState.toString());
+            localStorage.setItem('hopejourney_push_enabled', nextState.toString());
 
             // If enabling, request system browser push permission
-            if (nextState && typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'default') {
+            if (nextState && typeof window !== 'undefined' && 'Notification' in window) {
               try {
-                Notification.requestPermission();
-              } catch (e) {}
+                let perm = Notification.permission;
+                if (perm === 'default') {
+                  perm = await Notification.requestPermission();
+                }
+                if (perm === 'granted') {
+                  if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                    navigator.serviceWorker.controller.postMessage({
+                      type: 'SHOW_NOTIFICATION',
+                      title: '365hopejourney Daily Push Active! ✨',
+                      message: 'You will now receive your daily morning devotionals, prayers, and uplifting scripture reminders.'
+                    });
+                  } else {
+                    new Notification('365hopejourney Daily Push Active! ✨', {
+                      body: 'You will now receive your daily morning devotionals, prayers, and uplifting scripture reminders.',
+                      icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>"
+                    });
+                  }
+                }
+              } catch (e) {
+                console.warn('Error requesting push permission:', e);
+              }
             }
           }}
           className={`py-2 px-3.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-95 shrink-0 ${

@@ -255,8 +255,16 @@ Always be empathetic, gentle, uplifting, and supportive.`,
     }
   });
 
-  // Notifications Toast state
+  // Notifications Toast state & list
   const [activePushNotification, setActivePushNotification] = useState(null);
+  const [notificationsList, setNotificationsList] = useState(() => {
+    try {
+      const saved = localStorage.getItem('hopejourney_notifications');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
+  });
 
   const dismissPushNotification = () => {
     setActivePushNotification(null);
@@ -265,18 +273,53 @@ Always be empathetic, gentle, uplifting, and supportive.`,
   const broadcastPushNotification = (notif) => {
     const fullNotif = {
       id: notif.id || 'notif-' + Date.now(),
-      title: notif.title,
-      message: notif.message,
-      targetUrl: notif.targetUrl || '',
+      title: notif.title || '365hopejourney',
+      message: notif.message || '',
+      targetUrl: notif.targetUrl || '/',
       sendTo: notif.sendTo || 'all',
       sentAt: notif.sentAt || ('Today at ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })),
       timestamp: Date.now()
     };
     setActivePushNotification(fullNotif);
 
-    // Save to Firestore
+    // Native browser / PWA Service Worker push notification
+    if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'granted') {
+      if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({
+          type: 'SHOW_NOTIFICATION',
+          title: fullNotif.title,
+          message: fullNotif.message,
+          targetUrl: fullNotif.targetUrl
+        });
+      } else {
+        try {
+          new Notification(fullNotif.title, {
+            body: fullNotif.message,
+            icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>"
+          });
+        } catch (e) {}
+      }
+    }
+
+    // Save to Firestore & local storage
     if (db) {
       setDoc(doc(db, 'notifications', fullNotif.id), fullNotif).catch(e => console.warn('Push save error:', e));
+    }
+    setNotificationsList(prev => [fullNotif, ...prev.filter(n => n.id !== fullNotif.id)]);
+    try {
+      localStorage.setItem('hopejourney_notifications', JSON.stringify([fullNotif, ...notificationsList.filter(n => n.id !== fullNotif.id)]));
+    } catch (e) {}
+  };
+
+  const deleteNotification = async (notifId) => {
+    try {
+      if (db) {
+        await deleteDoc(doc(db, 'notifications', notifId));
+      }
+      setNotificationsList(prev => prev.filter(n => n.id !== notifId));
+      localStorage.setItem('hopejourney_notifications', JSON.stringify(notificationsList.filter(n => n.id !== notifId)));
+    } catch (e) {
+      console.warn('Error deleting notification:', e);
     }
   };
 
@@ -468,6 +511,42 @@ Always be empathetic, gentle, uplifting, and supportive.`,
       }
     }, (err) => console.warn('Firestore members listener:', err));
 
+    // 7. Notifications listener
+    const unsubNotifs = onSnapshot(collection(db, 'notifications'), (snap) => {
+      if (!snap.empty) {
+        const loaded = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        loaded.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        setNotificationsList(loaded);
+        localStorage.setItem('hopejourney_notifications', JSON.stringify(loaded));
+
+        // If newest notification is under 90s old, trigger in-app & native notification for active users
+        const newest = loaded[0];
+        if (newest && newest.timestamp && (Date.now() - newest.timestamp < 90000)) {
+          const pushAllowed = localStorage.getItem('hopejourney_push_enabled') !== 'false';
+          if (pushAllowed) {
+            setActivePushNotification(newest);
+            if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'granted') {
+              if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                navigator.serviceWorker.controller.postMessage({
+                  type: 'SHOW_NOTIFICATION',
+                  title: newest.title || '365hopejourney',
+                  message: newest.message || '',
+                  targetUrl: newest.targetUrl || '/'
+                });
+              } else {
+                try {
+                  new Notification(newest.title || '365hopejourney', {
+                    body: newest.message || '',
+                    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>"
+                  });
+                } catch (e) {}
+              }
+            }
+          }
+        }
+      }
+    }, (err) => console.warn('Firestore notifications listener:', err));
+
     return () => {
       unsubSettings();
       unsubEbooks();
@@ -475,6 +554,7 @@ Always be empathetic, gentle, uplifting, and supportive.`,
       unsubFeed();
       unsubPosts();
       unsubMembers();
+      unsubNotifs();
     };
   }, []);
 
@@ -896,6 +976,8 @@ Always be empathetic, gentle, uplifting, and supportive.`,
         activePushNotification,
         dismissPushNotification,
         broadcastPushNotification,
+        notificationsList,
+        deleteNotification,
         currentTab,
         setCurrentTab,
         adminSubSection,

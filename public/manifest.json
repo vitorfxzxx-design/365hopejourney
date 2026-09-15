@@ -1,16 +1,18 @@
 {
-  "short_name": "Health365",
-  "name": "Health365 — Members Area & Protocols",
+  "short_name": "365hopejourney",
+  "name": "365hopejourney — Faith, Hope & Daily Devotionals",
+  "description": "Daily Christian devotionals, scripture reflections, audio sanctuary and prayer community.",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍏</text></svg>",
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>",
       "type": "image/svg+xml",
-      "sizes": "192x192 512x512"
+      "sizes": "192x192 512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "/",
-  "background_color": "#ffffff",
-  "theme_color": "#22c55e",
+  "background_color": "#0f172a",
+  "theme_color": "#10b981",
   "display": "standalone",
   "orientation": "portrait"
 }

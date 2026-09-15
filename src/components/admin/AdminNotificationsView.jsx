@@ -4,16 +4,7 @@ import { useEbooks } from '../../context/EbookContext';
 import NotificationModal from './NotificationModal';
 
 export default function AdminNotificationsView({ onBack }) {
-  const { broadcastPushNotification } = useEbooks();
-
-  const [notifications, setNotifications] = useState(() => {
-    try {
-      const saved = localStorage.getItem('hopejourney_notifications');
-      return saved ? JSON.parse(saved) : [];
-    } catch (e) {
-      return [];
-    }
-  });
+  const { broadcastPushNotification, notificationsList = [], deleteNotification } = useEbooks();
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -21,15 +12,12 @@ export default function AdminNotificationsView({ onBack }) {
     if (broadcastPushNotification) {
       broadcastPushNotification(newNotif);
     }
-    const updated = [newNotif, ...notifications];
-    setNotifications(updated);
-    localStorage.setItem('hopejourney_notifications', JSON.stringify(updated));
   };
 
   const handleDeleteNotification = (id) => {
-    const updated = notifications.filter(n => n.id !== id);
-    setNotifications(updated);
-    localStorage.setItem('hopejourney_notifications', JSON.stringify(updated));
+    if (deleteNotification) {
+      deleteNotification(id);
+    }
   };
 
   const [resendingId, setResendingId] = useState(null);
@@ -78,7 +66,7 @@ export default function AdminNotificationsView({ onBack }) {
         </div>
 
         {/* Content Area */}
-        {notifications.length === 0 ? (
+        {notificationsList.length === 0 ? (
           <div className="bg-white rounded-3xl p-16 text-center border border-slate-200/80 shadow-xs flex flex-col items-center justify-center gap-3">
             <div className="w-14 h-14 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center mb-1">
               <Bell size={28} strokeWidth={1.5} />
@@ -100,7 +88,7 @@ export default function AdminNotificationsView({ onBack }) {
           </div>
         ) : (
           <div className="space-y-3">
-            {notifications.map((notif) => {
+            {notificationsList.map((notif) => {
               const isResending = resendingId === notif.id;
               return (
                 <div
