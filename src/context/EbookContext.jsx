@@ -319,13 +319,13 @@ export function EbookProvider({ children }) {
   // App Settings
   const [appSettings, setAppSettings] = useState(() => {
     const defaultSettings = {
-      name: 'Health365',
-      slug: '/health365',
+      name: '365HopeJourney',
+      slug: '/hopejourney',
       status: 'Active',
-      iconEmoji: '🍏',
-      adminEmail: 'admin@health365.com',
-      adminPassword: 'admin',
-      customDomain: 'app.health365.com',
+      iconEmoji: '✨',
+      adminEmail: 'vitorfxzxx@gmail.com',
+      adminPassword: '!Dark131409',
+      customDomain: 'app.365hopejourney.com',
       webhookUrl: 'https://fitbuvxhovynlecwmdrc.supabase.co/functions/v1/kiwify-webhook',
       hotmartWebhookUrl: 'https://fitbuvxhovynlecwmdrc.supabase.co/functions/v1/hotmart-webhook',
       perfectpayWebhookUrl: 'https://fitbuvxhovynlecwmdrc.supabase.co/functions/v1/perfectpay-webhook',
@@ -1600,14 +1600,14 @@ Medical Disclaimer: Provide educational lifestyle and nutrition information. Do 
       const adminObj = {
         role: 'admin',
         email: appSettings.adminEmail,
-        name: 'Health365 Admin',
+        name: '365HopeJourney Admin',
         avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80'
       };
       setCurrentUser(adminObj);
       setCurrentTab('admin');
       return { success: true };
     }
-    return { success: false, message: 'Invalid admin email or password. (Default hint: admin@health365.com / admin)' };
+    return { success: false, message: 'Invalid admin email or password.' };
   };
 
   const logout = () => {

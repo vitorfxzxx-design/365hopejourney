@@ -4,7 +4,7 @@ import { useEbooks } from '../../context/EbookContext';
 
 export default function AdminLoginView() {
   const { loginAsAdmin, appSettings } = useEbooks();
-  const [adminEmail, setAdminEmail] = useState('admin@health365.com');
+  const [adminEmail, setAdminEmail] = useState('vitorfxzxx@gmail.com');
   const [adminPassword, setAdminPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -55,7 +55,7 @@ export default function AdminLoginView() {
                   required
                   value={adminEmail}
                   onChange={(e) => setAdminEmail(e.target.value)}
-                  placeholder="admin@health365.com"
+                  placeholder="vitorfxzxx@gmail.com"
                   className="w-full text-xs text-slate-800 border border-slate-200 rounded-2xl pl-10 pr-4 py-3 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-hidden"
                 />
               </div>
