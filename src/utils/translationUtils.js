@@ -5,6 +5,30 @@
 
 const PORTUGUESE_DICTIONARY = [
   {
+    pt: 'O Guia Completo para Renovar Sua Fé, Encontrar Paz Interior e Fortalecer Sua Alma.',
+    en: 'The Complete Guide to Renew Your Faith, Find Inner Peace, and Strengthen Your Soul.'
+  },
+  {
+    pt: 'O Guia Completo para',
+    en: 'The Complete Guide to'
+  },
+  {
+    pt: 'Orações poderosas e versículos atemporais para blindar seu lar, mente e espírito.',
+    en: 'Powerful prayers and timeless verses to shield your home, mind, and spirit.'
+  },
+  {
+    pt: 'Orações poderosas para',
+    en: 'Powerful prayers for'
+  },
+  {
+    pt: 'Como acalmar o coração aflito e cultivar a serenidade diária.',
+    en: 'How to soothe an overwhelmed heart and cultivate daily serenity.'
+  },
+  {
+    pt: 'Como acalmar o coração',
+    en: 'How to soothe an overwhelmed heart'
+  },
+  {
     pt: 'Descubra como transformar sua rotina em uma caminhada diária de serenidade, confiança divina e paz inabalável.',
     en: 'Discover how to transform your daily routine into a path of deep serenity, divine trust, and unshakable inner calm.'
   },

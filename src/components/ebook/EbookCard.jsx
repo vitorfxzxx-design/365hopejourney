@@ -1,6 +1,7 @@
 import React from 'react';
 import { BookOpen, Lock, Clock } from 'lucide-react';
 import { useEbooks } from '../../context/EbookContext';
+import { translateResidualText } from '../../utils/translationUtils';
 
 export default function EbookCard({ ebook, onClick }) {
   const { checkEbookAccess } = useEbooks();
@@ -64,12 +65,12 @@ export default function EbookCard({ ebook, onClick }) {
       {/* Info Content */}
       <div className="p-3 flex-1 flex flex-col justify-between">
         <h3 className="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2">
-          {ebook.title}
+          {translateResidualText(ebook.title)}
         </h3>
 
         {ebook.subtitle && (
           <p className="text-[11px] text-slate-500 line-clamp-1 mt-1 font-normal">
-            {ebook.subtitle}
+            {translateResidualText(ebook.subtitle)}
           </p>
         )}
 
