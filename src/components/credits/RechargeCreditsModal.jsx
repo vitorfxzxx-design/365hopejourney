@@ -15,31 +15,31 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
 
   const plans = [
     {
-      id: '50',
-      amount: 50,
+      id: '30',
+      amount: 30,
       price: '$9.90',
       priceNum: 9.90,
-      perCredit: '$0.20 / credit',
+      perCredit: '$0.33 / credit',
       tag: null,
       saveTag: null
     },
     {
       id: '100',
       amount: 100,
-      price: '$14.90',
-      priceNum: 14.90,
-      perCredit: '$0.15 / credit',
+      price: '$19.90',
+      priceNum: 19.90,
+      perCredit: '$0.19 / credit',
       tag: 'MOST POPULAR',
-      saveTag: 'Save 25%'
+      saveTag: 'Save 40%'
     },
     {
-      id: '250',
-      amount: 250,
+      id: '200',
+      amount: 200,
       price: '$29.90',
       priceNum: 29.90,
-      perCredit: '$0.12 / credit',
+      perCredit: '$0.14 / credit',
       tag: 'BEST VALUE',
-      saveTag: 'Save 40%'
+      saveTag: 'Save 55%'
     }
   ];
 

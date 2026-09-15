@@ -9,17 +9,17 @@ export default function CreditsLandingView({ onBack }) {
 
   const plans = [
     {
-      id: '50',
+      id: '30',
       name: 'Starter Pack',
-      amount: 50,
+      amount: 30,
       price: '$9.90',
-      perCredit: '$0.20 / credit',
+      perCredit: '$0.33 / credit',
       tag: null,
       saveTag: null,
       popular: false,
-      checkoutUrl: 'https://pay.hotmart.com/?off=50credits',
+      checkoutUrl: 'https://pay.hotmart.com/?off=30credits',
       features: [
-        '50 AI Spiritual Mentor Messages',
+        '30 AI Spiritual Mentor Messages',
         'Direct Access to Prayer Reflections',
         'Instant Automatic Delivery to Account',
         'No Expiration Date'
@@ -29,10 +29,10 @@ export default function CreditsLandingView({ onBack }) {
       id: '100',
       name: 'Faith Growth Pack',
       amount: 100,
-      price: '$14.90',
-      perCredit: '$0.15 / credit',
+      price: '$19.90',
+      perCredit: '$0.19 / credit',
       tag: 'MOST POPULAR',
-      saveTag: 'Save 25%',
+      saveTag: 'Save 40%',
       popular: true,
       checkoutUrl: 'https://pay.hotmart.com/?off=100credits',
       features: [
@@ -45,17 +45,17 @@ export default function CreditsLandingView({ onBack }) {
       ]
     },
     {
-      id: '250',
+      id: '200',
       name: 'Sanctuary Master Pack',
-      amount: 250,
+      amount: 200,
       price: '$29.90',
-      perCredit: '$0.12 / credit',
+      perCredit: '$0.14 / credit',
       tag: 'BEST VALUE',
-      saveTag: 'Save 40%',
+      saveTag: 'Save 55%',
       popular: false,
-      checkoutUrl: 'https://pay.hotmart.com/?off=250credits',
+      checkoutUrl: 'https://pay.hotmart.com/?off=200credits',
       features: [
-        '250 AI Spiritual Mentor Messages',
+        '200 AI Spiritual Mentor Messages',
         'All Devotional Guides & Prayers',
         'Complete Peace & Anxiety Relief Audios',
         'Instant Automatic Delivery to Account',
