@@ -16,6 +16,7 @@ import MemberLoginView from './components/auth/MemberLoginView';
 import AdminLoginView from './components/auth/AdminLoginView';
 import TermsAndPrivacyView from './components/legal/TermsAndPrivacyView';
 import HelpSupportView from './components/legal/HelpSupportView';
+import CreditsLandingView from './components/credits/CreditsLandingView';
 import { Bell, X, Sparkles, ShieldAlert } from 'lucide-react';
 import RechargeCreditsModal from './components/credits/RechargeCreditsModal';
 
@@ -58,7 +59,16 @@ function MainAppContent() {
 
   const isLegalRoute = currentPath.includes('/terms') || currentPath.includes('/privacy') || window.location.hash.includes('terms') || window.location.hash.includes('privacy');
   const isHelpRoute = currentPath.includes('/help') || currentPath.includes('/support') || window.location.hash.includes('help') || window.location.hash.includes('support');
+  const isCreditsRoute = currentPath.includes('/credits') || window.location.hash.includes('credits');
   const isAdminRoute = currentPath.includes('/admin') || window.location.hash.includes('admin');
+
+  // If accessing public Credits Landing & Bonus page (/credits)
+  if (isCreditsRoute) {
+    return <CreditsLandingView onBack={() => {
+      window.history.pushState({}, '', '/');
+      setCurrentPath('/');
+    }} />;
+  }
 
   // If accessing public Help & Support page (/help)
   if (isHelpRoute) {
