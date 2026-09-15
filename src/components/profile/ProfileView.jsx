@@ -869,12 +869,12 @@ export default function ProfileView() {
 
             <div className="space-y-2.5 pt-1">
               <a
-                href="mailto:support@365hopejourney.com?subject=365hopejourney Support Request"
+                href="mailto:corefysystems@gmail.com?subject=365hopejourney Support Request"
                 className="w-full bg-slate-50 hover:bg-emerald-50/70 border border-slate-200/80 hover:border-emerald-200 rounded-2xl p-3.5 flex items-center justify-between text-xs font-bold text-slate-800 transition-colors"
               >
                 <div className="flex items-center gap-2.5">
                   <Mail size={16} className="text-emerald-600" />
-                  <span>support@365hopejourney.com</span>
+                  <span>corefysystems@gmail.com</span>
                 </div>
                 <ExternalLink size={14} className="text-slate-400" />
               </a>

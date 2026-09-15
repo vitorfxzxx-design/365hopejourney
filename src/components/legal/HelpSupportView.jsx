@@ -3,7 +3,7 @@ import { Mail, HelpCircle, ArrowLeft, CheckCircle2, Copy, BookOpen, Camera, Head
 
 export default function HelpSupportView({ onBack }) {
   const [copied, setCopied] = useState(false);
-  const supportEmail = 'support@365hopejourney.com';
+  const supportEmail = 'corefysystems@gmail.com';
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(supportEmail);
@@ -35,7 +35,7 @@ export default function HelpSupportView({ onBack }) {
     {
       icon: Shield,
       q: 'How can I update my profile or delete my account?',
-      a: 'Go to the Profile tab to update your display name and photo. To request account deletion or data export, you can do so in Settings or by contacting support@365hopejourney.com.'
+      a: 'Go to the Profile tab to update your display name and photo. To request account deletion or data export, you can do so in Settings or by contacting corefysystems@gmail.com.'
     }
   ];
 

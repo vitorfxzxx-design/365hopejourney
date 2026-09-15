@@ -115,7 +115,7 @@ export default function TermsAndPrivacyView({ onBack }) {
             <section className="space-y-2">
               <h2 className="text-base font-extrabold text-slate-900">6. Contact Information</h2>
               <p>
-                If you have questions regarding these Terms, please reach out to our team at <strong>support@365hopejourney.com</strong>.
+                If you have questions regarding these Terms, please reach out to our team at <strong>corefysystems@gmail.com</strong>.
               </p>
             </section>
           </div>
@@ -159,7 +159,7 @@ export default function TermsAndPrivacyView({ onBack }) {
             <section className="space-y-2">
               <h2 className="text-base font-extrabold text-slate-900">4. Right to Erasure & GDPR Compliance</h2>
               <p>
-                Users residing in the European Union (GDPR), California (CCPA), or worldwide may request complete erasure of their data at any moment by using the "Delete Account" button in App Settings or by contacting <strong>support@365hopejourney.com</strong>.
+                Users residing in the European Union (GDPR), California (CCPA), or worldwide may request complete erasure of their data at any moment by using the "Delete Account" button in App Settings or by contacting <strong>corefysystems@gmail.com</strong>.
               </p>
             </section>
 
