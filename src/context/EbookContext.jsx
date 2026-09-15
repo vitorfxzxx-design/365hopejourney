@@ -828,17 +828,50 @@ Your mission is to provide warm, comforting, and deeply inspiring spiritual guid
     }
   };
 
-  const likePost = async (id) => {
+  // Community post likes
+  const [likedPostsMap, setLikedPostsMap] = useState(() => {
+    try {
+      const saved = localStorage.getItem('hopejourney_liked_posts_map');
+      return saved ? JSON.parse(saved) : {};
+    } catch (e) {
+      return {};
+    }
+  });
+
+  const isPostLiked = (id) => !!likedPostsMap[id];
+
+  const toggleLikePost = async (id) => {
+    const wasLiked = !!likedPostsMap[id];
+    const newLiked = !wasLiked;
+    const newMap = { ...likedPostsMap, [id]: newLiked };
+    setLikedPostsMap(newMap);
+    try {
+      localStorage.setItem('hopejourney_liked_posts_map', JSON.stringify(newMap));
+    } catch (e) {}
+
     setPosts(prev => prev.map(p => {
       if (p.id === id) {
-        const updated = { ...p, likes: (p.likes || 0) + 1 };
+        const curLikes = Number(p.likes) || 0;
+        const newLikes = newLiked ? curLikes + 1 : Math.max(0, curLikes - 1);
+        const updated = { ...p, likes: newLikes };
         if (db) {
-          updateDoc(doc(db, 'community_posts', id), { likes: updated.likes }).catch(() => {});
+          updateDoc(doc(db, 'community_posts', id), { likes: newLikes }).catch(() => {});
         }
         return updated;
       }
       return p;
     }));
+  };
+
+  const likePost = async (id) => {
+    toggleLikePost(id);
+  };
+
+  const updatePost = async (id, updatedFields) => {
+    setPosts(prev => prev.map(p => p.id === id ? { ...p, ...updatedFields } : p));
+    if (db) {
+      await updateDoc(doc(db, 'community_posts', id), updatedFields);
+    }
   };
 
   const deletePost = async (id) => {
@@ -956,11 +989,18 @@ Your mission is to provide warm, comforting, and deeply inspiring spiritual guid
         updateFeedItem,
         deleteFeedItem,
         posts,
+        setPosts,
         addPost,
         likePost,
+        toggleLikePost,
+        isPostLiked,
+        updatePost,
         approvePost,
         rejectPost,
         deletePost,
+        addCommunityPost: addPost,
+        updateCommunityPost: updatePost,
+        deleteCommunityPost: deletePost,
         addComment,
         members,
         addMember,

@@ -269,7 +269,7 @@ export default function CommunityView() {
           </div>
         ) : (
           sortedPosts.map((post) => {
-            const liked = isPostLiked(post.id);
+            const liked = typeof isPostLiked === 'function' ? isPostLiked(post.id) : false;
             return (
               <div
                 key={post.id}
@@ -322,7 +322,11 @@ export default function CommunityView() {
                 <div className="flex items-center pt-1 text-xs">
                   <button
                     type="button"
-                    onClick={() => toggleLikePost(post.id)}
+                    onClick={() => {
+                      if (typeof toggleLikePost === 'function') {
+                        toggleLikePost(post.id);
+                      }
+                    }}
                     className={`flex items-center gap-1.5 transition-all py-1 px-2 -ml-2 rounded-xl active:scale-110 ${
                       liked
                         ? 'text-rose-500 font-bold bg-rose-50/50'
