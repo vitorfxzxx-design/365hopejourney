@@ -4,7 +4,8 @@ import {
   Edit, ExternalLink, Copy, Check, Plus, Trash2, ArrowLeft, Shield, Sparkles, LogOut,
   Layers
 } from 'lucide-react';
-import { supabase } from '../../lib/supabase';
+import { db } from '../../lib/firebase';
+import { collection, query, orderBy, limit, getDocs } from 'firebase/firestore';
 import { useEbooks } from '../../context/EbookContext';
 import AdminProductsView from './AdminProductsView';
 import AdminFeedView from './AdminFeedView';
@@ -338,29 +339,25 @@ function WebhookLogsSection() {
   const fetchWebhookLogs = async () => {
     setIsRefreshing(true);
     try {
-      const { data, error } = await supabase
-        .from('webhook_logs')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .limit(50);
-
-      if (!error) {
-        if (data && data.length > 0) {
-          const formatted = data.map(item => ({
-            id: item.id,
-            platform: item.platform || (item.url?.includes('hotmart') ? 'Hotmart' : (item.url?.includes('perfectpay') ? 'PerfectPay' : 'Webhook')),
-            event: item.event || item.event_type || 'sale_approved',
-            status: item.status || 'Aprovado',
-            email: item.customer_email || item.email || item.payload?.customer?.email || item.payload?.buyer?.email || '-',
-            product: item.product_name || item.product || '-',
-            date: item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : new Date().toLocaleString('pt-BR'),
-            payload: item.payload || item.body || item
-          }));
+      if (db) {
+        const q = query(collection(db, 'webhook_logs'), orderBy('created_at', 'desc'), limit(50));
+        const snap = await getDocs(q);
+        if (!snap.empty) {
+          const formatted = snap.docs.map(doc => {
+            const item = doc.data();
+            return {
+              id: doc.id,
+              platform: item.platform || 'Webhook',
+              event: item.event || 'sale_approved',
+              status: item.status || 'Aprovado',
+              email: item.customer_email || item.email || '-',
+              product: item.product_name || item.product || '-',
+              date: item.created_at || new Date().toLocaleString('pt-BR'),
+              payload: item.payload || item
+            };
+          });
           setLogs(formatted);
-          localStorage.setItem('health365_webhook_logs', JSON.stringify(formatted));
-        } else {
-          setLogs([]);
-          localStorage.removeItem('health365_webhook_logs');
+          localStorage.setItem('hopejourney_webhook_logs', JSON.stringify(formatted));
         }
       }
     } catch (err) {

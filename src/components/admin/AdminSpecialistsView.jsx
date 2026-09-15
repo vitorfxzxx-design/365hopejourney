@@ -5,7 +5,8 @@ import {
   Bot, Sliders, Save, Check, Key, BookOpen, AlertCircle
 } from 'lucide-react';
 import { useEbooks } from '../../context/EbookContext';
-import { supabase } from '../../lib/supabase';
+import { db } from '../../lib/firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 export default function AdminSpecialistsView({ onBack }) {
   const {
@@ -72,34 +73,14 @@ export default function AdminSpecialistsView({ onBack }) {
   const refreshBalances = async () => {
     setIsRefreshing(true);
     try {
-      const { data: remoteMembers } = await supabase.from('members').select('*');
-      if (remoteMembers && remoteMembers.length > 0) {
-        const remoteCreditsMap = {};
-        remoteMembers.forEach(m => {
-          if (m && m.email) {
-            const stats = parseMemberStatsFromProducts(m.products);
-            if (stats.currentCredits !== undefined || stats.totalPurchasedCredits > 0) {
-              remoteCreditsMap[m.email.toLowerCase()] = {
-                currentCredits: stats.currentCredits !== undefined ? stats.currentCredits : 20,
-                totalPurchasedCredits: stats.totalPurchasedCredits || 0,
-                totalSpentUSD: stats.totalSpentUSD || 0,
-                lastPurchaseDate: stats.lastPurchaseDate || m.date || '9/8/2026'
-              };
-            }
+      if (db) {
+        const snap = await getDocs(collection(db, 'members'));
+        if (!snap.empty) {
+          const remoteMembers = snap.docs.map(d => d.data());
+          if (setMembers) {
+            setMembers(remoteMembers);
+            localStorage.setItem('hopejourney_members', JSON.stringify(remoteMembers));
           }
-        });
-        if (Object.keys(remoteCreditsMap).length > 0 && setUserCreditsMap) {
-          setUserCreditsMap(prev => ({ ...prev, ...remoteCreditsMap }));
-        }
-        if (setMembers) {
-          setMembers(prev => {
-            const map = new Map();
-            (prev || []).forEach(m => m?.email && map.set(m.email.trim().toLowerCase(), m));
-            remoteMembers.forEach(m => m?.email && map.set(m.email.trim().toLowerCase(), m));
-            const merged = Array.from(map.values());
-            localStorage.setItem('health365_members', JSON.stringify(merged));
-            return merged;
-          });
         }
       }
     } catch (e) {
@@ -111,26 +92,6 @@ export default function AdminSpecialistsView({ onBack }) {
 
   useEffect(() => {
     refreshBalances();
-    const interval = setInterval(refreshBalances, 2500);
-
-    const handleFocus = () => refreshBalances();
-    window.addEventListener('focus', handleFocus);
-
-    let channel;
-    try {
-      channel = supabase
-        .channel('admin_specialists_realtime')
-        .on('postgres_changes', { event: '*', schema: 'public', table: 'members' }, () => {
-          refreshBalances();
-        })
-        .subscribe();
-    } catch (e) {}
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('focus', handleFocus);
-      if (channel) supabase.removeChannel(channel);
-    };
   }, []);
 
   const [specialistsTabActive, setSpecialistsTabActive] = useState(() => {

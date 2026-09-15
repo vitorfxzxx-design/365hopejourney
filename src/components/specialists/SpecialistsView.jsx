@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Send, Bot, Sparkles, User, CheckCircle2, AlertCircle, Zap, Plus, X, Loader2 } from 'lucide-react';
 import { useEbooks } from '../../context/EbookContext';
-import { supabase } from '../../lib/supabase';
+import { db } from '../../lib/firebase';
+import { collection, doc, setDoc, query, where, orderBy, onSnapshot, getDocs } from 'firebase/firestore';
 import { generateSpecialistAIResponse } from '../../lib/geminiService';
 
 export default function SpecialistsView() {
@@ -14,34 +15,34 @@ export default function SpecialistsView() {
   // Read the active member profile (name & avatar)
   const memberProfile = (() => {
     try {
-      const saved = localStorage.getItem('health365_user_profile');
+      const saved = localStorage.getItem('hopejourney_user_profile');
       if (saved) return JSON.parse(saved);
     } catch (e) {}
     return {
-      name: currentUser?.name || 'Camila',
+      name: currentUser?.name || 'Membro',
       avatar: currentUser?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'
     };
   })();
 
-  const userEmail = currentUser?.email || 'user@health365.com';
-  const rawFirstName = memberProfile.name && memberProfile.name.toLowerCase() !== 'health365' && memberProfile.name.toLowerCase() !== 'member'
+  const userEmail = currentUser?.email || 'membro@gmail.com';
+  const rawFirstName = memberProfile.name && memberProfile.name.toLowerCase() !== 'member' && memberProfile.name.toLowerCase() !== 'membro'
     ? memberProfile.name.split(/\s+/)[0]
-    : (currentUser?.name && currentUser.name.toLowerCase() !== 'health365' ? currentUser.name.split(/\s+/)[0] : 'Camila');
-  const userFirstName = rawFirstName ? rawFirstName.charAt(0).toUpperCase() + rawFirstName.slice(1).toLowerCase() : 'Camila';
+    : (currentUser?.name && currentUser.name.toLowerCase() !== 'member' ? currentUser.name.split(/\s+/)[0] : 'Irmão(ã)');
+  const userFirstName = rawFirstName ? rawFirstName.charAt(0).toUpperCase() + rawFirstName.slice(1).toLowerCase() : 'Irmão(ã)';
   const userAvatar = memberProfile.avatar || currentUser?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80';
-  const aiDoctorAvatar = 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=80';
+  const aiDoctorAvatar = 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=200&q=80';
 
   const defaultWelcomeMsg = {
     id: 'msg-welcome',
     sender: 'ai',
-    text: `Hello ${userFirstName}! 👋 I am your Health365 Specialist. How can I guide your diet, autophagy, hydration, or sleep protocol today?`,
-    time: 'Just now'
+    text: `Olá ${userFirstName}! ✨ Sou o seu Guia Espiritual no 365hopejourney. Como posso acolher suas orações, dúvidas ou reflexões no dia de hoje?`,
+    time: 'Agora'
   };
 
   const [messages, setMessages] = useState(() => {
     try {
-      const storageKey = `health365_ai_specialist_chat_${userEmail}`;
-      const saved = localStorage.getItem(storageKey) || localStorage.getItem('health365_ai_specialist_chat');
+      const storageKey = `hopejourney_ai_chat_${userEmail}`;
+      const saved = localStorage.getItem(storageKey);
       return saved ? JSON.parse(saved) : [defaultWelcomeMsg];
     } catch (e) {
       return [defaultWelcomeMsg];

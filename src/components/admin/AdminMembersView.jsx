@@ -3,11 +3,10 @@ import {
   ArrowLeft, Plus, Search, Mail, Edit2, Trash2, Ban, CheckCircle2, UserCheck
 } from 'lucide-react';
 import { useEbooks } from '../../context/EbookContext';
-import { supabase } from '../../lib/supabase';
 import MemberModal from './MemberModal';
 
 export default function AdminMembersView({ onBack }) {
-  const { members, setMembers, deleteMember } = useEbooks();
+  const { members, setMembers, addMember, updateMember, deleteMember } = useEbooks();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('All'); // 'All' | 'Active' | 'Blocked' | 'Pending'
@@ -46,37 +45,20 @@ export default function AdminMembersView({ onBack }) {
 
   const handleToggleBlock = async (member) => {
     const newStatus = (member.status === 'Blocked' || member.status === 'Bloqueado') ? 'Active' : 'Blocked';
-    const updated = allMembers.map(m => m.id === member.id ? { ...m, status: newStatus } : m);
-    setMembers(updated);
-    localStorage.setItem('health365_members', JSON.stringify(updated));
-    try {
-      if (member.email) {
-        await supabase.from('members').update({ status: newStatus }).eq('email', member.email);
-      }
-    } catch (e) {}
+    if (updateMember) {
+      updateMember(member.id, { status: newStatus });
+    }
   };
 
   const handleDeleteMember = async (memberId) => {
-    if (window.confirm('Are you sure you want to delete this member?')) {
-      const target = allMembers.find(m => m.id === memberId);
-      const updated = allMembers.filter(m => m.id !== memberId);
-      setMembers(updated);
-      localStorage.setItem('health365_members', JSON.stringify(updated));
+    if (window.confirm('Tem certeza de que deseja remover este membro?')) {
       if (deleteMember) {
         deleteMember(memberId);
-      }
-      if (target?.email) {
-        try {
-          await supabase.from('members').delete().eq('email', target.email);
-        } catch (e) {
-          console.warn('Supabase member delete:', e);
-        }
       }
     }
   };
 
   const handleSaveMember = async (formData) => {
-    let updated;
     const cleanEmail = (formData.email || '').trim().toLowerCase();
     const formattedData = {
       ...formData,
@@ -84,34 +66,12 @@ export default function AdminMembersView({ onBack }) {
     };
 
     if (editingMember) {
-      updated = allMembers.map(m => m.id === editingMember.id ? { ...m, ...formattedData } : m);
-      setMembers(updated);
-      localStorage.setItem('health365_members', JSON.stringify(updated));
-      try {
-        if (editingMember.email) {
-          await supabase.from('members').upsert([formattedData], { onConflict: 'email' });
-        }
-      } catch (e) {
-        console.warn('Supabase member update notice:', e);
+      if (updateMember) {
+        updateMember(editingMember.id, formattedData);
       }
     } else {
-      const newMember = {
-        id: 'm-' + Date.now(),
-        ...formattedData
-      };
-      // Check if email already exists in local list to avoid duplicates
-      const existsIndex = allMembers.findIndex(m => (m.email || '').trim().toLowerCase() === cleanEmail);
-      if (existsIndex >= 0) {
-        updated = allMembers.map((m, idx) => idx === existsIndex ? { ...m, ...formattedData } : m);
-      } else {
-        updated = [newMember, ...allMembers];
-      }
-      setMembers(updated);
-      localStorage.setItem('health365_members', JSON.stringify(updated));
-      try {
-        await supabase.from('members').upsert([newMember], { onConflict: 'email' });
-      } catch (e) {
-        console.warn('Supabase member insert notice:', e);
+      if (addMember) {
+        addMember(formattedData);
       }
     }
   };

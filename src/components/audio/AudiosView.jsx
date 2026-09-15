@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Headphones, Play, Pause } from 'lucide-react';
-import { useEbooks, DEFAULT_HEALTH365_AUDIO_COVER } from '../../context/EbookContext';
+import { useEbooks, DEFAULT_HOPEJOURNEY_AUDIO_COVER } from '../../context/EbookContext';
 import { getAudioFromStorage } from '../../utils/audioStorage';
 
 // Helper to format seconds to M:SS (e.g. 195 -> 3:15)

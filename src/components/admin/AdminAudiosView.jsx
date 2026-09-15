@@ -2,9 +2,10 @@ import React, { useState, useRef } from 'react';
 import {
   ArrowLeft, Headphones, Music, Upload, Save, Trash2, Play, Pause, Volume2, Edit2, X, Check, Image as ImageIcon
 } from 'lucide-react';
-import { useEbooks, DEFAULT_HEALTH365_AUDIO_COVER } from '../../context/EbookContext';
+import { useEbooks } from '../../context/EbookContext';
 import { saveAudioToStorage, getAudioFileDuration, getAudioFromStorage } from '../../utils/audioStorage';
-import { supabase } from '../../lib/supabase';
+import { storage } from '../../lib/firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export default function AdminAudiosView({ onBack }) {
   const { audios, addAudio, updateAudio, deleteAudio, appSettings, updateAppSettings } = useEbooks();

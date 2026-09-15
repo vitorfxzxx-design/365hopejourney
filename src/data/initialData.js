@@ -1,262 +1,171 @@
 export const INITIAL_EBOOKS = [
-  // SUPPLEMENTS
-  {
-    id: 'prod-sup-1',
-    title: 'Vitalix Gold – Liver Healing',
-    subtitle: 'Advanced supplement for liver regeneration and deep detox.',
-    coverImage: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80',
-    category: 'Supplement',
-    type: 'Main',
-    releaseType: 'Manual',
-    salesPageUrl: 'https://vitalixgold.com/offer',
-    tag: 'Supplement',
-    isActive: true,
-    description: 'Exclusive formula with bioactive nutrients for deep liver cellular repair.',
-    chapters: []
-  },
-  {
-    id: 'prod-sup-2',
-    title: 'Prostiv – Prostate Health',
-    subtitle: 'Natural formula supporting prostate and urinary tract health.',
-    coverImage: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=400&q=80',
-    category: 'Supplement',
-    type: 'Main',
-    releaseType: 'Manual',
-    salesPageUrl: 'https://prostiv.com/offer',
-    tag: 'Supplement',
-    isActive: true,
-    description: 'Essential micro-nutrients for prostate inflammation control and cell regulation.',
-    chapters: []
-  },
-
-  // MODULES / CONTENTS
   {
     id: 'ebook-1',
-    title: 'Ancestral Diet – Natural Cure',
-    subtitle: 'Comfort Food for Real Health. Honest meals for your everyday life.',
-    coverImage: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80',
+    title: 'Jornada da Esperança – 365 Dias',
+    subtitle: 'O Guia Completo para Renovar a Fé, Encontrar Paz e Fortalecer o Espírito.',
+    coverImage: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=600&q=80',
     category: 'Content',
     type: 'Main',
     releaseType: 'Immediate',
-    salesPageUrl: 'https://health365.com/ancestral-diet',
+    salesPageUrl: 'https://365hopejourney.com/jornada',
     tag: 'Released',
     isActive: true,
-    description: 'Discover the truth about ancestral nutrition and how it can transform your health and vitality forever.',
+    description: 'Descubra como transformar sua rotina em uma caminhada diária de serenidade, confiança divina e paz inabalável.',
     chapters: [
       {
         id: 'ch-1-1',
         number: 1,
-        title: 'Part 1 – Breaking Health Beliefs',
-        subtitle: 'The Big Lie About Pain, Disease, and Aging',
-        thumbnail: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80',
-        gammaUrl: 'https://gamma.app/embed/m6l78s28u7u8d00',
+        title: 'Parte 1 – O Despertar da Fé Interior',
+        subtitle: 'Silenciando os ruídos do mundo para ouvir a voz divina',
+        thumbnail: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=300&q=80',
+        gammaUrl: '',
         status: 'released',
         isCompleted: true,
         previewContent: {
-          headline: 'The Big Lie About Pain, Disease, and Aging',
-          subheadline: 'Discover the truth that can transform your health and quality of life forever.',
-          body: `What You Believe Is Wrong\n\nThe Lies We Are Told:\n• Pain is normal after 40\n• Genetics dictate 90% of your health\n• Medication is the only long-term solution\n\nThe Truth:\nYour body was designed to heal itself when given the appropriate ancestral fuel.`
+          headline: 'O Despertar da Fé Interior',
+          subheadline: 'Como cultivar a serenidade diante das tempestades diárias.',
+          body: `A verdadeira paz não vem da ausência de problemas, mas da presença viva da esperança em seu coração.\n\nPrincípios Fundamentais:\n• Acalmar a mente ansiosa através da oração consciente\n• Reconhecer os sinais de renovação em cada amanhecer\n• Entregar o controle e descansar na providência divina.`
         }
       },
       {
         id: 'ch-1-2',
         number: 2,
-        title: 'Part 2 – Inflammation Begins in the Gut',
-        subtitle: 'Restoring gut barrier and microbiome naturally',
-        thumbnail: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=300&q=80',
+        title: 'Parte 2 – O Poder da Gratidão Contínua',
+        subtitle: 'Como a gratidão abre portas para bênçãos e milagres cotidianos',
+        thumbnail: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=300&q=80',
         gammaUrl: '',
         status: 'released',
         isCompleted: false,
         previewContent: {
-          headline: 'Inflammation Begins in the Gut',
-          subheadline: 'How the gut-immune connection dictates whole-body inflammation.',
-          body: `Understanding leaky gut, zonulin spikes, and how real ancestral fats calm internal chronic inflammation.`
+          headline: 'A Frequência da Gratidão',
+          subheadline: 'Transformando sua perspectiva e atraindo leveza para sua jornada.',
+          body: `Quando você agradece pelo que já tem, seu coração se torna um solo fértil para novos começos e curas emocionais profundas.`
         }
       },
       {
         id: 'ch-1-3',
         number: 3,
-        title: 'Part 3 – The Biggest Poisons of Modern Nutrition',
-        subtitle: 'Seed oils, refined sugars, and anti-nutrients',
-        thumbnail: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=300&q=80',
+        title: 'Parte 3 – Libertação Emocional e Cura da Alma',
+        subtitle: 'Superando mágoas, dores do passado e acolhendo o perdão',
+        thumbnail: 'https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=300&q=80',
         gammaUrl: '',
         status: 'released',
         isCompleted: false,
         previewContent: {
-          headline: 'The Modern Industrial Food Trap',
-          subheadline: 'Eliminating the hidden triggers in grocery store foods.',
-          body: `Industrial seed oils (canola, soybean, corn), high fructose corn syrup and processed emulsifiers.`
+          headline: 'O Bálsamo do Perdão',
+          subheadline: 'Soltando as correntes do ressentimento para viver com leveza.',
+          body: `Perdoar não é esquecer ou justificar o erro alheio, mas libertar a si mesmo da prisão do passado e permitir que o amor divino cure suas feridas.`
         }
       },
       {
         id: 'ch-1-4',
         number: 4,
-        title: 'Part 4 – Ancient Nutrition for Healing Diseases',
-        subtitle: 'Bioavailable proteins, animal fats, and micro-nutrients',
-        thumbnail: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80',
+        title: 'Parte 4 – Propósito Divino & Caminhada Diária',
+        subtitle: 'Alinhando suas decisões aos propósitos mais elevados da vida',
+        thumbnail: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=300&q=80',
         gammaUrl: '',
         status: 'released',
         isCompleted: false,
         previewContent: {
-          headline: 'Fueling Your Cells',
-          subheadline: 'Nutrient-dense foods that historical populations thrived on.',
-          body: `Ruminant meats, organ meats, pasture-raised eggs, bone broth and mineral-rich salt.`
+          headline: 'Vivendo com Sentido e Direção',
+          subheadline: 'Como identificar seu chamado e ser luz no caminho dos outros.',
+          body: `Cada passo dado com fé constrói um legado de amor, compaixão e transformação para você e para sua família.`
         }
-      },
-      {
-        id: 'ch-1-5',
-        number: 5,
-        title: 'Part 5 – Simple Protocol for a Pain-Free Life',
-        subtitle: 'Content not available',
-        thumbnail: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=300&q=80',
-        gammaUrl: '',
-        status: 'locked',
-        isCompleted: false,
-        previewContent: null
-      },
-      {
-        id: 'ch-1-6',
-        number: 6,
-        title: 'Part 6 – AI Testing & Advanced Protocols',
-        subtitle: 'Content not available',
-        thumbnail: 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=300&q=80',
-        gammaUrl: '',
-        status: 'locked',
-        isCompleted: false,
-        previewContent: null
       }
     ]
   },
   {
     id: 'ebook-2',
-    title: 'Ancestral Menu',
-    subtitle: 'Delicious, nourishing and anti-inflammatory weekly recipes.',
-    coverImage: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80',
+    title: 'Salmos & Decretos de Proteção',
+    subtitle: 'Orações poderosas para blindar seu lar, sua mente e seu coração.',
+    coverImage: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80',
     category: 'Content',
     type: 'Main',
     releaseType: 'Immediate',
-    salesPageUrl: 'https://health365.com/menu',
+    salesPageUrl: 'https://365hopejourney.com/salmos',
     tag: 'Released',
     isActive: true,
-    description: 'Complete anti-inflammatory meal plans designed for easy daily preparation.',
+    description: 'Um refúgio de paz com os Salmos mais reconfortantes comentados e orações diárias de proteção.',
     chapters: [
       {
         id: 'ch-2-1',
         number: 1,
-        title: 'Module 1 – High-Energy Breakfasts',
-        subtitle: 'Gluten-free, sugar-free stable energy meals',
-        thumbnail: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=300&q=80',
+        title: 'Salmo 91 – O Refúgio Sob as Asas do Altíssimo',
+        subtitle: 'Oração de cobertura e escudo espiritual contra todo o mal',
+        thumbnail: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=300&q=80',
         gammaUrl: '',
         status: 'released',
-        isCompleted: true,
+        isCompleted: false,
         previewContent: {
-          headline: 'Start Your Day with Stable Energy',
-          subheadline: 'Pasture-raised eggs, avocado, grass-fed butter, and clean coffee.',
-          body: 'Learn how to break your fast without triggering insulin spikes.'
+          headline: 'Sob a Proteção Divina',
+          subheadline: 'Aquele que habita no esconderijo do Altíssimo descansará seguro.',
+          body: `O Salmo 91 é a declaração máxima de confiança e refúgio em momentos de incerteza e aflição.`
         }
       },
       {
         id: 'ch-2-2',
         number: 2,
-        title: 'Module 2 – Quick 15-Minute Lunches',
-        subtitle: 'Flavorful meals for busy daily schedules',
-        thumbnail: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=300&q=80',
+        title: 'Salmo 23 – O Senhor é Meu Pastor',
+        subtitle: 'Nada me faltará: paz, provisão e águas tranquilas',
+        thumbnail: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=300&q=80',
         gammaUrl: '',
         status: 'released',
         isCompleted: false,
         previewContent: {
-          headline: 'Practical and Nutrient-Dense Lunch',
-          subheadline: 'One-pan and one-skillet preparations in minutes.',
-          body: 'How to build meals rich in highly bioavailable protein and essential minerals.'
+          headline: 'Águas de Descanso',
+          subheadline: 'Encontrando repouso e refrigério para a alma cansada.',
+          body: `Deixe o Bom Pastor conduzir seus passos por caminhos de justiça e paz todos os dias de sua vida.`
         }
       }
     ]
   },
   {
     id: 'ebook-3',
-    title: 'Protocol – The End of Chronic Pain',
-    subtitle: 'Step by step recovery blueprint for joint and muscular inflammation.',
+    title: 'Paz na Ansiedade – Meditação & Oração',
+    subtitle: 'Como acalmar o coração aflito e cultivar serenidade dia após dia.',
     coverImage: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80',
     category: 'Content',
     type: 'Main',
     releaseType: 'Immediate',
-    salesPageUrl: 'https://health365.com/chronic-pain',
+    salesPageUrl: 'https://365hopejourney.com/ansiedade',
     tag: 'Released',
     isActive: true,
-    description: 'Clinical protocol for joint regeneration and systemic chronic inflammation relief.',
-    chapters: [
-      {
-        id: 'ch-3-1',
-        number: 1,
-        title: 'Part 1 – Systemic De-inflammation',
-        subtitle: 'The first 7 days of the protocol',
-        thumbnail: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=300&q=80',
-        gammaUrl: '',
-        status: 'released',
-        isCompleted: false,
-        previewContent: {
-          headline: 'Phase 1: The Inflammatory Reset',
-          subheadline: 'Eliminate acute triggers in the first 48 hours.',
-          body: 'Electrolyte hydration, seed oil elimination, and liver detoxification support.'
-        }
-      }
-    ]
-  },
-  {
-    id: 'ebook-4',
-    title: 'Protocol – Diabetes Control',
-    subtitle: 'Reversing insulin resistance and controlling blood glucose naturally.',
-    coverImage: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&q=80',
-    category: 'Content',
-    type: 'Main',
-    releaseType: 'Immediate',
-    salesPageUrl: 'https://health365.com/diabetes',
-    tag: 'Released',
-    isActive: true,
-    description: 'Master insulin sensitivity and blood glucose with strategic ancestral nutrition.',
-    chapters: [
-      {
-        id: 'ch-4-1',
-        number: 1,
-        title: 'Part 1 – The Key to Insulin Sensitivity',
-        subtitle: 'Understanding cellular response to carbohydrates',
-        thumbnail: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=300&q=80',
-        gammaUrl: '',
-        status: 'released',
-        isCompleted: false,
-        previewContent: {
-          headline: 'Master Insulin',
-          subheadline: 'Lower blood sugar spikes without hunger or restrictive starvation.',
-          body: 'Food sequence strategies, post-meal walks, and gentle intermittent fasting.'
-        }
-      }
-    ]
+    description: 'Técnicas espirituais e práticas respiratórias de contemplação para dissolver o medo e a angústia.',
+    chapters: []
   }
 ];
 
 export const INITIAL_FEED = [
   {
     id: 'feed-1',
-    title: '🌿 Welcome to Health365 🌿',
-    subtitle: 'A new chapter in your life starts here.',
-    content: `Health365 is not just an app.
-It's a space to open your mind, step outside the bubble of an industry that profits from illness, and learn how to take care of your body in a natural, conscious, and consistent way.
+    title: '✨ Bem-vindo ao 365hopejourney ✨',
+    subtitle: 'Sua jornada diária de fé, paz e renovação interior começa aqui.',
+    content: `O 365hopejourney foi criado para ser o seu santuário diário de esperança e conexão espiritual.
 
-Here you will find:
-📘 Practical and educational eBooks
-🥗 Content about natural nutrition
-🌱 Natural supplements to support your body
-👥 An active community with real people and real results
+Aqui você encontrará:
+• 📖 E-books e Guias de Aprofundamento Espiritual
+• 🎧 Áudios de Meditação Guiada e Orações
+• 🕊️ Conselheiro Espiritual IA para reflexões personalizadas
+• 🤝 Comunidade de Membros para compartilhar intenções e orações
 
-The idea is simple:
-to stop merely treating symptoms and start giving your body what it truly needs to function better—with smarter and more consistent habits.
-
-📩 Pay attention to the newsletters sent to your email.
-There you will receive:
-• Important announcements
-• Weekly updates
-• Exclusive content`,
-    date: '15/03/2026',
+Que a cada dia você encontre paz e direção para a sua vida!`,
+    image: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=800&q=80',
+    category: 'Reflexões',
+    author: 'Equipe 365hopejourney',
+    read_time: '2 min',
+    date: 'Hoje',
+    status: 'Active'
+  },
+  {
+    id: 'feed-2',
+    title: '🕊️ Mensagem do Dia: Descanse na Confiança',
+    subtitle: 'Entregue as preocupações do amanhã e foque nas bênçãos de hoje.',
+    content: `Não se preocupe excessivamente com o que você não pode controlar. Faça o seu melhor e confie que o que é para ser seu encontrará o caminho até a sua vida no tempo certo.`,
+    image: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=800&q=80',
+    category: 'Reflexões',
+    author: 'Guia Espiritual',
+    read_time: '1 min',
+    date: 'Hoje',
     status: 'Active'
   }
 ];
