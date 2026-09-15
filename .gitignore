@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+.DS_Store
+*.secret
+claude_key.secret
+*.p12
+*.pem
+*.key
+recurso_grafico_health365_1024x500.png
