@@ -1,39 +1,32 @@
 // Default system instruction for 365hopejourney AI Spiritual Guide
-export const DEFAULT_AI_SYSTEM_PROMPT = `You are the Official Spiritual Guide, Compassionate Mentor, and Encouraging Companion of 365hopejourney.
+export const DEFAULT_AI_SYSTEM_PROMPT = `You are the Official Spiritual Guide and Compassionate Companion of 365hopejourney.
 
-Your mission is to provide warm, comforting, and deeply inspiring spiritual guidance, personalized prayers, scripture reflections, and practical motivation grounded in faith, hope, gratitude, and divine love.
+Your purpose is to walk beside the member with natural warmth, genuine empathy, and uplifting hope grounded in faith and God's love.
 
-CORE MISSION & GUIDELINES:
+CORE CONVERSATIONAL GUIDELINES:
 
-1. ALWAYS RESPOND IN ENGLISH:
-- All responses, reflections, scripture references, and prayers MUST ALWAYS be written in natural, warm, and beautiful US English, regardless of the language the member uses.
+1. CONVERSATIONAL RHYTHM & CONCISENESS (NEVER SEND OVERWHELMING WALLS OF TEXT):
+- Keep responses natural, human, warm, and concise—like talking to a wise, caring spiritual friend.
+- MATCH THE CONVERSATION:
+  * On simple greetings or introductions ("hi", "hello", "ola tudo bem", "my name is..."): Reply warmly and briefly in 2 to 3 short sentences. Acknowledge their name, welcome them, and ask what's on their heart today. DO NOT send giant text blocks or unsolicited long sermons on a simple greeting!
+  * When the user shares a problem, fear, or prayer request: Give a focused, comforting, and heartfelt response in 2 to 3 short, easy-to-read paragraphs.
+- NO ROBOTIC MARKDOWN HEADERS: Never use robotic section headers like "*A Blessing for You:*", "*Vitor, I want you to know this:*", or "*How can I support you?*". Speak naturally and seamlessly from the heart.
 
-2. CONVERSATIONAL & EMPATHETIC COMPANIONSHIP:
-- Talk to the person like a wise, compassionate friend and loving spiritual mentor.
-- Listen attentively to what they are experiencing (anxiety, grief, loneliness, relationship trials, financial stress, waiting on God, health challenges, or moments of celebration).
-- Validate their emotions with kindness, empathy, and tenderness—make them feel heard, safe, understood, and deeply valued.
+2. HIT THE RIGHT WORD & REKINDLE HOPE GENTLY:
+- Speak the right word at the right time. Avoid sounding preachy, forced, or exaggerated.
+- Remind them gently of God's love, their divine worth, and that their story is not over.
 
-3. TAILORED BIBLICAL SCRIPTURES:
-- For every question, phase, or trial the person is walking through, cite relevant, uplifting, and comforting Bible verses that directly speak to their exact situation (e.g., Jeremiah 29:11, Isaiah 40:31, Psalm 23, Psalm 91, Romans 8:28, Philippians 4:6-7, Matthew 11:28, Joshua 1:9, Lamentations 3:22-23, Psalm 30:5, 2 Corinthians 12:9).
-- Cite the book, chapter, and verse clearly and quote the scripture text.
+3. FOCUSED BIBLICAL SCRIPTURE:
+- When addressing their specific situation, mention ONE comforting and relevant Bible verse (e.g. Jeremiah 29:11, Isaiah 40:31, Psalm 23, Philippians 4:6-7, Psalm 34:18, Romans 8:28).
+- Explain it in 1 or 2 simple, practical sentences that bring instant peace to their heart.
 
-4. PRACTICAL SPIRITUAL WISDOM & EXPLANATIONS:
-- Explain the scripture in simple, heart-touching, and practical terms.
-- Show them how God's promises apply directly to their daily life right now, turning worry into peace and despair into faith.
+4. SHORT PERSONALIZED PRAYER:
+- When fitting, end with 1 or 2 short sentences of prayer or blessing for their day.
 
-5. FEEDING HOPE & REKINDLING THE SPARK FOR LIFE:
-- Always feed and multiply their hope.
-- Speak life, joy, and purpose into their soul. Reignite their inner glow and excitement for life.
-- Remind them that they are never alone, that their story is not over, and that their greatest breakthroughs and blessings are ahead.
-
-6. PERSONALIZED PRAYER & BLESSING:
-- Include a short, beautiful, and heartfelt prayer for them, followed by an uplifting blessing.
-
-7. FORMATTING & STYLE:
-- Address the member naturally by their first name inside the sentence.
-- Do NOT start every response with generic greetings like "Hello [Name]!". Jump directly and gracefully into your comforting answer.
-- Keep paragraphs clean, mobile-friendly, and gentle on the eyes. Use soft, uplifting emojis naturally (✨, 🕊️, 🌅, 🌿, 🙏, 🤍).
-- Do not output excessive markdown double asterisks (**); keep text elegant and clean.`;
+5. LANGUAGE & STYLE:
+- Always respond in natural, warm US English.
+- Use soft, uplifting emojis naturally (✨, 🕊️, 🌅, 🌿, 🙏, 🤍).
+- Keep text clean, spacious, and mobile-friendly without excessive asterisks or markdown clutter.`;
 
 export function normalizeClaudeModel(modelName) {
   if (!modelName || typeof modelName !== 'string') return 'claude-sonnet-4-5-20250929';
@@ -83,16 +76,16 @@ export async function generateSpecialistAIResponse({
     try {
       const fullSystemPrompt = `${finalPrompt}
 
-STRICT CONVERSATION & GREETING RULES:
-- You must ALWAYS respond in ENGLISH, regardless of the language used by the user.
-- Tone Style: ${aiTone}
+CRITICAL RULES:
+- ALWAYS respond in warm, natural US English.
+- Keep responses human, concise, and conversational. Do NOT send long walls of text.
+- If the user sent a greeting or intro, reply in 2-3 brief, friendly sentences.
 - User First Name: ${finalName}
-- Quote specific Biblical scriptures relevant to their phase, explain the verses, feed their hope, rekindle their spark for life, and include a personalized prayer.
-- Do not output markdown double asterisks (**). Output clean, beautifully spaced paragraphs with gentle emojis.`;
+- Do NOT output robotic headers like "*A Blessing for You:*" or excessive markdown asterisks. Output clean, elegant paragraphs.`;
 
       // Multi-turn context
       const chatMessages = (finalHistory || [])
-        .slice(-8)
+        .slice(-6)
         .map(msg => ({
           role: msg.sender === 'user' ? 'user' : 'assistant',
           content: msg.text || ''
@@ -109,7 +102,7 @@ STRICT CONVERSATION & GREETING RULES:
       const payload = {
         apiKey: cleanKey,
         model: activeClaudeModel,
-        max_tokens: 1024,
+        max_tokens: 600,
         temperature: typeof temperature === 'number' ? temperature : 0.7,
         system: fullSystemPrompt,
         messages: chatMessages
@@ -125,7 +118,7 @@ STRICT CONVERSATION & GREETING RULES:
 
       const directBody = JSON.stringify({
         model: activeClaudeModel,
-        max_tokens: 1024,
+        max_tokens: 600,
         temperature: typeof temperature === 'number' ? temperature : 0.7,
         system: fullSystemPrompt,
         messages: chatMessages
@@ -181,126 +174,100 @@ STRICT CONVERSATION & GREETING RULES:
 }
 
 function generateDynamicContextualResponse(userQuestion, userName, systemPrompt) {
-  const q = (userQuestion || '').toLowerCase();
-  const firstName = userName ? userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase() : 'Friend';
+  const q = (userQuestion || '').toLowerCase().trim();
+  const firstName = userName && userName.toLowerCase() !== 'friend' ? userName.charAt(0).toUpperCase() + userName.slice(1).toLowerCase() : 'Friend';
+
+  // 0. Greetings & Introductions ("hi", "hello", "ola", "oi", "meu nome é", "tudo bem")
+  if (
+    /^(hi|hello|hey|greetings|ola|olá|oi|bom dia|boa tarde|boa noite|tudo bem|como vai|meu nome|my name)/i.test(q) ||
+    q.length < 20 && (q.includes('ola') || q.includes('olá') || q.includes('oi') || q.includes('tudo bem') || q.includes('hello') || q.includes('hi'))
+  ) {
+    return `Hello ${firstName}, it is truly wonderful to connect with you today! ✨
+
+I am here to walk alongside you, offer a listening heart, and share uplifting reflections whenever you need peace or guidance.
+
+How are you feeling today, and what is on your mind? 🕊️`;
+  }
 
   // 1. Anxiety, Fear, Worry, Overwhelmed
   if (q.includes('anxiety') || q.includes('anxious') || q.includes('ansiedade') || q.includes('medo') || q.includes('fear') || q.includes('panic') || q.includes('stress') || q.includes('worry') || q.includes('overwhelm') || q.includes('afraid')) {
-    return `${firstName}, take a gentle, deep breath and know that you are not alone in this moment. 🕊️
+    return `${firstName}, take a gentle, deep breath. You are safe in God's care right now. 🕊️
 
-When the waves of anxiety feel tall, hold onto the comforting truth in Philippians 4:6-7:
+In moments when anxiety tries to overwhelm your thoughts, hold onto Philippians 4:6-7:
 "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds."
 
-What this means for your life today:
-Anxiety often tries to make us carry tomorrow's burdens with today's strength. But God does not ask you to solve everything right now. He invites you to hand over the weight that was never yours to carry. When you release control, His supernatural peace steps in to shelter your thoughts.
+You do not have to carry tomorrow's weight today. Hand it over to God, and allow His quiet peace to settle over your heart.
 
-Your life is precious, and this heavy feeling is temporary. The fog will lift, and your joy will shine bright again.
+May His presence calm every racing thought and fill your spirit with gentle serenity. Amen. 🙏✨
 
-Let us pray together:
-"Heavenly Father, I lift ${firstName} up to Your loving presence. Wrap them in Your peace that surpasses all human logic. Silence every anxious whisper and fill their heart with calm assurance, quiet confidence, and renewed hope. In Your name, Amen." 🙏✨
-
-How does your heart feel right now as you take a quiet breath?`;
+How does your heart feel as you take a quiet breath?`;
   }
 
   // 2. Sadness, Grief, Depression, Heavy Heart, Loneliness
   if (q.includes('sad') || q.includes('depress') || q.includes('triste') || q.includes('grief') || q.includes('luto') || q.includes('alone') || q.includes('lonely') || q.includes('sozinho') || q.includes('solidão') || q.includes('solidao') || q.includes('crying') || q.includes('cry') || q.includes('chorar') || q.includes('hurt') || q.includes('pain') || q.includes('dor')) {
-    return `${firstName}, your tears and your tender heart are deeply seen and cherished. 🤍
+    return `${firstName}, your heart and every silent tear are deeply valued by God. 🤍
 
-In seasons of sorrow, cling to Psalm 34:18:
+Remember the comforting promise in Psalm 34:18:
 "The Lord is close to the brokenhearted and saves those who are crushed in spirit."
-And remember the promise of Psalm 30:5: "Weeping may endure for a night, but joy comes with the morning."
 
-What this means for your life today:
-Sadness does not mean you have lost your way; it simply means your soul is healing and processing. You are not broken beyond repair. God is right beside you in the quiet moments, collecting every tear. There is still so much beauty, love, and light awaiting you.
+This heavy season will not last forever. God is gently mending your soul, and the joy and lightness in your spirit will return.
 
-Your life has immense purpose, and the light inside of you will shine brighter than ever before.
+"Lord, hold ${firstName} closely today, bring healing to their heart, and rekindle their hope for tomorrow. Amen." 🌅🕊️
 
-A prayer for your healing:
-"Loving God, hold ${firstName} gently in Your arms today. Mend the quiet aches of their spirit and remind them of their sacred worth. Breathe fresh hope into their soul and rekindle the divine spark of life within them. Amen." 🌅🕊️
-
-I am here with you. What is one small comfort that brought peace to your heart recently?`;
+I'm right here with you. What is one small comfort you can give yourself today?`;
   }
 
   // 3. Hopelessness, Losing Faith, Giving Up, Lost the Spark for Life
   if (q.includes('hope') || q.includes('esperança') || q.includes('esperanca') || q.includes('give up') || q.includes('desistir') || q.includes('lost') || q.includes('perdido') || q.includes('tired') || q.includes('cansado') || q.includes('exhausted') || q.includes('purpose') || q.includes('propósito') || q.includes('spark') || q.includes('brilho')) {
-    return `${firstName}, let this be a reminder that your story is far from over. ✨
+    return `${firstName}, your story is far from over—your best chapters are still ahead. ✨
 
-Stand firm upon Jeremiah 29:11:
+Cling to the promise in Jeremiah 29:11:
 "'For I know the plans I have for you,' declares the Lord, 'plans to prosper you and not to harm you, plans to give you hope and a future.'"
-And Isaiah 40:31:
-"Those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."
 
-What this means for your life today:
-When your strength feels depleted, God's grace becomes your foundation. You do not need to figure out the next ten steps—you only need to take one step in faith today. The spark of enthusiasm and wonder for life will return to your eyes. You were created for a wonderful purpose, and the world is richer because you are in it.
+The spark that gave you love for life is still inside you; God is preparing to rekindle it in a beautiful way. Take it one step at a time today.
 
-Never lose heart; God is preparing blessings in secret that will soon become visible.
-
-A blessing of renewed hope:
-"Lord, ignite the fire of hope inside ${firstName}'s heart today. Dispel every shadow of discouragement and awaken their enthusiasm for living. Grant them the strength of eagles and let them see the glorious future You have prepared. Amen." 🌿✨
+May divine hope fill your heart and give you fresh strength for the journey. Amen. 🌿✨
 
 What is a dream or blessing you would love to see blossom in your life?`;
   }
 
   // 4. Waiting on God, Patience, Decisions, Unanswered Prayers
   if (q.includes('wait') || q.includes('esperar') || q.includes('patience') || q.includes('paciência') || q.includes('future') || q.includes('decision') || q.includes('decisão') || q.includes('decisao') || q.includes('unanswered') || q.includes('when') || q.includes('quando')) {
-    return `${firstName}, waiting seasons are never wasted seasons in God's hands. ⏳✨
+    return `${firstName}, seasons of waiting are never in vain in God's hands. ⏳✨
 
-Reflect on Ecclesiastes 3:11 and Romans 8:28:
-"He has made everything beautiful in its time."
-"And we know that in all things God works for the good of those who love Him, who have been called according to His purpose."
+As Ecclesiastes 3:11 reminds us, "He has made everything beautiful in its time."
 
-What this means for your life today:
-While you are waiting, God is working behind the scenes. He is aligning details, strengthening your character, and preparing you for what He has prepared for you. Trust the divine timing. What is meant for you will not pass you by.
+While you are waiting, God is working behind the scenes, preparing what is truly best for you. Trust His timing—what is meant for you will not pass you by.
 
-Keep your heart expectant and full of joy, for your breakthrough is on the way.
-
-A prayer for patience and clarity:
-"Father, give ${firstName} wisdom, patience, and peace as they navigate this season of waiting. Open the right doors that no one can shut, and quiet their spirit with trusting faith. Amen." 🕊️🌸`;
+"Father, grant ${firstName} peace, wisdom, and patience as they trust Your divine timing. Amen." 🕊️🌸`;
   }
 
   // 5. Morning Devotion, Gratitude, New Day
   if (q.includes('morning') || q.includes('bom dia') || q.includes('day') || q.includes('dia') || q.includes('gratitude') || q.includes('gratidão') || q.includes('gratidao') || q.includes('thank') || q.includes('obrigado') || q.includes('wake') || q.includes('acordar')) {
-    return `${firstName}, blessed morning! Today is a gift overflowing with fresh mercies. 🌅
+    return `Blessed morning, ${firstName}! 🌅
 
-Declare Lamentations 3:22-23:
-"The steadfast love of the Lord never ceases; His mercies never come to an end; they are new every morning; great is Your faithfulness."
+Remember Lamentations 3:22-23: "The steadfast love of the Lord never ceases; His mercies are new every morning."
 
-What this means for your day:
-Yesterday's mistakes and worries have no claim on today. You start with a clean slate, accompanied by God's infinite grace. Approach this day with a grateful heart, a bright smile, and expectant faith. You are going to be a blessing to everyone you cross paths with today!
+Today is a fresh opportunity to walk with joy and light. May your day be filled with peace, unexpected blessings, and fruitful steps.
 
-A morning prayer:
-"Lord, thank You for the breath of life in ${firstName}. Fill their steps with light, their heart with gratitude, and their mind with focus. May this day be rich in peace, love, and divine favor. Amen." 🙏✨
-
-What are three small things you are grateful for this morning?`;
+What are you most grateful for this morning? 🙏✨`;
   }
 
   // 6. Rest, Sleep, Night Time Peace
   if (q.includes('sleep') || q.includes('dormir') || q.includes('night') || q.includes('noite') || q.includes('rest') || q.includes('descanso') || q.includes('insomnia') || q.includes('insonia')) {
-    return `${firstName}, as the day comes to a close, let your soul enter into deep, sacred rest. 🌙
+    return `${firstName}, as you rest tonight, release the day into God's hands. 🌙
 
-Rest your thoughts on Psalm 4:8 and Proverbs 3:24:
-"In peace I will lie down and sleep, for You alone, Lord, make me dwell in safety."
-"When you lie down, you will not be afraid; when you lie down, your sleep will be sweet."
+Rest on Psalm 4:8: "In peace I will lie down and sleep, for You alone, Lord, make me dwell in safety."
 
-What this means for your night:
-You have done what you could today, and now it is time to hand the night over to God. Release every thought, unclench your shoulders, and rest in the assurance that God watches over you and your loved ones while you sleep.
-
-A prayer for restorative sleep:
-"Lord, cover ${firstName} with Your gentle canopy of peace tonight. Quiet every racing thought and grant them sweet, refreshing sleep. May they wake up tomorrow restored in body, mind, and spirit. Amen." 🕊️✨`;
+Let every worry melt away and enjoy peaceful, restorative sleep tonight. 🕊️✨`;
   }
 
   // 7. General Faith & Life Inspiration
-  return `${firstName}, what a joy it is to walk beside you in this journey of faith and hope. ✨
+  return `${firstName}, what a blessing it is to share this moment with you. ✨
 
-Be encouraged by Joshua 1:9:
-"Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."
+Be encouraged by Joshua 1:9: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."
 
-Remember that you are deeply loved, protected, and called to live an extraordinary life filled with grace, peace, and purposeful joy. Whatever you are walking through today, know that God's strength is made perfect in your weakness.
-
-A prayer for your day:
-"Heavenly Father, bless ${firstName} abundantly. Illuminate their path, fill their heart with courage, and awaken a radiant love for life within their soul. In Your name, Amen." 🙏🤍
-
-Tell me, what specific area of your life would you like us to pray and reflect on today?`;
+You are deeply loved and never alone. How can I best pray for or encourage your heart today? 🙏🤍`;
 }
 
 /**

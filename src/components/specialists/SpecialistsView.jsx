@@ -136,82 +136,75 @@ export default function SpecialistsView() {
   ];
 
   const generateLocalResponse = (userQuestion) => {
-    const q = (userQuestion || '').toLowerCase();
+    const q = (userQuestion || '').toLowerCase().trim();
+
+    // Greetings & Introductions
+    if (
+      /^(hi|hello|hey|greetings|ola|olá|oi|bom dia|boa tarde|boa noite|tudo bem|como vai|meu nome|my name)/i.test(q) ||
+      (q.length < 25 && (q.includes('ola') || q.includes('olá') || q.includes('oi') || q.includes('tudo bem') || q.includes('hello') || q.includes('hi')))
+    ) {
+      return `Hello ${userFirstName}, it is wonderful to meet you! ✨
+
+I'm here to listen, pray, and share uplifting encouragement whenever you need peace or guidance.
+
+How are you feeling today, and what is on your mind? 🕊️`;
+    }
 
     if (q.includes('anxiety') || q.includes('anxious') || q.includes('fear') || q.includes('panic') || q.includes('stress') || q.includes('worry') || q.includes('ansiedade') || q.includes('medo')) {
-      return `${userFirstName}, take a quiet, gentle breath and let your shoulders drop. You are safe and deeply held in God's love. 🕊️
+      return `${userFirstName}, take a quiet, deep breath. You are safe in God's care right now. 🕊️
 
-In this moment, let the promise of Philippians 4:6-7 anchor your soul:
+In moments when anxiety tries to overwhelm your thoughts, hold onto Philippians 4:6-7:
 "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds."
 
-What this means for your heart:
-Anxiety often tries to make us fight tomorrow's battles today. But God is walking with you step by step. When you surrender what you cannot control, His peace creates a fortress around your thoughts. Your life is valuable, and this storm will pass.
+You do not have to carry tomorrow's weight today. Hand it over to God, and allow His quiet peace to settle over your heart.
 
-A prayer for your peace:
-"Loving Father, pour Your calming presence over ${userFirstName}. Silence every fearful thought and fill their heart with deep serenity and unshakable faith. In Your name, Amen." 🙏✨
+May His presence calm every racing thought and fill your spirit with gentle serenity. Amen. 🙏✨
 
-How does your spirit feel right now as you pause and reflect?`;
+How does your heart feel as you take a quiet breath?`;
     }
 
     if (q.includes('sad') || q.includes('grief') || q.includes('depress') || q.includes('heavy') || q.includes('cry') || q.includes('hurt') || q.includes('pain') || q.includes('alone') || q.includes('lonely') || q.includes('triste') || q.includes('dor')) {
-      return `${userFirstName}, your tender heart and your tears are precious before God. 🤍
+      return `${userFirstName}, your heart and every silent tear are deeply valued by God. 🤍
 
-Remember Psalm 34:18 and Psalm 30:5:
+Remember the comforting promise in Psalm 34:18:
 "The Lord is close to the brokenhearted and saves those who are crushed in spirit."
-"Weeping may endure for a night, but joy comes with the morning."
 
-What this means for you:
-This heavy season is a passage, not your final destination. God is gently mending the broken pieces of your spirit. The spark in your eyes and the joy in your heart will return, brighter and stronger than ever before.
+This heavy season will not last forever. God is gently mending your soul, and the joy and lightness in your spirit will return.
 
-A prayer of comfort:
-"Lord, hold ${userFirstName} closely today. Heal the silent hurts of their soul and breathe fresh life and radiant hope into their spirit. Amen." 🌅🕊️
+"Lord, hold ${userFirstName} closely today, bring healing to their heart, and rekindle their hope for tomorrow. Amen." 🌅🕊️
 
-What is one comforting thought you can hold onto today?`;
+I'm right here with you. What is one small comfort you can give yourself today?`;
     }
 
     if (q.includes('hope') || q.includes('spark') || q.includes('give up') || q.includes('lost') || q.includes('tired') || q.includes('exhausted') || q.includes('purpose') || q.includes('esperança') || q.includes('desistir') || q.includes('brilho')) {
-      return `${userFirstName}, let this truth reignite the fire within you: your story is not over. ✨
+      return `${userFirstName}, your story is far from over—your best chapters are still ahead. ✨
 
-Stand on Jeremiah 29:11:
+Cling to the promise in Jeremiah 29:11:
 "'For I know the plans I have for you,' declares the Lord, 'plans to prosper you and not to harm you, plans to give you hope and a future.'"
-And Isaiah 40:31:
-"Those who hope in the Lord will renew their strength. They will soar on wings like eagles."
 
-What this means for your journey:
-Every trial you have survived has prepared you for the blessings ahead. The spark that made you love life is still inside you—it is just waiting to be rekindled. You have a divine calling, and your future is filled with purpose.
+The spark that gave you love for life is still inside you; God is preparing to rekindle it in a beautiful way. Take it one step at a time today.
 
-A prayer for renewed strength:
-"Father, ignite a renewed passion for life in ${userFirstName}. Dispel every shadow of doubt and show them the beautiful future You have in store. Amen." 🌿✨
+May divine hope fill your heart and give you fresh strength for the journey. Amen. 🌿✨
 
-What is one blessing you are dreaming of seeing come to life?`;
+What is a dream or blessing you would love to see blossom in your life?`;
     }
 
     if (q.includes('wait') || q.includes('patience') || q.includes('future') || q.includes('decision') || q.includes('esperar')) {
-      return `${userFirstName}, God is never late, and your season of waiting is building your testimony. ⏳✨
+      return `${userFirstName}, seasons of waiting are never in vain in God's hands. ⏳✨
 
-Reflect on Ecclesiastes 3:11 and Romans 8:28:
-"He has made everything beautiful in its time."
-"All things work together for good to those who love God."
+As Ecclesiastes 3:11 reminds us, "He has made everything beautiful in its time."
 
-What this means for you:
-While you wait, God is preparing both the blessing and you. Trust His perfect timing. What is truly meant for you will never pass you by.
+While you are waiting, God is working behind the scenes, preparing what is truly best for you. Trust His timing—what is meant for you will not pass you by.
 
-A prayer for patience:
-"Lord, grant ${userFirstName} clear guidance, restful patience, and unwavering trust in Your divine plan. Amen." 🕊️🌸`;
+"Father, grant ${userFirstName} peace, wisdom, and patience as they trust Your divine timing. Amen." 🕊️🌸`;
     }
 
     // General Spiritual Guidance & Hope Encouragement
-    return `${userFirstName}, it is such a blessing to connect with your heart today. ✨
+    return `${userFirstName}, what a blessing it is to share this moment with you. ✨
 
-Be encouraged by Joshua 1:9:
-"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."
+Be encouraged by Joshua 1:9: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."
 
-You are deeply loved, protected, and called to live with radiant faith, joy, and peace. Whatever is on your mind regarding "${userQuestion}", know that God's grace is more than enough to lift you up today.
-
-A prayer for your day:
-"Heavenly Father, bless ${userFirstName} with peace, clarity, and an overflowing enthusiasm for life. Guide their steps and fill their day with light. Amen." 🙏🤍
-
-Tell me, how can I best pray for and support your journey today?`;
+You are deeply loved and never alone. How can I best pray for or encourage your heart today? 🙏🤍`;
   };
 
   const handleSendMessage = async (textToSend) => {
