@@ -20,7 +20,7 @@ export default function MobileHeader() {
           />
         </div>
         <h1 className="font-extrabold text-slate-900 text-lg tracking-tight font-serif">
-          {appSettings.name || 'DailyGrace App'}
+          {appSettings.name && !appSettings.name.includes('365') ? appSettings.name : 'DailyGrace App'}
         </h1>
       </div>
 

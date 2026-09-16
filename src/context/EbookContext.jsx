@@ -259,7 +259,20 @@ export function EbookProvider({ children }) {
     };
     try {
       const saved = localStorage.getItem('hopejourney_settings');
-      return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.name === '365hopejourney' || parsed.name === '365 Hope Journey' || !parsed.name) {
+          parsed.name = 'DailyGrace App';
+        }
+        if (parsed.slug === '/365hopejourney' || parsed.slug === '/dailygrace' || !parsed.slug) {
+          parsed.slug = '/dailygraceapp';
+        }
+        if (parsed.customDomain === 'dailygrace.vercel.app' || parsed.customDomain?.includes('365hopejourney') || !parsed.customDomain) {
+          parsed.customDomain = 'dailygraceapp.vercel.app';
+        }
+        return { ...defaultSettings, ...parsed };
+      }
+      return defaultSettings;
     } catch (e) {
       return defaultSettings;
     }
@@ -439,6 +452,14 @@ export function EbookProvider({ children }) {
     const unsubSettings = onSnapshot(doc(db, 'app_settings', 'general'), (snap) => {
       if (snap.exists()) {
         const data = snap.data();
+        if (data.name === '365hopejourney' || data.name === '365 Hope Journey' || !data.name) {
+          data.name = 'DailyGrace App';
+          setDoc(doc(db, 'app_settings', 'general'), { name: 'DailyGrace App' }, { merge: true }).catch(() => {});
+        }
+        if (data.slug === '/365hopejourney' || data.slug === '/dailygrace') {
+          data.slug = '/dailygraceapp';
+          setDoc(doc(db, 'app_settings', 'general'), { slug: '/dailygraceapp' }, { merge: true }).catch(() => {});
+        }
         setAppSettings(prev => {
           const merged = { ...prev, ...data };
           localStorage.setItem('hopejourney_settings', JSON.stringify(merged));
