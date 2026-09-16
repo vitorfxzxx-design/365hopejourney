@@ -17,7 +17,7 @@ export default function CreditsLandingView({ onBack }) {
       tag: null,
       saveTag: null,
       popular: false,
-      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=cxzvr873',
+      checkoutUrl: 'https://whop.com/checkout/plan_bho2ZL4HFmUQO',
       features: [
         '30 AI Spiritual Mentor Messages',
         'Direct Access to Prayer Reflections',
@@ -34,7 +34,7 @@ export default function CreditsLandingView({ onBack }) {
       tag: 'MOST POPULAR',
       saveTag: 'Save 40%',
       popular: true,
-      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=fcg91weh',
+      checkoutUrl: 'https://whop.com/checkout/plan_HnUpOF4v48EMM',
       features: [
         '100 AI Spiritual Mentor Messages',
         'Direct Access to Prayer Reflections',
@@ -53,7 +53,7 @@ export default function CreditsLandingView({ onBack }) {
       tag: 'BEST VALUE',
       saveTag: 'Save 55%',
       popular: false,
-      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=j8dgl1lg',
+      checkoutUrl: 'https://whop.com/checkout/plan_9EfCAVNV29Vpe',
       features: [
         '200 AI Spiritual Mentor Messages',
         'All Devotional Guides & Prayers',
@@ -66,7 +66,7 @@ export default function CreditsLandingView({ onBack }) {
   ];
 
   const handleGoToCheckout = (plan) => {
-    // Redirects to Hotmart checkout
+    // Redirects to Whop checkout
     if (plan && plan.checkoutUrl) {
       window.location.href = plan.checkoutUrl;
     }

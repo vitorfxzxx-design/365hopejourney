@@ -20,7 +20,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
       perCredit: '$0.33 / credit',
       tag: null,
       saveTag: null,
-      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=cxzvr873'
+      checkoutUrl: 'https://whop.com/checkout/plan_bho2ZL4HFmUQO'
     },
     {
       id: '100',
@@ -30,7 +30,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
       perCredit: '$0.19 / credit',
       tag: 'MOST POPULAR',
       saveTag: 'Save 40%',
-      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=fcg91weh'
+      checkoutUrl: 'https://whop.com/checkout/plan_HnUpOF4v48EMM'
     },
     {
       id: '200',
@@ -40,7 +40,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
       perCredit: '$0.14 / credit',
       tag: 'BEST VALUE',
       saveTag: 'Save 55%',
-      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=j8dgl1lg'
+      checkoutUrl: 'https://whop.com/checkout/plan_9EfCAVNV29Vpe'
     }
   ];
 
@@ -55,7 +55,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
       targetUrl += `${separator}email=${encodeURIComponent(currentUser.email)}`;
     }
 
-    // Open Hotmart checkout
+    // Open Whop checkout
     window.location.href = targetUrl;
   };
 
