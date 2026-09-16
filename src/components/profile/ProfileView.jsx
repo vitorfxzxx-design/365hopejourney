@@ -32,7 +32,7 @@ import {
 import { useEbooks } from '../../context/EbookContext';
 
 export default function ProfileView() {
-  const { logout, deleteAccount, updateMemberProfile, currentUser, credits, addCredits, openRechargeModal, members, getUserCreditTransactions } = useEbooks();
+  const { logout, deleteAccount, updateMemberProfile, currentUser, credits, addCredits, openRechargeModal, members, getUserCreditTransactions, setCurrentTab } = useEbooks();
 
   const cameraInputRef = useRef(null);
   const galleryInputRef = useRef(null);
@@ -607,6 +607,36 @@ export default function ProfileView() {
       {/* Settings & Support Navigation List */}
       <div className="space-y-2.5">
         
+        {/* Admin Dashboard Entry (Visible for Administrators) */}
+        {isUserAdmin && (
+          <button
+            onClick={() => setCurrentTab('admin')}
+            className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-3.5 flex items-center justify-between shadow-md hover:shadow-lg transition-all text-left group cursor-pointer border border-emerald-500/30 active:scale-[0.99]"
+          >
+            <div className="flex items-center gap-3.5 min-w-0">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/30">
+                <Shield size={18} />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <h4 className="text-xs font-black text-white">
+                    Admin Dashboard
+                  </h4>
+                  <span className="text-[9px] bg-emerald-500/30 text-emerald-300 font-bold px-1.5 py-0.5 rounded-full uppercase">
+                    Admin
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-300 font-medium truncate mt-0.5">
+                  Manage products, members, audios & settings
+                </p>
+              </div>
+            </div>
+            <div className="w-7 h-7 rounded-full bg-white/10 text-white flex items-center justify-center group-hover:bg-emerald-500 transition-colors shrink-0">
+              <ArrowRight size={13} />
+            </div>
+          </button>
+        )}
+
         {/* 1. Help & Support */}
         <button
           onClick={() => setActiveModal('support')}

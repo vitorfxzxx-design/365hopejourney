@@ -613,10 +613,11 @@ export function EbookProvider({ children }) {
 
     const member = members.find(m => (m.email || '').toLowerCase() === cleanEmail);
     const memberDate = member?.date || new Date().toISOString();
+    const isAdminEmail = cleanEmail === (appSettings?.adminEmail || 'vitorfxzxx@gmail.com').toLowerCase() || cleanEmail === 'vitorfxzxx@gmail.com' || (member?.name || '').toLowerCase().includes('admin');
     const userObj = {
-      role: 'member',
+      role: isAdminEmail ? 'admin' : 'member',
       email: cleanEmail,
-      name: member?.name || cleanEmail.split('@')[0],
+      name: member?.name || (isAdminEmail ? 'Vitor (Admin)' : cleanEmail.split('@')[0]),
       date: memberDate,
       registeredAt: member?.registeredAt || memberDate,
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'
