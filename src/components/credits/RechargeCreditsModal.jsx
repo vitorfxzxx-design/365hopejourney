@@ -6,10 +6,8 @@ import {
 import { useEbooks } from '../../context/EbookContext';
 
 export default function RechargeCreditsModal({ isOpen, onClose }) {
-  const { credits, addCredits } = useEbooks();
+  const { credits, currentUser } = useEbooks();
   const [selectedPlan, setSelectedPlan] = useState('100');
-  const [purchaseSuccess, setPurchaseSuccess] = useState(false);
-  const [successAmount, setSuccessAmount] = useState(0);
 
   if (!isOpen) return null;
 
@@ -21,7 +19,8 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
       priceNum: 9.90,
       perCredit: '$0.33 / credit',
       tag: null,
-      saveTag: null
+      saveTag: null,
+      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=cxzvr873'
     },
     {
       id: '100',
@@ -30,7 +29,8 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
       priceNum: 19.90,
       perCredit: '$0.19 / credit',
       tag: 'MOST POPULAR',
-      saveTag: 'Save 40%'
+      saveTag: 'Save 40%',
+      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=fcg91weh'
     },
     {
       id: '200',
@@ -39,29 +39,24 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
       priceNum: 29.90,
       perCredit: '$0.14 / credit',
       tag: 'BEST VALUE',
-      saveTag: 'Save 55%'
+      saveTag: 'Save 55%',
+      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=j8dgl1lg'
     }
   ];
 
   const handlePurchase = () => {
     const plan = plans.find((p) => p.id === selectedPlan);
-    if (!plan) return;
+    if (!plan || !plan.checkoutUrl) return;
 
-    // Simulate instant credit addition
-    addCredits(
-      plan.amount,
-      undefined,
-      plan.priceNum,
-      `${plan.amount} Hope Credits Pack ($${plan.priceNum.toFixed(2)})`,
-      'In-App Purchase'
-    );
-    setSuccessAmount(plan.amount);
-    setPurchaseSuccess(true);
+    // Attach user email to checkout URL if available for seamless automatic delivery
+    let targetUrl = plan.checkoutUrl;
+    if (currentUser?.email) {
+      const separator = targetUrl.includes('?') ? '&' : '?';
+      targetUrl += `${separator}email=${encodeURIComponent(currentUser.email)}`;
+    }
 
-    setTimeout(() => {
-      setPurchaseSuccess(false);
-      onClose();
-    }, 1800);
+    // Open Hotmart checkout
+    window.location.href = targetUrl;
   };
 
   return (
@@ -137,19 +132,6 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
             </span>
           </div>
         </div>
-
-        {/* Success Confirmation Banner */}
-        {purchaseSuccess && (
-          <div className="mx-6 my-2 bg-emerald-500/20 border border-emerald-500/40 rounded-2xl p-4 text-center space-y-1 animate-in zoom-in-95 duration-150">
-            <CheckCircle2 size={28} className="text-emerald-400 mx-auto" />
-            <h4 className="text-sm font-black text-emerald-200">
-              +{successAmount} Hope Credits Added!
-            </h4>
-            <p className="text-xs text-emerald-300/80">
-              Your new balance is {credits} credits. Enjoy your spiritual journey!
-            </p>
-          </div>
-        )}
 
         {/* Pricing Tier Plans */}
         <div className="p-6 pt-3 space-y-3 relative z-10">

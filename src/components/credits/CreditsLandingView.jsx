@@ -17,7 +17,7 @@ export default function CreditsLandingView({ onBack }) {
       tag: null,
       saveTag: null,
       popular: false,
-      checkoutUrl: 'https://pay.hotmart.com/?off=30credits',
+      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=cxzvr873',
       features: [
         '30 AI Spiritual Mentor Messages',
         'Direct Access to Prayer Reflections',
@@ -34,7 +34,7 @@ export default function CreditsLandingView({ onBack }) {
       tag: 'MOST POPULAR',
       saveTag: 'Save 40%',
       popular: true,
-      checkoutUrl: 'https://pay.hotmart.com/?off=100credits',
+      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=fcg91weh',
       features: [
         '100 AI Spiritual Mentor Messages',
         'Direct Access to Prayer Reflections',
@@ -53,7 +53,7 @@ export default function CreditsLandingView({ onBack }) {
       tag: 'BEST VALUE',
       saveTag: 'Save 55%',
       popular: false,
-      checkoutUrl: 'https://pay.hotmart.com/?off=200credits',
+      checkoutUrl: 'https://pay.hotmart.com/L107627481C?off=j8dgl1lg',
       features: [
         '200 AI Spiritual Mentor Messages',
         'All Devotional Guides & Prayers',
