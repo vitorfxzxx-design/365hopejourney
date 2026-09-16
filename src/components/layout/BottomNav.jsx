@@ -18,7 +18,7 @@ export default function BottomNav() {
   const navItems = [
     { id: 'home', label: 'Home', icon: Home },
     { id: 'community', label: 'Community', icon: Users },
-    { id: 'specialists', label: 'AI Guide', icon: HelpCircle },
+    { id: 'specialists', label: 'Guide', icon: HelpCircle },
     ...(audioTabActive ? [{ id: 'audios', label: 'Audios', icon: Headphones }] : []),
     { id: 'profile', label: 'Profile', icon: User },
   ];

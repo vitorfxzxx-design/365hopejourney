@@ -219,7 +219,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
               <span className="w-6 h-[1px] bg-emerald-500/40" />
             </div>
             <p className="text-[11px] text-emerald-200/60 max-w-xs mx-auto">
-              Grace Credits unlock personalized spiritual guidance and direct access to the AI Mentor.
+              Grace Credits unlock personalized spiritual guidance and direct access to the Spiritual Guide.
             </p>
           </div>
 

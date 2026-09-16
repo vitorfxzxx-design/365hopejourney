@@ -35,7 +35,7 @@ export default function SpecialistsView() {
   const defaultWelcomeMsg = {
     id: 'msg-welcome',
     sender: 'ai',
-    text: `Hello ${userFirstName}! ✨ I am your 365hopejourney Spiritual Guide. How may I support your heart, your prayers, and your reflections today?`,
+    text: `Hello ${userFirstName}! ✨ I'm your DailyGrace Spiritual Guide. What's on your heart today?`,
     time: 'Just now'
   };
 
@@ -108,7 +108,7 @@ export default function SpecialistsView() {
       setMessages(prev => [
         {
           ...prev[0],
-          text: `Hello ${userFirstName}! ✨ I am your 365hopejourney Spiritual Guide. How may I support your heart, your prayers, and your reflections today?`
+          text: `Hello ${userFirstName}! ✨ I'm your DailyGrace Spiritual Guide. What's on your heart today?`
         },
         ...prev.slice(1)
       ]);
@@ -317,7 +317,7 @@ You are deeply loved and never alone. How can I best pray for or encourage your 
             <div className="w-10 h-10 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-xl shadow-xs overflow-hidden">
               <img
                 src={aiDoctorAvatar}
-                alt="365hopejourney Spiritual Guide"
+                alt="DailyGrace Spiritual Guide"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -328,12 +328,12 @@ You are deeply loved and never alone. How can I best pray for or encourage your 
               <h2 className="text-sm font-extrabold text-slate-800 tracking-tight">
                 Spiritual Guide
               </h2>
-              <span className="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-1.5 py-0.2 rounded-md flex items-center gap-0.5">
-                <Sparkles size={10} /> 24/7 AI
+              <span className="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-1.5 py-0.5 rounded-md flex items-center gap-0.5">
+                <Sparkles size={10} /> 24/7
               </span>
             </div>
             <p className="text-[11px] text-slate-400 font-medium">
-              Sanctuary AI Mentor
+              Sanctuary Guide
             </p>
           </div>
         </div>
