@@ -231,12 +231,12 @@ export function EbookProvider({ children }) {
   const [appSettings, setAppSettings] = useState(() => {
     const defaultSettings = {
       name: 'DailyGrace App',
-      slug: '/dailygrace',
+      slug: '/dailygraceapp',
       status: 'Active',
       iconEmoji: '✨',
       adminEmail: 'vitorfxzxx@gmail.com',
       adminPassword: '!Dark131409',
-      customDomain: 'dailygrace.vercel.app',
+      customDomain: 'dailygraceapp.vercel.app',
       webhookUrl: '',
       hotmartWebhookUrl: '',
       perfectpayWebhookUrl: '',
