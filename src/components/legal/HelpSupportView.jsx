@@ -15,7 +15,7 @@ export default function HelpSupportView({ onBack }) {
     {
       icon: BookOpen,
       q: 'How do I access my devotionals and spiritual guides?',
-      a: 'Once logged into your 365hopejourney member account, all unlocked guides and devotional books are available on the Home tab. Tap any book to read chapters with our distraction-free reader mode.'
+      a: 'Once logged into your DailyGrace member account, all unlocked guides and devotional books are available on the Home tab. Tap any book to read chapters with our distraction-free reader mode.'
     },
     {
       icon: Headphones,
@@ -49,13 +49,13 @@ export default function HelpSupportView({ onBack }) {
             <div className="w-10 h-10 rounded-full overflow-hidden border border-amber-300/80 bg-gradient-to-tr from-amber-400 to-amber-200 p-[1.5px] shadow-sm shrink-0">
               <img
                 src="/logo.png"
-                alt="365hopejourney"
+                alt="DailyGrace App"
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
             <div>
               <h1 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-1.5 font-serif">
-                365hopejourney
+                DailyGrace App
                 <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full uppercase font-sans">
                   Support Center
                 </span>
@@ -117,7 +117,7 @@ export default function HelpSupportView({ onBack }) {
           </div>
 
           <a
-            href={`mailto:${supportEmail}?subject=365hopejourney%20Support%20Request`}
+            href={`mailto:${supportEmail}?subject=DailyGrace%20Support%20Request`}
             className="block text-center w-full py-2.5 rounded-xl bg-white text-emerald-800 font-extrabold text-xs shadow-md hover:bg-emerald-50 transition-all cursor-pointer active:scale-98"
           >
             ✉️ Send Email to Support
@@ -157,10 +157,10 @@ export default function HelpSupportView({ onBack }) {
         {/* Footer Disclaimer */}
         <div className="pt-4 border-t border-slate-100 text-center space-y-1.5">
           <p className="text-[11px] text-slate-400 font-medium">
-            365hopejourney App • Version 2.0.0
+            DailyGrace App • Version 2.0.0
           </p>
           <p className="text-[10px] text-slate-400/80 leading-relaxed max-w-sm mx-auto">
-            365hopejourney is dedicated to faith encouragement, daily devotionals, and spiritual growth.
+            DailyGrace App is dedicated to faith encouragement, daily devotionals, and spiritual growth.
           </p>
         </div>
 

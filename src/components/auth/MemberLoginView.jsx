@@ -36,15 +36,15 @@ export default function MemberLoginView() {
           <div className="w-16 h-16 mx-auto rounded-full overflow-hidden shadow-lg border-2 border-amber-300/80 bg-gradient-to-tr from-amber-400 to-amber-200 p-[2px] mb-3">
             <img
               src="/logo.png"
-              alt="365hopejourney"
+              alt="DailyGrace App"
               className="w-full h-full object-cover rounded-full"
             />
           </div>
           <h1 className="text-xl font-extrabold text-slate-900 tracking-tight font-serif">
-            {appSettings.name || '365hopejourney'}
+            {appSettings.name || 'DailyGrace App'}
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Exclusive Sanctuary of Hope & Spiritual Growth
+            Exclusive Sanctuary of Faith & Spiritual Growth
           </p>
 
           <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full border border-emerald-200/60">

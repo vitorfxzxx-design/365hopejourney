@@ -83,7 +83,7 @@ export default function AdminCommunityView({ onBack }) {
               Back to Apps
             </button>
             <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-              Community - 365hopejourney
+              Community - DailyGrace App
             </h1>
             <p className="text-xs text-slate-500 mt-0.5">
               Create simulated and moderated member posts for social proof

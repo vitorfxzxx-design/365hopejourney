@@ -230,17 +230,17 @@ export function EbookProvider({ children }) {
   // App Settings
   const [appSettings, setAppSettings] = useState(() => {
     const defaultSettings = {
-      name: '365hopejourney',
-      slug: '/365hopejourney',
+      name: 'DailyGrace App',
+      slug: '/dailygrace',
       status: 'Active',
       iconEmoji: '✨',
       adminEmail: 'vitorfxzxx@gmail.com',
       adminPassword: '!Dark131409',
-      customDomain: '365hopejourney.vercel.app',
+      customDomain: 'dailygrace.vercel.app',
       webhookUrl: '',
       hotmartWebhookUrl: '',
       perfectpayWebhookUrl: '',
-      aiSystemPrompt: `You are the Official Spiritual Guide and Compassionate Companion of 365hopejourney.
+      aiSystemPrompt: `You are the Official Spiritual Guide and Compassionate Companion of DailyGrace App.
 
 1. ALWAYS RESPOND IN ENGLISH: All responses must be in natural, warm US English.
 2. CONVERSATIONAL & CONCISE (NO WALLS OF TEXT):

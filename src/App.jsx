@@ -163,7 +163,7 @@ function MainAppContent() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] uppercase font-black tracking-wider text-emerald-400">365hopejourney Push</span>
+                  <span className="text-[10px] uppercase font-black tracking-wider text-emerald-400">DailyGrace Push</span>
                   <span className="text-[10px] text-slate-400">• Just now</span>
                 </div>
                 <h4 className="text-xs font-black text-white truncate mt-0.5">{activePushNotification.title}</h4>
@@ -254,7 +254,7 @@ function MainAppContent() {
                 <ShieldAlert size={15} className="text-slate-400 shrink-0 mt-0.5" />
                 <p className="text-[10.5px] leading-relaxed font-normal text-slate-500">
                   <strong className="font-bold text-slate-700 block mb-0.5">Spiritual & Educational Disclaimer</strong>
-                  The contents, devotionals, guides, and prayers provided in 365hopejourney are for spiritual inspiration, personal reflection, and educational purposes. For clinical or mental health concerns, always consult a licensed professional.
+                  The contents, devotionals, guides, and prayers provided in DailyGrace App are for spiritual inspiration, personal reflection, and educational purposes. For clinical or mental health concerns, always consult a licensed professional.
                 </p>
               </div>
             </div>
@@ -304,7 +304,7 @@ class ErrorBoundary extends React.Component {
               ⚠️
             </div>
             <div>
-              <h3 className="text-base font-extrabold text-slate-800">365hopejourney Recovery</h3>
+              <h3 className="text-base font-extrabold text-slate-800">DailyGrace Recovery</h3>
               <p className="text-xs text-slate-500 mt-1">
                 A visual update occurred. Click below to refresh smoothly.
               </p>

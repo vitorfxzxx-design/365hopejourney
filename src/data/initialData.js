@@ -138,9 +138,9 @@ export const INITIAL_EBOOKS = [
 export const INITIAL_FEED = [
   {
     id: 'feed-1',
-    title: '✨ Welcome to 365hopejourney ✨',
+    title: '✨ Welcome to DailyGrace ✨',
     subtitle: 'Your daily sanctuary of faith, inner peace, and spiritual renewal starts here.',
-    content: `365hopejourney was created to be your daily sacred haven of inspiration and spiritual connection.
+    content: `DailyGrace App was created to be your daily sacred haven of inspiration and spiritual connection.
 
 Inside you will experience:
 • 📖 Deep Spiritual E-books, Devotionals & Guides
@@ -151,7 +151,7 @@ Inside you will experience:
 May you find comfort, clarity, and renewed purpose every single day!`,
     image: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=800&q=80',
     category: 'Reflections',
-    author: '365hopejourney Team',
+    author: 'DailyGrace Team',
     read_time: '2 min',
     date: 'Today',
     status: 'Active'

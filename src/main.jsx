@@ -7,7 +7,7 @@ import './index.css'
 if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js').then((registration) => {
-      console.log('365hopejourney ServiceWorker registered with scope:', registration.scope);
+      console.log('DailyGrace ServiceWorker registered with scope:', registration.scope);
     }).catch((err) => {
       console.warn('ServiceWorker registration error:', err);
     });

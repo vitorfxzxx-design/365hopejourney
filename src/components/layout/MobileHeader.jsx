@@ -15,12 +15,12 @@ export default function MobileHeader() {
         <div className="w-8 h-8 rounded-full overflow-hidden shadow-xs border border-amber-300/60 bg-gradient-to-tr from-amber-400 to-amber-200 p-[1px] shrink-0">
           <img
             src="/logo.png"
-            alt="365hopejourney"
+            alt="DailyGrace App"
             className="w-full h-full object-cover rounded-full"
           />
         </div>
         <h1 className="font-extrabold text-slate-900 text-lg tracking-tight font-serif">
-          {appSettings.name || '365hopejourney'}
+          {appSettings.name || 'DailyGrace App'}
         </h1>
       </div>
 

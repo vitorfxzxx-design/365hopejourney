@@ -264,7 +264,7 @@ export default function ProfileView() {
   const t = {
     en: {
       memberSince: 'MEMBER SINCE',
-      credits: 'Hope Credits',
+      credits: 'Grace Credits',
       editProfile: 'Edit Profile',
       manageSubs: 'Manage Subscriptions',
       manageSubsDesc: 'View and manage your active plans',
@@ -293,7 +293,7 @@ export default function ProfileView() {
       deleteAccountDesc: 'Permanently remove your account and all data',
       dangerZone: 'Danger Zone',
       spiritualDisclaimerTitle: 'Faith & Spiritual Purpose Disclaimer',
-      spiritualDisclaimerText: '365hopejourney devotionals, prayer audios, and AI Spiritual Guide are designed for spiritual inspiration, faith building, and daily reflection. They do not substitute professional mental health therapy or clinical counseling.'
+      spiritualDisclaimerText: 'DailyGrace devotionals, prayer audios, and AI Spiritual Guide are designed for spiritual inspiration, faith building, and daily reflection. They do not substitute professional mental health therapy or clinical counseling.'
     },
     es: {
       memberSince: 'MIEMBRO DESDE',
@@ -1025,7 +1025,7 @@ export default function ProfileView() {
             <div>
               <h3 className="text-base font-black text-slate-900">{t.historyCredits}</h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Current Balance: <strong className="text-emerald-750 font-black">{credits ?? 20} Hope Credits</strong>
+                Current Balance: <strong className="text-emerald-750 font-black">{credits ?? 20} Grace Credits</strong>
               </p>
             </div>
 
@@ -1063,7 +1063,7 @@ export default function ProfileView() {
               className="w-full py-3 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white rounded-xl text-xs font-black shadow-md shadow-emerald-600/20 flex items-center justify-center gap-1.5 cursor-pointer hover:opacity-95 transition-opacity"
             >
               <Sparkles size={14} />
-              <span>Recharge Hope Credits</span>
+              <span>Recharge Grace Credits</span>
             </button>
           </div>
         </div>
@@ -1087,14 +1087,14 @@ export default function ProfileView() {
             <div>
               <h3 className="text-base font-black text-slate-900">{t.policies}</h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                365hopejourney is committed to privacy, spiritual growth and data protection.
+                DailyGrace App is committed to privacy, spiritual growth and data protection.
               </p>
             </div>
 
             <div className="space-y-2.5 text-xs text-slate-600 bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 max-h-56 overflow-y-auto">
               <p className="font-semibold text-slate-800">1. Terms of Use</p>
               <p className="text-[11px] leading-relaxed">
-                365hopejourney devotionals, guides, audio sanctuary, and AI Spiritual Guide are designed for spiritual uplifting and personal prayer reflection.
+                DailyGrace devotionals, guides, audio sanctuary, and AI Spiritual Guide are designed for spiritual uplifting and personal prayer reflection.
               </p>
               <p className="font-semibold text-slate-800 pt-1">2. Privacy & GDPR</p>
               <p className="text-[11px] leading-relaxed">

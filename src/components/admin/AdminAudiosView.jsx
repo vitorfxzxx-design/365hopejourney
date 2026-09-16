@@ -809,7 +809,7 @@ export default function AdminAudiosView({ onBack }) {
                     ) : (
                       <img
                         src="/logo.png"
-                        alt="365 Hope Journey"
+                        alt="DailyGrace App"
                         className="w-8 h-8 rounded-full object-cover shadow-xs"
                       />
                     )}

@@ -35,7 +35,7 @@ export default function AdminSpecialistsView({ onBack }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const defaultSpiritualPrompt = `You are the Official Spiritual Guide and Compassionate Companion of 365hopejourney.
+  const defaultSpiritualPrompt = `You are the Official Spiritual Guide and Compassionate Companion of DailyGrace App.
 
 1. ALWAYS RESPOND IN ENGLISH: All responses must be in natural, warm US English.
 2. CONVERSATIONAL & CONCISE (NO WALLS OF TEXT):
@@ -251,7 +251,7 @@ export default function AdminSpecialistsView({ onBack }) {
             </button>
             <div className="flex items-center gap-2">
               <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                AI Spiritual Guide & Hope Credits
+                AI Spiritual Guide & Grace Credits
               </h1>
               <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 border border-amber-200/60">
                 <Zap size={11} className="fill-amber-500 text-amber-500" /> Token Economy
@@ -283,7 +283,7 @@ export default function AdminSpecialistsView({ onBack }) {
                 AI Spiritual Guide Tab & Credit Deductions
               </h3>
               <p className="text-[11px] text-slate-400 mt-0.5">
-                Each AI Spiritual Guide consultation message costs 1 Hope Credit per interaction.
+                Each AI Spiritual Guide consultation message costs 1 Grace Credit per interaction.
               </p>
             </div>
           </div>
@@ -357,7 +357,7 @@ export default function AdminSpecialistsView({ onBack }) {
                         AI Spiritual Guide Prompt & Guidelines
                       </h3>
                       <p className="text-[11px] text-slate-400">
-                        Define the personality, scripture reflections, hope-feeding principles, and guidelines for the 24/7 365hopejourney Spiritual Guide
+                        Define the personality, scripture reflections, hope-feeding principles, and guidelines for the 24/7 DailyGrace Spiritual Guide
                       </p>
                     </div>
                   </div>
@@ -609,7 +609,7 @@ export default function AdminSpecialistsView({ onBack }) {
                 </div>
                 <div>
                   <h3 className="text-sm font-extrabold text-slate-900">
-                    {creditAction === 'remove' ? 'Remove Hope Credits' : 'Add Hope Credits'}
+                    {creditAction === 'remove' ? 'Remove Grace Credits' : 'Add Grace Credits'}
                   </h3>
                   <p className="text-[11px] text-slate-400">{editingCreditsMember.name}</p>
                 </div>

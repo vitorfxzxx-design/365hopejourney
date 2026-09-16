@@ -1,4 +1,4 @@
-// 365hopejourney Service Worker for Mobile PWA Push Notifications & Offline Reliability
+// DailyGrace App Service Worker for Mobile PWA Push Notifications & Offline Reliability
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
@@ -10,7 +10,7 @@ self.addEventListener('activate', (event) => {
 // Listen to push events from push servers
 self.addEventListener('push', (event) => {
   let data = {
-    title: '365hopejourney',
+    title: 'DailyGrace App',
     message: 'New daily devotional & prayer is ready!',
     targetUrl: '/'
   };
@@ -18,7 +18,7 @@ self.addEventListener('push', (event) => {
     try {
       data = event.data.json();
     } catch (e) {
-      data = { title: '365hopejourney', message: event.data.text(), targetUrl: '/' };
+      data = { title: 'DailyGrace App', message: event.data.text(), targetUrl: '/' };
     }
   }
 
@@ -29,12 +29,12 @@ self.addEventListener('push', (event) => {
     vibrate: [200, 100, 200],
     data: { url: data.targetUrl || '/' },
     actions: [
-      { action: 'open', title: 'Open 365hopejourney' }
+      { action: 'open', title: 'Open DailyGrace App' }
     ]
   };
 
   event.waitUntil(
-    self.registration.showNotification(data.title || '365hopejourney', options)
+    self.registration.showNotification(data.title || 'DailyGrace App', options)
   );
 });
 
@@ -50,7 +50,7 @@ self.addEventListener('message', (event) => {
       data: { url: targetUrl || '/' }
     };
     event.waitUntil(
-      self.registration.showNotification(title || '365hopejourney', options)
+      self.registration.showNotification(title || 'DailyGrace App', options)
     );
   }
 });

@@ -79,11 +79,11 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
               <h2 className="text-2xl font-black tracking-tight text-white leading-tight font-serif">
                 Recharge Your <br />
                 <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 bg-clip-text text-transparent">
-                  Hope Credits ✨
+                  Grace Credits ✨
                 </span>
               </h2>
               <p className="text-xs text-emerald-200/70 leading-relaxed pt-1">
-                Use your credits to unlock personalized spiritual guidance, deep prayer reflections, and exclusive devotionals.
+                Use your Grace Credits to unlock personalized spiritual guidance, deep prayer reflections, and exclusive devotionals.
               </p>
             </div>
 
@@ -177,7 +177,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
 
                     <div>
                       <h4 className="text-sm font-extrabold text-white">
-                        {plan.amount} Hope Credits
+                        {plan.amount} Grace Credits
                       </h4>
                       <div className="flex items-center gap-2 mt-0.5">
                         <span className="text-xs text-emerald-200/70 font-medium">
@@ -214,12 +214,12 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
             <div className="flex items-center justify-center gap-2 text-xs font-bold text-emerald-300">
               <span className="w-6 h-[1px] bg-emerald-500/40" />
               <Sparkles size={12} className="text-emerald-400" />
-              <span>What Can You Do With Credits?</span>
+              <span>What Can You Do With Grace Credits?</span>
               <Sparkles size={12} className="text-emerald-400" />
               <span className="w-6 h-[1px] bg-emerald-500/40" />
             </div>
             <p className="text-[11px] text-emerald-200/60 max-w-xs mx-auto">
-              Credits unlock personalized spiritual guidance and direct access to the AI Mentor.
+              Grace Credits unlock personalized spiritual guidance and direct access to the AI Mentor.
             </p>
           </div>
 
@@ -332,7 +332,7 @@ export default function RechargeCreditsModal({ isOpen, onClose }) {
                 Full Sanctuary
               </h6>
               <p className="text-[9px] text-emerald-200/60 leading-tight">
-                Access all 365hopejourney devotionals.
+                Access all DailyGrace devotionals.
               </p>
             </div>
           </div>

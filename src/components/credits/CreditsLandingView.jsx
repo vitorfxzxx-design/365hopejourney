@@ -81,16 +81,16 @@ export default function CreditsLandingView({ onBack }) {
             <div className="w-10 h-10 rounded-full border-2 border-amber-300/80 p-0.5 shadow-md shadow-amber-500/20 bg-gradient-to-tr from-amber-400 to-amber-200 shrink-0 overflow-hidden">
               <img
                 src="/logo.png"
-                alt="365 Hope Journey Logo"
+                alt="DailyGrace App Logo"
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
             <div>
               <h1 className="text-base font-extrabold tracking-tight text-white font-serif">
-                365 Hope Journey
+                DailyGrace App
               </h1>
               <span className="text-[11px] text-emerald-300/80 font-medium">
-                Official Credits & Bonuses Sanctuary
+                Official Grace Credits & Bonuses Sanctuary
               </span>
             </div>
           </div>
@@ -114,18 +114,18 @@ export default function CreditsLandingView({ onBack }) {
           <div className="max-w-3xl mx-auto relative z-10 space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
               <Sparkles size={14} className="text-amber-300 fill-amber-300" />
-              <span>Official Hope Credits & Bonuses</span>
+              <span>Official Grace Credits & Bonuses</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight font-serif">
-              Recharge Your Hope Credits <br />
+              Recharge Your Grace Credits <br />
               <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 bg-clip-text text-transparent">
                 Deepen Your Spiritual Walk
               </span>
             </h2>
 
             <p className="text-sm sm:text-base text-emerald-200/70 max-w-xl mx-auto leading-relaxed">
-              Fuel your daily prayers, private spiritual guidance consultations, and unlock personalized scripture devotions with instant credit reloads.
+              Fuel your daily prayers, private spiritual guidance consultations, and unlock personalized scripture devotions with instant Grace Credit reloads.
             </p>
           </div>
         </section>
@@ -177,7 +177,7 @@ export default function CreditsLandingView({ onBack }) {
 
                     <div className="mt-2 text-xs font-semibold text-emerald-300 flex items-center gap-1.5">
                       <Zap size={14} className="fill-amber-400 text-amber-400" />
-                      <span>{plan.amount} Hope Credits ({plan.perCredit})</span>
+                      <span>{plan.amount} Grace Credits ({plan.perCredit})</span>
                     </div>
 
                     <hr className="my-6 border-emerald-500/20" />
@@ -220,10 +220,10 @@ export default function CreditsLandingView({ onBack }) {
           <div className="max-w-5xl mx-auto space-y-10">
             <div className="text-center space-y-2">
               <h3 className="text-2xl sm:text-3xl font-black text-white font-serif">
-                How Hope Credits Work
+                How Grace Credits Work
               </h3>
               <p className="text-xs sm:text-sm text-emerald-200/70 max-w-lg mx-auto">
-                Credits unlock personalized spiritual guidance, deep prayer reflections, and exclusive devotionals.
+                Grace Credits unlock personalized spiritual guidance, deep prayer reflections, and exclusive devotionals.
               </p>
             </div>
 
@@ -290,7 +290,7 @@ export default function CreditsLandingView({ onBack }) {
               Frequently Asked Questions
             </h3>
             <p className="text-xs text-emerald-200/70">
-              Everything you need to know about purchasing and using Hope Credits.
+              Everything you need to know about purchasing and using Grace Credits.
             </p>
           </div>
 
@@ -301,17 +301,17 @@ export default function CreditsLandingView({ onBack }) {
                 How are the credits added to my account?
               </h5>
               <p className="text-xs text-emerald-200/70 pl-6 leading-relaxed">
-                Your credits are added automatically and instantly via webhook as soon as your payment is approved. Just make sure to use the same email you use in the 365 Hope Journey app.
+                Your Grace Credits are added automatically and instantly via webhook as soon as your payment is approved. Just make sure to use the same email you use in the DailyGrace App.
               </p>
             </div>
 
             <div className="bg-[#0D2419] border border-emerald-500/20 rounded-2xl p-4 space-y-1">
               <h5 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
                 <HelpCircle size={15} className="text-emerald-400 shrink-0" />
-                Do my Hope Credits expire?
+                Do my Grace Credits expire?
               </h5>
               <p className="text-xs text-emerald-200/70 pl-6 leading-relaxed">
-                No! Your Hope Credits never expire. You can use them whenever you need spiritual support, whether tomorrow or months from now.
+                No! Your Grace Credits never expire. You can use them whenever you need spiritual support, whether tomorrow or months from now.
               </p>
             </div>
 
@@ -321,7 +321,7 @@ export default function CreditsLandingView({ onBack }) {
                 Is the checkout secure?
               </h5>
               <p className="text-xs text-emerald-200/70 pl-6 leading-relaxed">
-                Yes. All transactions are securely processed by Hotmart with bank-grade 256-bit encryption. We never store your payment details.
+                Yes. All transactions are securely processed with bank-grade 256-bit encryption. We never store your payment details.
               </p>
             </div>
           </div>
@@ -338,7 +338,7 @@ export default function CreditsLandingView({ onBack }) {
           <a href="/help" className="hover:text-white transition-colors">Help & Support</a>
         </div>
         <p className="text-[11px] text-emerald-300/40">
-          &copy; {new Date().getFullYear()} 365 Hope Journey. All rights reserved. Support: <span className="text-emerald-300">corefysystems@gmail.com</span>
+          &copy; {new Date().getFullYear()} DailyGrace App. All rights reserved. Support: <span className="text-emerald-300">corefysystems@gmail.com</span>
         </p>
       </footer>
     </div>

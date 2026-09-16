@@ -50,7 +50,7 @@ export default function AdminNotificationsView({ onBack }) {
               Back to Hub
             </button>
             <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-              Notifications - 365hopejourney
+              Notifications - DailyGrace App
             </h1>
             <p className="text-xs text-slate-500 mt-0.5">
               Send push notifications to your users
